@@ -16,7 +16,7 @@
                         </span>
                     </div>
                     <!-- Logo -->
-                    <div class="logo"><a href="index.html"><img src="{{ asset('bloxic/images/logo.png') }}"
+                    <div class="logo"><a href="{{route('home')}}"><img src="{{ asset('bloxic/images/logo.png') }}"
                                 alt="" title=""></a></div>
                 </div>
                 <div class="middle-box">
@@ -40,20 +40,15 @@
                             <!-- Info Box -->
                             <div class="upper-column info-box">
                                 <div class="icon-box flaticon-gift-box"></div>
-                                <strong>Free Shipping</strong>
-                                Free shipping $100
+                                <strong>Gratuit à 100%</strong>
+                                Gratuit à 100%
                             </div>
                             <!-- Info Box -->
-                            <div class="upper-column info-box">
-                                <div class="icon-box flaticon-headphones"></div>
-                                <strong>24/7 Support</strong>
-                                Free shipping $100
-                            </div>
                             <!-- Info Box -->
                             <div class="upper-column info-box">
                                 <div class="icon-box flaticon-padlock-1"></div>
-                                <strong>payment Secure</strong>
-                                Free shipping $100
+                                <strong>Paiement sécurisé</strong>
+                                Gratuit à 100%
                             </div>
                         </div>
                     </div>
@@ -74,38 +69,16 @@
 
                             <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent">
                                 <ul class="navigation clearfix">
-                                    <li class="dropdown"><a href="#">Home</a>
+                                    <li><a href="{{route('home')}}">Home</a>
+                                    </li>
+                                    <li class="dropdown"><a href="#">Section</a>
                                         <ul>
-                                            <li><a href="index.html">Homepage One</a></li>
-                                            <li><a href="index-2.html">Homepage Two</a></li>
-                                            <li><a href="index-3.html">Homepage Three</a></li>
-                                            <li class="dropdown"><a href="#">Header Styles</a>
-                                                <ul>
-                                                    <li><a href="index.html">Header Style One</a></li>
-                                                    <li><a href="index-2.html">Header Style Two</a></li>
-                                                    <li><a href="index-3.html">Header Style Three</a></li>
-                                                </ul>
-                                            </li>
+                                            <li><a href="#">Voir des bien à louer</a></li>
+                                            <li><a href="#">Consulter des services</a></li>
                                         </ul>
                                     </li>
-                                    <li class="dropdown"><a href="#">Shop</a>
-                                        <ul>
-                                            <li><a href="shop.html">Our Products</a></li>
-                                            <li><a href="shop-detail.html">Product Single</a></li>
-                                            <li><a href="cart.html">Shoping Cart</a></li>
-                                            <li><a href="checkout.html">CheckOut</a></li>
-                                            <li><a href="register.html">Register</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="about.html">About</a></li>
-                                    <li class="dropdown"><a href="#">Blog</a>
-                                        <ul>
-                                            <li><a href="blog.html">Our Blog</a></li>
-                                            <li><a href="blog-detail.html">Blog Single</a></li>
-                                            <li><a href="not-found.html">Not Found</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="contact.html">Contact us</a></li>
+                                    <li><a href="#">A propos</a></li>
+                                    <li><a href="#">Contactez nous</a></li>
                                 </ul>
                             </div>
 
@@ -119,25 +92,16 @@
                             <div class="search-box-two">
                                 <form method="post" action="contact.html">
                                     <div class="form-group">
-                                        <input type="search" name="search-field" value="" placeholder="Search"
+                                        <input type="search" name="search-field" value="" placeholder="rechercher"
                                             required>
                                         <button type="submit"><span class="icon flaticon-search"></span></button>
                                     </div>
                                 </form>
                             </div>
 
-                            <!-- User Box -->
-                            <a class="user-box flaticon-user-3" href="contact.html"></a>
-
                             <!-- Like Box -->
                             <div class="like-box">
                                 <a class="user-box flaticon-heart" href="contact.html"></a>
-                                <span class="total-like">0</span>
-                            </div>
-
-                            <!-- Cart Box -->
-                            <div class="cart-box-two">
-                                <a class="flaticon-shopping-bag" href="shop.html"></a>
                                 <span class="total-like">0</span>
                             </div>
 
@@ -203,11 +167,11 @@
         <div class="menu-backdrop"></div>
         <div class="close-btn"><span class="icon flaticon-multiply"></span></div>
         <nav class="menu-box">
-            <div class="nav-logo"><a href="index.html"><img src="{{ asset('bloxic/images/mobile-logo.png') }}"
+            <div class="nav-logo"><a href="{{route('home')}}"><img src="{{ asset('bloxic/images/mobile-logo.png') }}"
                         alt="" title=""></a></div>
             <!-- Search -->
             <div class="search-box">
-                <form method="post" action="contact.html">
+                <form method="post" action="#">
                     <div class="form-group">
                         <input type="search" name="search-field" value="" placeholder="SEARCH HERE" required>
                         <button type="submit"><span class="icon flaticon-search-1"></span></button>

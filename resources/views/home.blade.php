@@ -16,7 +16,8 @@
                     <div class="sidebar-info-contents">
                         <div class="content-inner">
                             <div class="logo">
-                                <a href="index.html"><img src="{{asset('bloxic/images/logo.png')}}" alt="" title=""></a>
+                                <a href="index.html"><img src="{{ asset('bloxic/images/logo.png') }}" alt=""
+                                        title=""></a>
                             </div>
                             <div class="content-box">
 
@@ -64,826 +65,191 @@
     <!-- Main Section -->
     <section class="main-slider-two">
         <div class="main-slider-carousel owl-carousel owl-theme">
+            @if ($troisDerniersBiens->isNotEmpty())
+                @foreach ($troisDerniersBiens as $bien)
+                    <!-- Slide One -->
+                    <div class="slide">
+                        <div class="image-layer" style="background-image: url({{ asset('autres_images/locaflex.png') }})">
+                        </div>
+                        <div class="vector-icon"
+                            style="background-image: url({{ asset('bloxic/images/main-slider/vector-4.png') }})"></div>
+                        <div class="auto-container">
+                            <!-- Content Column -->
+                            <div class="content-box">
+                                <div class="pattern-layer"></div>
+                                <div class="box-inner">
+                                    <div class="title" style="font-size: 35px;">{{ $bien->categorie }}</div>
+                                    <h1>{{ $bien->titre }}</h1>
+                                    <div class="text">{{ $bien->description }}</div>
+                                    <div class="price">À partir de <span>{{ $bien->prix }} FCFA</span></div>
 
-            <!-- Slide One -->
-            <div class="slide">
-                <div class="image-layer" style="background-image: url({{asset('bloxic/images/main-slider/image-2.jpg')}})"></div>
-                <div class="vector-icon" style="background-image: url({{asset('bloxic/images/main-slider/vector-4.png')}})"></div>
-                <div class="auto-container">
-
-                    <!-- Content Column -->
-                    <div class="content-box">
-                        <div class="pattern-layer" style="background-image: url({{asset('bloxic/images/main-slider/pattern-1.png')}})"></div>
-                        <div class="box-inner">
-                            <div class="title">2022 Collection</div>
-                            <h1>Furniture Collection</h1>
-                            <div class="text">Increase productivity with a simple to-do app</div>
-                            <div class="price">Starting From <span>$560.99</span></div>
-                            <!-- Button Box -->
-                            <div class="button-box">
-                                <a href="shop.html" class="theme-btn btn-style-one">
-                                    Shop Now <span class="icon flaticon-right-arrow"></span>
-                                </a>
+                                    @if ($bien->photos->isNotEmpty())
+                                        <img src="{{ Storage::url($bien->photos->first()->chemin_fichier) }}"
+                                            alt="{{ $bien->photos->first()->description }}">
+                                    @else
+                                        <img src="{{ asset('placeholder.jpg') }}" alt="Placeholder">
+                                    @endif
+                                    </br>
+                                    <!-- Button Box -->
+                                    <div class="button-box">
+                                        <a href="#" class="theme-btn btn-style-one">
+                                            Voir Plus <span class="icon flaticon-right-arrow"></span>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-
-                </div>
-
-                <!-- Off Box -->
-                <div class="off-box">
-                    40%
-                    <span>off</span>
-                </div>
-                <!-- End Off Box -->
-
-            </div>
-            <!-- End Slide One -->
-
-            <!-- Slide Two -->
-            <div class="slide">
-                <div class="image-layer" style="background-image: url({{asset('bloxic/images/main-slider/image-2.jpg')}})"></div>
-                <div class="vector-icon" style="background-image: url({{asset('bloxic/images/main-slider/vector-4.png')}})"></div>
-                <div class="auto-container">
-
-                    <!-- Content Column -->
-                    <div class="content-box">
-                        <div class="pattern-layer" style="background-image: url({{asset('bloxic/images/main-slider/pattern-1.png')}})"></div>
-                        <div class="box-inner">
-                            <div class="title">2022 Collection</div>
-                            <h1>Furniture Collection</h1>
-                            <div class="text">Increase productivity with a simple to-do app</div>
-                            <div class="price">Starting From <span>$560.99</span></div>
-                            <!-- Button Box -->
-                            <div class="button-box">
-                                <a href="shop.html" class="theme-btn btn-style-one">
-                                    Shop Now <span class="icon flaticon-right-arrow"></span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <!-- Off Box -->
-                <div class="off-box">
-                    40%
-                    <span>off</span>
-                </div>
-                <!-- End Off Box -->
-
-            </div>
-            <!-- End Slide Two -->
-
-            <!-- Slide Three -->
-            <div class="slide">
-                <div class="image-layer" style="background-image: url({{asset('bloxic/images/main-slider/image-2.jpg')}})"></div>
-                <div class="vector-icon" style="background-image: url({{asset('bloxic/images/main-slider/vector-4.png')}})"></div>
-                <div class="auto-container">
-
-                    <!-- Content Column -->
-                    <div class="content-box">
-                        <div class="pattern-layer" style="background-image: url({{asset('bloxic/images/main-slider/pattern-1.png')}})"></div>
-                        <div class="box-inner">
-                            <div class="title">2022 Collection</div>
-                            <h1>Furniture Collection</h1>
-                            <div class="text">Increase productivity with a simple to-do app</div>
-                            <div class="price">Starting From <span>$560.99</span></div>
-                            <!-- Button Box -->
-                            <div class="button-box">
-                                <a href="shop.html" class="theme-btn btn-style-one">
-                                    Shop Now <span class="icon flaticon-right-arrow"></span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <!-- Off Box -->
-                <div class="off-box">
-                    40%
-                    <span>off</span>
-                </div>
-                <!-- End Off Box -->
-
-            </div>
-            <!-- End Slide Three -->
-
+                    <!-- End Slide One -->
+                @endforeach
+            @else
+                <p>Aucun bien trouvé.</p>
+            @endif
         </div>
-
         <!-- Side Title -->
-        <div class="side-title">
-            New Arrival
-        </div>
-        <!-- End Side Title -->
-
-        <!-- Social Box -->
         <div class="social-box">
-            <a href="#">Tw.</a>
-            <a href="#">Fa.</a>
-            <a href="#">In.</a>
-        </div>
-        <!-- End Social Box -->
-
+			<a href="#">Tw.</a>
+			<a href="#">Fa.</a>
+			<a href="#">In.</a>
+		</div>
+        <!-- End Side Title -->
     </section>
     <!-- End Main Section -->
 
     <!-- Products Section Four -->
     <section class="products-section-four">
         <div class="auto-container">
-            <!-- Sec Title -->
-            <div class="sec-title">
-                <h4><span>Populer</span> Products For You !</h4>
-            </div>
-            <div class="five-item-carousel owl-carousel owl-theme">
+			<div class="inner-container">
+				<div class="row clearfix">
 
-                <!-- Product Block Three -->
-                <div class="product-block-three">
-                    <div class="inner-box">
-                        <div class="upper-box">
-                            <span class="number">34</span>
-                            <div class="icon flaticon-sink"></div>
-                        </div>
-                        <div class="lower-box">
-                            <div class="title">Break Disc & Pads</div>
-                            <ul class="list">
-                                <li><a href="#">Hot Categories</a></li>
-                                <li><a href="#">Outerwear & Jackets</a></li>
-                                <li><a href="#">Weddings & Events</a></li>
-                                <li><a href="#">Bottom</a></li>
-                                <li><a href="#">Tops & Sets</a></li>
-                            </ul>
-                            <a href="shop-detail.html" class="view-all">view all</a>
-                        </div>
-                    </div>
-                </div>
+					<!-- Feature Block -->
+					<div class="feature-block col-xl-3 col-lg-6 col-md-6 col-sm-12">
+						<div class="inner-box">
+							<div class="content">
+								<div class="icon flaticon-fast"></div>
+								<strong>Free Shipping</strong>
+								<div class="text">Free shipping over $100</div>
+							</div>
+						</div>
+					</div>
 
-                <!-- Product Block Three -->
-                <div class="product-block-three">
-                    <div class="inner-box">
-                        <div class="upper-box">
-                            <span class="number">24</span>
-                            <div class="icon flaticon-livingroom"></div>
-                        </div>
-                        <div class="lower-box">
-                            <div class="title">Services Kits</div>
-                            <ul class="list">
-                                <li><a href="#">skritts</a></li>
-                                <li><a href="#">Leggins</a></li>
-                                <li><a href="#">partse</a></li>
-                                <li><a href="#">Pants & Capris</a></li>
-                                <li><a href="#">Shorts</a></li>
-                            </ul>
-                            <a href="shop-detail.html" class="view-all">view all</a>
-                        </div>
-                    </div>
-                </div>
+					<!-- Feature Block -->
+					<div class="feature-block col-xl-3 col-lg-6 col-md-6 col-sm-12">
+						<div class="inner-box">
+							<div class="content">
+								<div class="icon flaticon-padlock"></div>
+								<strong>Payment Secure</strong>
+								<div class="text">Got 100% Payment Safe</div>
+							</div>
+						</div>
+					</div>
 
-                <!-- Product Block Three -->
-                <div class="product-block-three">
-                    <div class="inner-box">
-                        <div class="upper-box">
-                            <span class="number">45</span>
-                            <div class="icon flaticon-double-bed"></div>
-                        </div>
-                        <div class="lower-box">
-                            <div class="title">Engine Parts</div>
-                            <ul class="list">
-                                <li><a href="#">Hot Categories</a></li>
-                                <li><a href="#">Outerwear & Jackets</a></li>
-                                <li><a href="#">Weddings & Events</a></li>
-                                <li><a href="#">Bottom</a></li>
-                                <li><a href="#">Tops & Sets</a></li>
-                            </ul>
-                            <a href="shop-detail.html" class="view-all">view all</a>
-                        </div>
-                    </div>
-                </div>
+					<!-- Feature Block -->
+					<div class="feature-block col-xl-3 col-lg-6 col-md-6 col-sm-12">
+						<div class="inner-box">
+							<div class="content">
+								<div class="icon flaticon-headphones-1"></div>
+								<strong>Support 24/7</strong>
+								<div class="text">Top quialty 24/7 Support</div>
+							</div>
+						</div>
+					</div>
 
-                <!-- Product Block Three -->
-                <div class="product-block-three">
-                    <div class="inner-box">
-                        <div class="upper-box">
-                            <span class="number">87</span>
-                            <div class="icon flaticon-towels"></div>
-                        </div>
-                        <div class="lower-box">
-                            <div class="title">Oil & Lubricants</div>
-                            <ul class="list">
-                                <li><a href="#">Mobile 100</a></li>
-                                <li><a href="#">Holder Lubric</a></li>
-                                <li><a href="#">Prjector</a></li>
-                                <li><a href="#">Genuine Lubricants</a></li>
-                                <li><a href="#">Lubricant Stick</a></li>
-                            </ul>
-                            <a href="shop-detail.html" class="view-all">view all</a>
-                        </div>
-                    </div>
-                </div>
+					<!-- Feature Block -->
+					<div class="feature-block col-xl-3 col-lg-6 col-md-6 col-sm-12">
+						<div class="inner-box">
+							<div class="content">
+								<div class="icon flaticon-wallet"></div>
+								<strong>100% Money Back</strong>
+								<div class="text">Cutomers Money Backs</div>
+							</div>
+						</div>
+					</div>
 
-                <!-- Product Block Three -->
-                <div class="product-block-three">
-                    <div class="inner-box">
-                        <div class="upper-box">
-                            <span class="number">34</span>
-                            <div class="icon flaticon-armchair"></div>
-                        </div>
-                        <div class="lower-box">
-                            <div class="title">Tires & Wheels</div>
-                            <ul class="list">
-                                <li><a href="#">Hot Categories</a></li>
-                                <li><a href="#">Outerwear & Jackets</a></li>
-                                <li><a href="#">Weddings & Events</a></li>
-                                <li><a href="#">Bottom</a></li>
-                                <li><a href="#">Tops & Sets</a></li>
-                            </ul>
-                            <a href="shop-detail.html" class="view-all">view all</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product Block Three -->
-                <div class="product-block-three">
-                    <div class="inner-box">
-                        <div class="upper-box">
-                            <span class="number">34</span>
-                            <div class="icon flaticon-sink"></div>
-                        </div>
-                        <div class="lower-box">
-                            <div class="title">Break Disc & Pads</div>
-                            <ul class="list">
-                                <li><a href="#">Hot Categories</a></li>
-                                <li><a href="#">Outerwear & Jackets</a></li>
-                                <li><a href="#">Weddings & Events</a></li>
-                                <li><a href="#">Bottom</a></li>
-                                <li><a href="#">Tops & Sets</a></li>
-                            </ul>
-                            <a href="shop-detail.html" class="view-all">view all</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product Block Three -->
-                <div class="product-block-three">
-                    <div class="inner-box">
-                        <div class="upper-box">
-                            <span class="number">24</span>
-                            <div class="icon flaticon-livingroom"></div>
-                        </div>
-                        <div class="lower-box">
-                            <div class="title">Services Kits</div>
-                            <ul class="list">
-                                <li><a href="#">skritts</a></li>
-                                <li><a href="#">Leggins</a></li>
-                                <li><a href="#">partse</a></li>
-                                <li><a href="#">Pants & Capris</a></li>
-                                <li><a href="#">Shorts</a></li>
-                            </ul>
-                            <a href="shop-detail.html" class="view-all">view all</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product Block Three -->
-                <div class="product-block-three">
-                    <div class="inner-box">
-                        <div class="upper-box">
-                            <span class="number">45</span>
-                            <div class="icon flaticon-double-bed"></div>
-                        </div>
-                        <div class="lower-box">
-                            <div class="title">Engine Parts</div>
-                            <ul class="list">
-                                <li><a href="#">Hot Categories</a></li>
-                                <li><a href="#">Outerwear & Jackets</a></li>
-                                <li><a href="#">Weddings & Events</a></li>
-                                <li><a href="#">Bottom</a></li>
-                                <li><a href="#">Tops & Sets</a></li>
-                            </ul>
-                            <a href="shop-detail.html" class="view-all">view all</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product Block Three -->
-                <div class="product-block-three">
-                    <div class="inner-box">
-                        <div class="upper-box">
-                            <span class="number">87</span>
-                            <div class="icon flaticon-towels"></div>
-                        </div>
-                        <div class="lower-box">
-                            <div class="title">Oil & Lubricants</div>
-                            <ul class="list">
-                                <li><a href="#">Mobile 100</a></li>
-                                <li><a href="#">Holder Lubric</a></li>
-                                <li><a href="#">Prjector</a></li>
-                                <li><a href="#">Genuine Lubricants</a></li>
-                                <li><a href="#">Lubricant Stick</a></li>
-                            </ul>
-                            <a href="shop-detail.html" class="view-all">view all</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product Block Three -->
-                <div class="product-block-three">
-                    <div class="inner-box">
-                        <div class="upper-box">
-                            <span class="number">34</span>
-                            <div class="icon flaticon-armchair"></div>
-                        </div>
-                        <div class="lower-box">
-                            <div class="title">Tires & Wheels</div>
-                            <ul class="list">
-                                <li><a href="#">Hot Categories</a></li>
-                                <li><a href="#">Outerwear & Jackets</a></li>
-                                <li><a href="#">Weddings & Events</a></li>
-                                <li><a href="#">Bottom</a></li>
-                                <li><a href="#">Tops & Sets</a></li>
-                            </ul>
-                            <a href="shop-detail.html" class="view-all">view all</a>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
+				</div>
+			</div>
+		</div>
     </section>
     <!-- End Products Section Four -->
 
-    <!-- Collection Section Two -->
-    <section class="collection-section-two">
-        <div class="auto-container">
-
-            <!-- Collection Info Tabs -->
-            <div class="collection-info-tabs">
-                <!-- Collection Tabs -->
-                <div class="collection-tabs tabs-box">
-                    <!-- Feature Icon -->
-                    <div class="feature-icon">
-                        <img src="{{asset('bloxic/images/icons/feature-1.png')}}" alt="" />
-                    </div>
-                    <!-- Tab Btns -->
-                    <ul class="tab-btns tab-buttons clearfix">
-                        <li data-tab="#prod-furniture" class="tab-btn active-btn">Furniture Collection</li>
-                        <li data-tab="#prod-room" class="tab-btn">Living Room Collection</li>
-                        <li data-tab="#prod-interior" class="tab-btn">Interior Desiging</li>
-                    </ul>
-
-                    <!-- Tabs Container -->
-                    <div class="tabs-content">
-
-                        <!-- Tab / Active Tab -->
-                        <div class="tab active-tab" id="prod-furniture">
-                            <div class="content">
-                                <div class="image">
-                                    <img src="{{asset('bloxic/images/resource/collection.jpg')}}" alt="" />
-
-                                    <!-- Hover Box -->
-                                    <div class="hover-box">
-                                        <div class="dott"></div>
-                                        <div class="hover-content">
-                                            <div class="rating">
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="light fa fa-star"></span>
-                                                <span class="light fa fa-star"></span>
-                                            </div>
-                                            <div class="hover-title">Pot Plastics Color</div>
-                                            <div class="hover-price">$28.52 - <span>$30.00</span></div>
-                                        </div>
-                                    </div>
-                                    <!-- End Hover Box -->
-
-                                    <!-- Hover Box / Style Two -->
-                                    <div class="hover-box style-two">
-                                        <div class="dott"></div>
-                                        <div class="hover-content">
-                                            <div class="rating">
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="light fa fa-star"></span>
-                                                <span class="light fa fa-star"></span>
-                                            </div>
-                                            <div class="hover-title">Pot Plastics Color</div>
-                                            <div class="hover-price">$28.52 - <span>$30.00</span></div>
-                                        </div>
-                                    </div>
-                                    <!-- End Hover Box / Style Two -->
-
-                                    <!-- Hover Box / Style Three -->
-                                    <div class="hover-box style-three">
-                                        <div class="dott"></div>
-                                        <div class="hover-content">
-                                            <div class="rating">
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="light fa fa-star"></span>
-                                                <span class="light fa fa-star"></span>
-                                            </div>
-                                            <div class="hover-title">Pot Plastics Color</div>
-                                            <div class="hover-price">$28.52 - <span>$30.00</span></div>
-                                        </div>
-                                    </div>
-                                    <!-- End Hover Box / Style Three -->
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Tab -->
-                        <div class="tab" id="prod-room">
-                            <div class="content">
-                                <div class="image">
-                                    <img src="{{asset('bloxic/images/resource/collection.jpg')}}" alt="" />
-
-                                    <!-- Hover Box -->
-                                    <div class="hover-box">
-                                        <div class="dott"></div>
-                                        <div class="hover-content">
-                                            <div class="rating">
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="light fa fa-star"></span>
-                                                <span class="light fa fa-star"></span>
-                                            </div>
-                                            <div class="hover-title">Pot Plastics Color</div>
-                                            <div class="hover-price">$28.52 - <span>$30.00</span></div>
-                                        </div>
-                                    </div>
-                                    <!-- End Hover Box -->
-
-                                    <!-- Hover Box / Style Two -->
-                                    <div class="hover-box style-two">
-                                        <div class="dott"></div>
-                                        <div class="hover-content">
-                                            <div class="rating">
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="light fa fa-star"></span>
-                                                <span class="light fa fa-star"></span>
-                                            </div>
-                                            <div class="hover-title">Pot Plastics Color</div>
-                                            <div class="hover-price">$28.52 - <span>$30.00</span></div>
-                                        </div>
-                                    </div>
-                                    <!-- End Hover Box / Style Two -->
-
-                                    <!-- Hover Box / Style Three -->
-                                    <div class="hover-box style-three">
-                                        <div class="dott"></div>
-                                        <div class="hover-content">
-                                            <div class="rating">
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="light fa fa-star"></span>
-                                                <span class="light fa fa-star"></span>
-                                            </div>
-                                            <div class="hover-title">Pot Plastics Color</div>
-                                            <div class="hover-price">$28.52 - <span>$30.00</span></div>
-                                        </div>
-                                    </div>
-                                    <!-- End Hover Box / Style Three -->
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Tab -->
-                        <div class="tab" id="prod-interior">
-                            <div class="content">
-                                <div class="image">
-                                    <img src="{{asset('bloxic/images/resource/collection.jpg')}}" alt="" />
-
-                                    <!-- Hover Box -->
-                                    <div class="hover-box">
-                                        <div class="dott"></div>
-                                        <div class="hover-content">
-                                            <div class="rating">
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="light fa fa-star"></span>
-                                                <span class="light fa fa-star"></span>
-                                            </div>
-                                            <div class="hover-title">Pot Plastics Color</div>
-                                            <div class="hover-price">$28.52 - <span>$30.00</span></div>
-                                        </div>
-                                    </div>
-                                    <!-- End Hover Box -->
-
-                                    <!-- Hover Box / Style Two -->
-                                    <div class="hover-box style-two">
-                                        <div class="dott"></div>
-                                        <div class="hover-content">
-                                            <div class="rating">
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="light fa fa-star"></span>
-                                                <span class="light fa fa-star"></span>
-                                            </div>
-                                            <div class="hover-title">Pot Plastics Color</div>
-                                            <div class="hover-price">$28.52 - <span>$30.00</span></div>
-                                        </div>
-                                    </div>
-                                    <!-- End Hover Box / Style Two -->
-
-                                    <!-- Hover Box / Style Three -->
-                                    <div class="hover-box style-three">
-                                        <div class="dott"></div>
-                                        <div class="hover-content">
-                                            <div class="rating">
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="light fa fa-star"></span>
-                                                <span class="light fa fa-star"></span>
-                                            </div>
-                                            <div class="hover-title">Pot Plastics Color</div>
-                                            <div class="hover-price">$28.52 - <span>$30.00</span></div>
-                                        </div>
-                                    </div>
-                                    <!-- End Hover Box / Style Three -->
-
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
+    <!-- Brand Section -->
+    <section class="brand-section">
+        <div class="outer-container">
+            <div class="animation_mode">
+                <h1>Design. <span>Brand</span>. <strong>Quality</strong></h1>
+                <img src="{{ asset('bloxic/images/icons/icon-1.png') }}" alt="" />
+                <img src="{{ asset('bloxic/images/icons/feature.png') }}" alt="" />
+                <img src="{{ asset('bloxic/images/icons/icon-2.png') }}" alt="" />
+                <h1>Design. <span>Brand</span>. <strong>Quality</strong></h1>
+                <img src="{{ asset('bloxic/images/icons/icon-1.png') }}" alt="" />
+                <img src="{{ asset('bloxic/images/icons/feature.png') }}" alt="" />
+                <img src="{{ asset('bloxic/images/icons/icon-2.png') }}" alt="" />
+                <h1>Design. <span>Brand</span>. <strong>Quality</strong></h1>
+                <img src="{{ asset('bloxic/images/icons/icon-1.png') }}" alt="" />
+                <img src="{{ asset('bloxic/images/icons/feature.png') }}" alt="" />
+                <img src="{{ asset('bloxic/images/icons/icon-2.png') }}" alt="" />
+                <h1>Design. <span>Brand</span>. <strong>Quality</strong></h1>
+                <img src="{{ asset('bloxic/images/icons/icon-1.png') }}" alt="" />
+                <img src="{{ asset('bloxic/images/icons/feature.png') }}" alt="" />
+                <img src="{{ asset('bloxic/images/icons/icon-2.png') }}" alt="" />
             </div>
-            <!-- End Collection Info Tabs -->
-
         </div>
     </section>
-    <!-- End Collection Section Two -->
+    <!-- End Brand Section -->
 
     <!-- Products Section Five -->
     <section class="products-section-five">
         <div class="auto-container">
             <!-- Sec Title -->
             <div class="sec-title">
-                <h4><span>Populer</span> Products For You !</h4>
+                <h4><span>Section Bien </span> Quelques produits disponibles pour vous !</h4>
             </div>
             <div class="four-item-carousel owl-carousel owl-theme">
-
                 <!-- Shop Item -->
-                <div class="shop-item style-two">
-                    <div class="inner-box">
-                        <div class="image">
-                            <a href="shop-detail.html"><img src="{{asset('bloxic/images/resource/products/1.png')}}" alt="" /></a>
-                            <span class="off-tag">-34%</span>
-                            <div class="options-box">
-                                <span class="plus flaticon-plus"></span>
-                                <ul class="option-list">
-                                    <li><a class="flaticon-resize" href="shop-detail.html"></a></li>
-                                    <li><a class="flaticon-heart" href="shop-detail.html"></a></li>
-                                    <li><a class="flaticon-shopping-cart-2" href="shop-detail.html"></a></li>
-                                </ul>
+                @forelse ($biens as $bien)
+                    <div class="shop-item style-two">
+                        <div class="inner-box">
+                            <div class="image">
+                                @if ($bien->photos->isNotEmpty())
+                                    <a href="#"><img src="{{ Storage::url($bien->photos->first()->chemin_fichier) }}"
+                                            alt="{{ $bien->titre }}" /></a>
+                                @else
+                                    <a href="#"><img src="{{ asset('placeholder.jpg') }}" alt="Placeholder"></a>
+                                @endif
+                                <div class="options-box">
+                                    <span class="plus flaticon-plus"></span>
+                                    <ul class="option-list">
+                                        <li><a class="flaticon-resize" href="#"></a></li>
+                                    </ul>
+                                </div>
                             </div>
-                        </div>
-                        <div class="lower-content">
-                            <div class="rating">
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="light fa fa-star"></span>
+                            <div class="lower-content">
+                                <!-- Ajoutez ici les détails du bien -->
+                                <div class="rating">
+                                    <!-- Ajoutez ici les étoiles de notation si vous en avez -->
+                                </div>
+                                <h6><a href="#">{{ $bien->titre }}</a></h6>
+                                <div class="price" style="color: red"><span></span>{{ $bien->prix }}</div>
                             </div>
-                            <h6><a href="shop-detail.html">masks 95 percent 0.3-μm</a></h6>
-                            <div class="price"><span>$239.52</span> $362.00</div>
                         </div>
                     </div>
-                </div>
-
-                <!-- Shop Item -->
-                <div class="shop-item style-two">
-                    <div class="inner-box">
-                        <div class="image">
-                            <a href="shop-detail.html"><img src="{{asset('bloxic/images/resource/products/2.png')}}" alt="" /></a>
-                            <div class="options-box">
-                                <span class="plus flaticon-plus"></span>
-                                <ul class="option-list">
-                                    <li><a class="flaticon-resize" href="shop-detail.html"></a></li>
-                                    <li><a class="flaticon-heart" href="shop-detail.html"></a></li>
-                                    <li><a class="flaticon-shopping-cart-2" href="shop-detail.html"></a></li>
-                                </ul>
-                            </div>
-
-                            <!-- Product Time Countdown -->
-                            <div class="product-time-countdown clearfix" data-countdown="2023/12/1"></div>
-
-                        </div>
-                        <div class="lower-content">
-                            <div class="rating">
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="light fa fa-star"></span>
-                            </div>
-                            <h6><a href="shop-detail.html">masks 95 percent 0.3-μm</a></h6>
-                            <div class="price"><span>$239.52</span> $362.00</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Shop Item -->
-                <div class="shop-item style-two">
-                    <div class="inner-box">
-                        <div class="image">
-                            <a href="shop-detail.html"><img src="{{asset('bloxic/images/resource/products/3.png')}}" alt="" /></a>
-                            <div class="options-box">
-                                <span class="plus flaticon-plus"></span>
-                                <ul class="option-list">
-                                    <li><a class="flaticon-resize" href="shop-detail.html"></a></li>
-                                    <li><a class="flaticon-heart" href="shop-detail.html"></a></li>
-                                    <li><a class="flaticon-shopping-cart-2" href="shop-detail.html"></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="lower-content">
-                            <div class="rating">
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="light fa fa-star"></span>
-                            </div>
-                            <h6><a href="shop-detail.html">masks 95 percent 0.3-μm</a></h6>
-                            <div class="price"><span>$239.52</span> $362.00</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Shop Item -->
-                <div class="shop-item style-two">
-                    <div class="inner-box">
-                        <div class="image">
-                            <a href="shop-detail.html"><img src="{{asset('bloxic/images/resource/products/4.png')}}" alt="" /></a>
-                            <span class="off-tag">-34%</span>
-                            <div class="options-box">
-                                <span class="plus flaticon-plus"></span>
-                                <ul class="option-list">
-                                    <li><a class="flaticon-resize" href="shop-detail.html"></a></li>
-                                    <li><a class="flaticon-heart" href="shop-detail.html"></a></li>
-                                    <li><a class="flaticon-shopping-cart-2" href="shop-detail.html"></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="lower-content">
-                            <div class="rating">
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="light fa fa-star"></span>
-                            </div>
-                            <h6><a href="shop-detail.html">masks 95 percent 0.3-μm</a></h6>
-                            <div class="price"><span>$239.52</span> $362.00</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Shop Item -->
-                <div class="shop-item style-two">
-                    <div class="inner-box">
-                        <div class="image">
-                            <a href="shop-detail.html"><img src="{{asset('bloxic/images/resource/products/1.png')}}" alt="" /></a>
-                            <span class="off-tag">-34%</span>
-                            <div class="options-box">
-                                <span class="plus flaticon-plus"></span>
-                                <ul class="option-list">
-                                    <li><a class="flaticon-resize" href="shop-detail.html"></a></li>
-                                    <li><a class="flaticon-heart" href="shop-detail.html"></a></li>
-                                    <li><a class="flaticon-shopping-cart-2" href="shop-detail.html"></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="lower-content">
-                            <div class="rating">
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="light fa fa-star"></span>
-                            </div>
-                            <h6><a href="shop-detail.html">masks 95 percent 0.3-μm</a></h6>
-                            <div class="price"><span>$239.52</span> $362.00</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Shop Item -->
-                <div class="shop-item style-two">
-                    <div class="inner-box">
-                        <div class="image">
-                            <a href="shop-detail.html"><img src="{{asset('bloxic/images/resource/products/2.png')}}" alt="" /></a>
-                            <div class="options-box">
-                                <span class="plus flaticon-plus"></span>
-                                <ul class="option-list">
-                                    <li><a class="flaticon-resize" href="shop-detail.html"></a></li>
-                                    <li><a class="flaticon-heart" href="shop-detail.html"></a></li>
-                                    <li><a class="flaticon-shopping-cart-2" href="shop-detail.html"></a></li>
-                                </ul>
-                            </div>
-
-                            <!-- Product Time Countdown -->
-                            <div class="product-time-countdown clearfix" data-countdown="2023/12/1"></div>
-
-                        </div>
-                        <div class="lower-content">
-                            <div class="rating">
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="light fa fa-star"></span>
-                            </div>
-                            <h6><a href="shop-detail.html">masks 95 percent 0.3-μm</a></h6>
-                            <div class="price"><span>$239.52</span> $362.00</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Shop Item -->
-                <div class="shop-item style-two">
-                    <div class="inner-box">
-                        <div class="image">
-                            <a href="shop-detail.html"><img src="{{asset('bloxic/images/resource/products/3.png')}}" alt="" /></a>
-                            <div class="options-box">
-                                <span class="plus flaticon-plus"></span>
-                                <ul class="option-list">
-                                    <li><a class="flaticon-resize" href="shop-detail.html"></a></li>
-                                    <li><a class="flaticon-heart" href="shop-detail.html"></a></li>
-                                    <li><a class="flaticon-shopping-cart-2" href="shop-detail.html"></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="lower-content">
-                            <div class="rating">
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="light fa fa-star"></span>
-                            </div>
-                            <h6><a href="shop-detail.html">masks 95 percent 0.3-μm</a></h6>
-                            <div class="price"><span>$239.52</span> $362.00</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Shop Item -->
-                <div class="shop-item style-two">
-                    <div class="inner-box">
-                        <div class="image">
-                            <a href="shop-detail.html"><img src="{{asset('bloxic/images/resource/products/4.png')}}" alt="" /></a>
-                            <span class="off-tag">-34%</span>
-                            <div class="options-box">
-                                <span class="plus flaticon-plus"></span>
-                                <ul class="option-list">
-                                    <li><a class="flaticon-resize" href="shop-detail.html"></a></li>
-                                    <li><a class="flaticon-heart" href="shop-detail.html"></a></li>
-                                    <li><a class="flaticon-shopping-cart-2" href="shop-detail.html"></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="lower-content">
-                            <div class="rating">
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="light fa fa-star"></span>
-                            </div>
-                            <h6><a href="shop-detail.html">masks 95 percent 0.3-μm</a></h6>
-                            <div class="price"><span>$239.52</span> $362.00</div>
-                        </div>
-                    </div>
-                </div>
-
+                @empty
+                    <p>Aucun bien disponible trouvé.</p>
+                @endforelse
             </div>
 
             <!-- Purchase Box -->
+            @guest
             <div class="purchase-box d-flex justify-content-between align-items-center flex-wrap">
-                <div class="text">10% Free Shipping On All Order Over $99</div>
-                <!-- Button Box -->
+                <div class="text">Nous sommes heureux de vous accueillir sur notre site. Créez votre compte </div>
+                <!-- Boîte de boutons -->
                 <div class="button-box">
-                    <a href="shop.html" class="theme-btn btn-style-two">
-                        Purchase Now <span class="icon flaticon-right-arrow"></span>
+                    <a href="{{route('register')}}" class="theme-btn btn-style-two">
+                    S'inscrire <span class="icon flaticon-right-arrow"></span>
                     </a>
                 </div>
             </div>
+            @endguest
             <!-- End Purchase Box -->
 
         </div>
@@ -895,21 +261,21 @@
         <div class="outer-container">
             <div class="animation_mode">
                 <h1>Design. <span>Brand</span>. <strong>Quality</strong></h1>
-                <img src="{{asset('bloxic/images/icons/icon-1.png')}}" alt="" />
-                <img src="{{asset('bloxic/images/icons/feature.png')}}" alt="" />
-                <img src="{{asset('bloxic/images/icons/icon-2.png')}}" alt="" />
+                <img src="{{ asset('bloxic/images/icons/icon-1.png') }}" alt="" />
+                <img src="{{ asset('bloxic/images/icons/feature.png') }}" alt="" />
+                <img src="{{ asset('bloxic/images/icons/icon-2.png') }}" alt="" />
                 <h1>Design. <span>Brand</span>. <strong>Quality</strong></h1>
-                <img src="{{asset('bloxic/images/icons/icon-1.png')}}" alt="" />
-                <img src="{{asset('bloxic/images/icons/feature.png')}}" alt="" />
-                <img src="{{asset('bloxic/images/icons/icon-2.png')}}" alt="" />
+                <img src="{{ asset('bloxic/images/icons/icon-1.png') }}" alt="" />
+                <img src="{{ asset('bloxic/images/icons/feature.png') }}" alt="" />
+                <img src="{{ asset('bloxic/images/icons/icon-2.png') }}" alt="" />
                 <h1>Design. <span>Brand</span>. <strong>Quality</strong></h1>
-                <img src="{{asset('bloxic/images/icons/icon-1.png')}}" alt="" />
-                <img src="{{asset('bloxic/images/icons/feature.png')}}" alt="" />
-                <img src="{{asset('bloxic/images/icons/icon-2.png')}}" alt="" />
+                <img src="{{ asset('bloxic/images/icons/icon-1.png') }}" alt="" />
+                <img src="{{ asset('bloxic/images/icons/feature.png') }}" alt="" />
+                <img src="{{ asset('bloxic/images/icons/icon-2.png') }}" alt="" />
                 <h1>Design. <span>Brand</span>. <strong>Quality</strong></h1>
-                <img src="{{asset('bloxic/images/icons/icon-1.png')}}" alt="" />
-                <img src="{{asset('bloxic/images/icons/feature.png')}}" alt="" />
-                <img src="{{asset('bloxic/images/icons/icon-2.png')}}" alt="" />
+                <img src="{{ asset('bloxic/images/icons/icon-1.png') }}" alt="" />
+                <img src="{{ asset('bloxic/images/icons/feature.png') }}" alt="" />
+                <img src="{{ asset('bloxic/images/icons/icon-2.png') }}" alt="" />
             </div>
         </div>
     </section>
@@ -928,7 +294,7 @@
                             <span>30<i>% OFF</i></span>
                         </div>
                         <div class="image d-flex justify-content-between align-items-center">
-                            <img src="{{asset('bloxic/images/resource/shop-3.jpg')}}" alt="" />
+                            <img src="{{ asset('bloxic/images/resource/shop-3.jpg') }}" alt="" />
                             <div class="overlay-box">
                                 <div class="overlay-inner">
                                     <div class="off">Get 30% off</div>
@@ -949,7 +315,7 @@
                             <span>30<i>% OFF</i></span>
                         </div>
                         <div class="image d-flex justify-content-between align-items-center">
-                            <img src="{{asset('bloxic/images/resource/shop-2.jpg')}}" alt="" />
+                            <img src="{{ asset('bloxic/images/resource/shop-2.jpg') }}" alt="" />
                             <div class="overlay-box">
                                 <div class="overlay-inner">
                                     <div class="off">Get 30% off</div>
@@ -970,302 +336,68 @@
     <!-- Products Section Three -->
     <section class="products-section-three">
 
-        <!-- Side Title -->
-        <div class="side-title">
-            New Arrival
-        </div>
-        <!-- End Side Title -->
-
         <div class="auto-container">
-            <!-- Sec Title -->
-            <div class="sec-title">
-                <h4><span>Products </span> your choich !</h4>
-            </div>
+			<!-- Sec Title -->
+			<div class="sec-title">
+				<h4><span>Products </span> Your Choice!</h4>
+			</div>
+			<div class="row clearfix">
 
-            <!-- MixitUp Galery -->
-            <div class="mixitup-gallery">
+				<!-- News Block -->
+				<div class="news-block-two col-lg-4 col-md-6 col-sm-12">
+					<div class="inner-box wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
+						<div class="image">
+							<div class="tag">bedroom</div>
+							<a href="blog-detail.html"><img src="images/resource/news-3.jpg" alt="" /></a>
+						</div>
+						<div class="lower-content">
+							<div class="info">By: <span>Alextian</span> <i>January 23,2022</i></div>
+							<h5><a href="blog-detail.html">The City of London Wants To Have Brexit Cake available</a></h5>
+							<a class="read-more" href="#">Read More</a>
+						</div>
+					</div>
+				</div>
 
-                <!-- Filter -->
-                <div class="filters">
-                    <ul class="filter-tabs">
-                        <li class="active filter" data-role="button" data-filter="all">Trending</li>
-                        <li class="filter" data-role="button" data-filter=".bestseller">Best Seller</li>
-                        <li class="filter" data-role="button" data-filter=".music">music</li>
-                        <li class="filter" data-role="button" data-filter=".photography">photography</li>
-                        <li class="filter" data-role="button" data-filter=".sports">sports</li>
-                    </ul>
-                </div>
+				<!-- News Block -->
+				<div class="news-block-two col-lg-4 col-md-6 col-sm-12">
+					<div class="inner-box wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+						<div class="image">
+							<div class="tag">bedroom</div>
+							<a href="blog-detail.html"><img src="images/resource/news-4.jpg" alt="" /></a>
+						</div>
+						<div class="lower-content">
+							<div class="info">By: <span>Alextian</span> <i>January 23,2022</i></div>
+							<h5><a href="blog-detail.html">The City of London Wants To Have Brexit Cake available</a></h5>
+							<a class="read-more" href="#">Read More</a>
+						</div>
+					</div>
+				</div>
 
-                <div class="filter-list row clearfix">
+				<!-- News Block -->
+				<div class="news-block-two col-lg-4 col-md-6 col-sm-12">
+					<div class="inner-box wow fadeInRight" data-wow-delay="0ms" data-wow-duration="1500ms">
+						<div class="image">
+							<div class="tag">bedroom</div>
+							<a href="blog-detail.html"><img src="images/resource/news-5.jpg" alt="" /></a>
+						</div>
+						<div class="lower-content">
+							<div class="info">By: <span>Alextian</span> <i>January 23,2022</i></div>
+							<h5><a href="blog-detail.html">The City of London Wants To Have Brexit Cake available</a></h5>
+							<a class="read-more" href="#">Read More</a>
+						</div>
+					</div>
+				</div>
 
-                    <!-- Shop Item -->
-                    <div class="shop-item mix music photography col-lg-3 col-md-6 col-sm-12">
-                        <div class="inner-box">
-                            <div class="image">
-                                <a href="shop-detail.html"><img src="{{asset('bloxic/images/resource/products/17.png')}}"
-                                        alt="" /></a>
-                                <span class="tag flaticon-heart"></span>
-                                <div class="cart-box text-center">
-                                    <a class="cart" href="#">Add to Cart</a>
-                                </div>
-                            </div>
-                            <div class="lower-content">
-                                <div class="rating">
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="light fa fa-star"></span>
-                                </div>
-                                <h6><a href="shop-detail.html">masks 95 percent 0.3-μm <br> particles</a></h6>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="price"><span>$239.52</span> $362.00</div>
-                                    <!-- Quantity Box -->
-                                    <div class="quantity-box">
-                                        <div class="item-quantity">
-                                            <input class="qty-spinner" type="text" value="1" name="quantity">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+			</div>
 
-                    <!-- Shop Item -->
-                    <div class="shop-item mix sports col-lg-3 col-md-6 col-sm-12">
-                        <div class="inner-box">
-                            <div class="image">
-                                <a href="shop-detail.html"><img src="{{asset('bloxic/images/resource/products/18.png')}}"
-                                        alt="" /></a>
-                                <span class="tag flaticon-heart"></span>
-                                <div class="cart-box text-center">
-                                    <a class="cart" href="#">Add to Cart</a>
-                                </div>
-                            </div>
-                            <div class="lower-content">
-                                <div class="rating">
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="light fa fa-star"></span>
-                                </div>
-                                <h6><a href="shop-detail.html">masks 95 percent 0.3-μm <br> particles</a></h6>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="price"><span>$239.52</span> $362.00</div>
-                                    <!-- Quantity Box -->
-                                    <div class="quantity-box">
-                                        <div class="item-quantity">
-                                            <input class="qty-spinner" type="text" value="1" name="quantity">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+			<!-- Button Box -->
+			<div class="button-box text-center">
+				<a href="blog.html" class="theme-btn btn-style-one">
+					More Blog <span class="icon flaticon-right-arrow"></span>
+				</a>
+			</div>
 
-                    <!-- Shop Item -->
-                    <div class="shop-item mix photography bestseller col-lg-3 col-md-6 col-sm-12">
-                        <div class="inner-box">
-                            <div class="image">
-                                <a href="shop-detail.html"><img src="{{asset('bloxic/images/resource/products/19.png')}}"
-                                        alt="" /></a>
-                                <span class="tag flaticon-heart"></span>
-                                <div class="cart-box text-center">
-                                    <a class="cart" href="#">Add to Cart</a>
-                                </div>
-                            </div>
-                            <div class="lower-content">
-                                <div class="rating">
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="light fa fa-star"></span>
-                                </div>
-                                <h6><a href="shop-detail.html">masks 95 percent 0.3-μm <br> particles</a></h6>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="price"><span>$239.52</span> $362.00</div>
-                                    <!-- Quantity Box -->
-                                    <div class="quantity-box">
-                                        <div class="item-quantity">
-                                            <input class="qty-spinner" type="text" value="1" name="quantity">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Shop Item -->
-                    <div class="shop-item mix music col-lg-3 col-md-6 col-sm-12">
-                        <div class="inner-box">
-                            <div class="image">
-                                <a href="shop-detail.html"><img src="{{asset('bloxic/images/resource/products/20.png')}}"
-                                        alt="" /></a>
-                                <span class="tag flaticon-heart"></span>
-                                <div class="cart-box text-center">
-                                    <a class="cart" href="#">Add to Cart</a>
-                                </div>
-                            </div>
-                            <div class="lower-content">
-                                <div class="rating">
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="light fa fa-star"></span>
-                                </div>
-                                <h6><a href="shop-detail.html">masks 95 percent 0.3-μm <br> particles</a></h6>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="price"><span>$239.52</span> $362.00</div>
-                                    <!-- Quantity Box -->
-                                    <div class="quantity-box">
-                                        <div class="item-quantity">
-                                            <input class="qty-spinner" type="text" value="1" name="quantity">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Shop Item -->
-                    <div class="shop-item mix sports bestseller col-lg-3 col-md-6 col-sm-12">
-                        <div class="inner-box">
-                            <div class="image">
-                                <a href="shop-detail.html"><img src="{{asset('bloxic/images/resource/products/21.png')}}"
-                                        alt="" /></a>
-                                <span class="tag flaticon-heart"></span>
-                                <div class="cart-box text-center">
-                                    <a class="cart" href="#">Add to Cart</a>
-                                </div>
-                            </div>
-                            <div class="lower-content">
-                                <div class="rating">
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="light fa fa-star"></span>
-                                </div>
-                                <h6><a href="shop-detail.html">masks 95 percent 0.3-μm <br> particles</a></h6>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="price"><span>$239.52</span> $362.00</div>
-                                    <!-- Quantity Box -->
-                                    <div class="quantity-box">
-                                        <div class="item-quantity">
-                                            <input class="qty-spinner" type="text" value="1" name="quantity">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Shop Item -->
-                    <div class="shop-item mix music photography col-lg-3 col-md-6 col-sm-12">
-                        <div class="inner-box">
-                            <div class="image">
-                                <a href="shop-detail.html"><img src="{{asset('bloxic/images/resource/products/22.png')}}"
-                                        alt="" /></a>
-                                <span class="tag flaticon-heart"></span>
-                                <div class="cart-box text-center">
-                                    <a class="cart" href="#">Add to Cart</a>
-                                </div>
-                            </div>
-                            <div class="lower-content">
-                                <div class="rating">
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="light fa fa-star"></span>
-                                </div>
-                                <h6><a href="shop-detail.html">masks 95 percent 0.3-μm <br> particles</a></h6>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="price"><span>$239.52</span> $362.00</div>
-                                    <!-- Quantity Box -->
-                                    <div class="quantity-box">
-                                        <div class="item-quantity">
-                                            <input class="qty-spinner" type="text" value="1" name="quantity">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Shop Item -->
-                    <div class="shop-item mix sports bestseller col-lg-3 col-md-6 col-sm-12">
-                        <div class="inner-box">
-                            <div class="image">
-                                <a href="shop-detail.html"><img src="{{asset('bloxic/images/resource/products/23.png')}}"
-                                        alt="" /></a>
-                                <span class="tag flaticon-heart"></span>
-                                <div class="cart-box text-center">
-                                    <a class="cart" href="#">Add to Cart</a>
-                                </div>
-                            </div>
-                            <div class="lower-content">
-                                <div class="rating">
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="light fa fa-star"></span>
-                                </div>
-                                <h6><a href="shop-detail.html">masks 95 percent 0.3-μm <br> particles</a></h6>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="price"><span>$239.52</span> $362.00</div>
-                                    <!-- Quantity Box -->
-                                    <div class="quantity-box">
-                                        <div class="item-quantity">
-                                            <input class="qty-spinner" type="text" value="1" name="quantity">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Shop Item -->
-                    <div class="shop-item mix music photography col-lg-3 col-md-6 col-sm-12">
-                        <div class="inner-box">
-                            <div class="image">
-                                <a href="shop-detail.html"><img src="{{asset('bloxic/images/resource/products/24.png')}}"
-                                        alt="" /></a>
-                                <span class="tag flaticon-heart"></span>
-                                <div class="cart-box text-center">
-                                    <a class="cart" href="#">Add to Cart</a>
-                                </div>
-                            </div>
-                            <div class="lower-content">
-                                <div class="rating">
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="light fa fa-star"></span>
-                                </div>
-                                <h6><a href="shop-detail.html">masks 95 percent 0.3-μm <br> particles</a></h6>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="price"><span>$239.52</span> $362.00</div>
-                                    <!-- Quantity Box -->
-                                    <div class="quantity-box">
-                                        <div class="item-quantity">
-                                            <input class="qty-spinner" type="text" value="1" name="quantity">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-        </div>
+		</div>
     </section>
     <!-- End Products Section Three -->
 
@@ -1303,7 +435,8 @@
                                 <div class="service-block active col-lg-6 col-md-6 col-sm-12">
                                     <div class="inner-box">
                                         <div class="image">
-                                            <a href="shop-detail.html"><img src="{{asset('bloxic/images/resource/service-1.png')}}"
+                                            <a href="shop-detail.html"><img
+                                                    src="{{ asset('bloxic/images/resource/service-1.png') }}"
                                                     alt="" /></a>
                                         </div>
                                         <div class="lower-content">
@@ -1318,7 +451,8 @@
                                 <div class="service-block col-lg-6 col-md-6 col-sm-12">
                                     <div class="inner-box">
                                         <div class="image">
-                                            <a href="shop-detail.html"><img src="{{asset('bloxic/images/resource/service-2.png')}}"
+                                            <a href="shop-detail.html"><img
+                                                    src="{{ asset('bloxic/images/resource/service-2.png') }}"
                                                     alt="" /></a>
                                         </div>
                                         <div class="lower-content">
@@ -1340,7 +474,8 @@
                                 <div class="service-block col-lg-6 col-md-6 col-sm-12">
                                     <div class="inner-box">
                                         <div class="image">
-                                            <a href="shop-detail.html"><img src="{{asset('bloxic/images/resource/service-1.png')}}"
+                                            <a href="shop-detail.html"><img
+                                                    src="{{ asset('bloxic/images/resource/service-1.png') }}"
                                                     alt="" /></a>
                                         </div>
                                         <div class="lower-content">
@@ -1355,7 +490,8 @@
                                 <div class="service-block active col-lg-6 col-md-6 col-sm-12">
                                     <div class="inner-box">
                                         <div class="image">
-                                            <a href="shop-detail.html"><img src="{{asset('bloxic/images/resource/service-2.png')}}"
+                                            <a href="shop-detail.html"><img
+                                                    src="{{ asset('bloxic/images/resource/service-2.png') }}"
                                                     alt="" /></a>
                                         </div>
                                         <div class="lower-content">
@@ -1377,7 +513,8 @@
                                 <div class="service-block active col-lg-6 col-md-6 col-sm-12">
                                     <div class="inner-box">
                                         <div class="image">
-                                            <a href="shop-detail.html"><img src="{{asset('bloxic/images/resource/service-1.png')}}"
+                                            <a href="shop-detail.html"><img
+                                                    src="{{ asset('bloxic/images/resource/service-1.png') }}"
                                                     alt="" /></a>
                                         </div>
                                         <div class="lower-content">
@@ -1392,7 +529,8 @@
                                 <div class="service-block col-lg-6 col-md-6 col-sm-12">
                                     <div class="inner-box">
                                         <div class="image">
-                                            <a href="shop-detail.html"><img src="{{asset('bloxic/images/resource/service-2.png')}}"
+                                            <a href="shop-detail.html"><img
+                                                    src="{{ asset('bloxic/images/resource/service-2.png') }}"
                                                     alt="" /></a>
                                         </div>
                                         <div class="lower-content">
@@ -1415,7 +553,8 @@
 
     <!-- Testimonial Section Two -->
     <section class="testimonial-section-two">
-        <div class="pattern-layer" style="background-image: url({{asset('bloxic/images/background/pattern-5.png')}})"></div>
+        <div class="pattern-layer" style="background-image: url({{ asset('bloxic/images/background/pattern-5.png') }})">
+        </div>
         <div class="auto-container">
             <div class="inner-container">
                 <span class="dott"></span>
@@ -1470,21 +609,21 @@
         <div class="outer-container">
             <div class="animation_mode">
                 <h1>Design. <span>Brand</span>. <strong>Quality</strong></h1>
-                <img src="{{asset('bloxic/images/icons/icon-1.png')}}" alt="" />
-                <img src="{{asset('bloxic/images/icons/feature.png')}}" alt="" />
-                <img src="{{asset('bloxic/images/icons/icon-2.png')}}" alt="" />
+                <img src="{{ asset('bloxic/images/icons/icon-1.png') }}" alt="" />
+                <img src="{{ asset('bloxic/images/icons/feature.png') }}" alt="" />
+                <img src="{{ asset('bloxic/images/icons/icon-2.png') }}" alt="" />
                 <h1>Design. <span>Brand</span>. <strong>Quality</strong></h1>
-                <img src="{{asset('bloxic/images/icons/icon-1.png')}}" alt="" />
-                <img src="{{asset('bloxic/images/icons/feature.png')}}" alt="" />
-                <img src="{{asset('bloxic/images/icons/icon-2.png')}}" alt="" />
+                <img src="{{ asset('bloxic/images/icons/icon-1.png') }}" alt="" />
+                <img src="{{ asset('bloxic/images/icons/feature.png') }}" alt="" />
+                <img src="{{ asset('bloxic/images/icons/icon-2.png') }}" alt="" />
                 <h1>Design. <span>Brand</span>. <strong>Quality</strong></h1>
-                <img src="{{asset('bloxic/images/icons/icon-1.png')}}" alt="" />
-                <img src="{{asset('bloxic/images/icons/feature.png')}}" alt="" />
-                <img src="{{asset('bloxic/images/icons/icon-2.png')}}" alt="" />
+                <img src="{{ asset('bloxic/images/icons/icon-1.png') }}" alt="" />
+                <img src="{{ asset('bloxic/images/icons/feature.png') }}" alt="" />
+                <img src="{{ asset('bloxic/images/icons/icon-2.png') }}" alt="" />
                 <h1>Design. <span>Brand</span>. <strong>Quality</strong></h1>
-                <img src="{{asset('bloxic/images/icons/icon-1.png')}}" alt="" />
-                <img src="{{asset('bloxic/images/icons/feature.png')}}" alt="" />
-                <img src="{{asset('bloxic/images/icons/icon-2.png')}}" alt="" />
+                <img src="{{ asset('bloxic/images/icons/icon-1.png') }}" alt="" />
+                <img src="{{ asset('bloxic/images/icons/feature.png') }}" alt="" />
+                <img src="{{ asset('bloxic/images/icons/icon-2.png') }}" alt="" />
             </div>
         </div>
     </section>

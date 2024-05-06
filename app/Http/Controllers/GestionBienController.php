@@ -56,7 +56,7 @@ class GestionBienController extends Controller
 
         if ($request->hasFile('photo')) {
             foreach ($request->file('photo') as $image) {
-                $path = $image->store('photos');
+                $path = $image->store('photos', 'public');
                 $description = 'photo_du_bien';
                 Photo::create([
                     'chemin_fichier' => $path,
@@ -149,7 +149,7 @@ class GestionBienController extends Controller
         $bien->tags = $request->tags;
         $bien->description = $request->description;
         $bien->disponibilite = $request->disponibilite;
-        $bien->tags = $request->tags;
+        $bien->caracteristiques = $request->caracteristiques;
         $bien->save();
 
         return redirect()->back()->with('success', 'Le bien a été mise à jour avec succès');

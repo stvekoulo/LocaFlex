@@ -122,9 +122,9 @@
                             </div>
                         </div>
                         <div class="col-sm-6 text-sm-end push">
-                            <button type="submit" class="btn btn-lg btn-alt-primary fw-semibold">
-                                Soumettre
-                            </button>
+                            <div class="mb-4">
+                                <button type="submit" class="btn btn-alt-primary">Soumettre</button>
+                            </div>
                         </div>
                     </form>
                 </div>

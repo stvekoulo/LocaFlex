@@ -119,7 +119,7 @@
                             </td>
                             <td class="d-none d-sm-table-cell">
                                 @if ($service->publie == false)
-                                    <form action="{{route('publication.true')}}" method="POST"
+                                    <form action="{{route('publication-service.true')}}" method="POST"
                                         enctype="multipart/form-data">
                                         @csrf
                                         <input type="hidden" name="service_id" value="{{ $service->id }}">
@@ -137,7 +137,7 @@
                                         </button>
                                     </form>
                                 @else
-                                    <form action="{{route('publication.false')}}" method="POST"
+                                    <form action="{{route('publication-service.false')}}" method="POST"
                                         enctype="multipart/form-data">
                                         @csrf
                                         <input type="hidden" name="service_id" value="{{ $service->id }}">

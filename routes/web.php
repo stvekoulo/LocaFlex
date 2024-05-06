@@ -57,10 +57,10 @@ Route::post('/dashboard/gestion-services/create/store', [GestionServiceControlle
     ->name('service.store')
     ->middleware(['auth', 'verified']);
 Route::post('/dashboard/gestion-services/publication/true', [GestionServiceController::class, 'publicationtrue'])
-    ->name('publication.true')
+    ->name('publication-service.true')
     ->middleware(['auth', 'verified']);
 Route::post('/dashboard/gestion-services/publication/false', [GestionServiceController::class, 'publicationfalse'])
-    ->name('publication.false')
+    ->name('publication-service.false')
     ->middleware(['auth', 'verified']);
 Route::delete('/dashboard/gestion-services/delete/{id}', [GestionServiceController::class, 'destroy'])
     ->name('service.destroy')
