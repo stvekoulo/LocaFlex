@@ -95,10 +95,6 @@
                                     </select>
                                     <label class="form-label" for="disponibilite">Disponibilité</label>
                                 </div>
-                                <div class="form-floating mb-4">
-                                    <textarea class="form-control" id="caracteristiques" name="caracteristiques" style="height: 200px"></textarea>
-                                    <label class="form-label" for="caracteristiques">Caracteristiques</label>
-                                </div>
                             </div>
                         </div>
                         <div class="col-sm-6 text-sm-end push">
