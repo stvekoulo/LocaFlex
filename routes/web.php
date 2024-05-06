@@ -7,6 +7,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GestionBienController;
 use App\Http\Controllers\LoueurProfileController;
 use App\Http\Controllers\LoueurServiceController;
+use App\Http\Controllers\GestionServiceController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -44,6 +45,31 @@ Route::get('/dashboard/gestion-biens/edit/{id}', [GestionBienController::class, 
     ->middleware(['auth', 'verified']);
 Route::post('/dashboard/gestion-biens/update/{id}', [GestionBienController::class, 'update'])
     ->name('bien.update')
+    ->middleware(['auth', 'verified']);
+
+Route::get('/dashboard/gestion-services', [GestionServiceController::class, 'index'])
+    ->name('service.index')
+    ->middleware(['auth', 'verified']);
+Route::get('/dashboard/gestion-services/create', [GestionServiceController::class, 'create'])
+    ->name('service.create')
+    ->middleware(['auth', 'verified']);
+Route::post('/dashboard/gestion-services/create/store', [GestionServiceController::class, 'store'])
+    ->name('service.store')
+    ->middleware(['auth', 'verified']);
+Route::post('/dashboard/gestion-services/publication/true', [GestionServiceController::class, 'publicationtrue'])
+    ->name('publication.true')
+    ->middleware(['auth', 'verified']);
+Route::post('/dashboard/gestion-services/publication/false', [GestionServiceController::class, 'publicationfalse'])
+    ->name('publication.false')
+    ->middleware(['auth', 'verified']);
+Route::delete('/dashboard/gestion-services/delete/{id}', [GestionServiceController::class, 'destroy'])
+    ->name('service.destroy')
+    ->middleware(['auth', 'verified']);
+Route::get('/dashboard/gestion-services/edit/{id}', [GestionServiceController::class, 'edit'])
+    ->name('service.edit')
+    ->middleware(['auth', 'verified']);
+Route::post('/dashboard/gestion-services/update/{id}', [GestionServiceController::class, 'update'])
+    ->name('service.update')
     ->middleware(['auth', 'verified']);
 
 Route::middleware('auth')->group(function () {

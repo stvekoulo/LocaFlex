@@ -190,6 +190,13 @@
                                         <span class="nav-main-link-name">Gestion Bien</span>
                                     </a>
                                 </li>
+                                <li class="nav-main-item">
+                                    <a class="nav-main-link{{ request()->is('dashboard/gestion-services') ? ' active' : '' }}"
+                                        href="{{route('service.index')}}">
+                                        <i class="nav-main-link-icon fa fa-layer-group"></i>
+                                        <span class="nav-main-link-name">Gestion Service</span>
+                                    </a>
+                                </li>
                             </li>
                         </ul>
                     </div>

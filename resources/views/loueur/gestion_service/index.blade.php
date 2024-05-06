@@ -66,10 +66,10 @@
         <div class="block-content block-content-full">
             <div class="py-3 text-center">
                 <h1 class="h2 fw-bold text-white mb-2">
-                    Gestion des biens
+                    Gestion des services
                 </h1>
                 <h2 class="h5 fw-medium text-white-75">
-                    Gerer vos biens a louer
+                    Gerer vos services a offrir
                 </h2>
             </div>
         </div>
@@ -88,10 +88,10 @@
     @endif
     <div class="block block-rounded">
         <div class="block-header block-header-default d-flex justify-content-end">
-            <a href="{{ route('bien.create') }}" class="btn btn-sm btn-primary ms-auto" data-bs-toggle="tooltip"
-                title="Ajouter un bien">
-                Ajouter un bien
-            </a>
+                <a href="{{ route('service.create') }}" class="btn btn-sm btn-primary ms-auto" data-bs-toggle="tooltip"
+                    title="Ajouter un service">
+                    Ajouter un service
+                </a>
         </div>
         <div class="block-content block-content-full overflow-x-auto">
             <!-- DataTables functionality is initialized with .js-dataTable-responsive class in js/pages/be_tables_datatables.min.js which was auto compiled from _js/pages/be_tables_datatables.js -->
@@ -108,21 +108,21 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($biens as $index => $bien)
+                    @foreach ($services as $index => $service)
                         <tr>
                             <td class="text-center">{{ $index + 1 }}</td>
-                            <td class="fw-semibold">{{ $bien->titre}}</td>
-                            <td class="d-none d-sm-table-cell">{{ $bien->categorie }}</td>
-                            <td class="d-none d-sm-table-cell">{{ $bien->prix }} FCFA</td>
+                            <td class="fw-semibold">{{ $service->titre}}</td>
+                            <td class="d-none d-sm-table-cell">{{ $service->categorie }}</td>
+                            <td class="d-none d-sm-table-cell">{{ $service->prix }} FCFA</td>
                             <td class="d-none d-sm-table-cell">
-                                <span class="badge bg-info">{{ $bien->disponibilite }}</span>
+                                <span class="badge bg-info">{{ $service->disponibilite }}</span>
                             </td>
                             <td class="d-none d-sm-table-cell">
-                                @if ($bien->publie == false)
+                                @if ($service->publie == false)
                                     <form action="{{route('publication.true')}}" method="POST"
                                         enctype="multipart/form-data">
                                         @csrf
-                                        <input type="hidden" name="bien_id" value="{{ $bien->id }}">
+                                        <input type="hidden" name="service_id" value="{{ $service->id }}">
                                         <button type="submit" class="button">
                                             <span class="button__text"> Oui ?</span>
                                             <span class="button__icon"><svg xmlns="http://www.w3.org/2000/svg"
@@ -140,7 +140,7 @@
                                     <form action="{{route('publication.false')}}" method="POST"
                                         enctype="multipart/form-data">
                                         @csrf
-                                        <input type="hidden" name="bien_id" value="{{ $bien->id }}">
+                                        <input type="hidden" name="service_id" value="{{ $service->id }}">
                                         <button type="submit" class="button" style="border: 1px solid #973434;
                                             background-color: #a83a3a;">
                                             <span class="button__text"> Non ?</span>
@@ -158,19 +158,19 @@
                                 @endif
                             </td>
                             <td class="d-none d-sm-table-cell text-center">
-                                <a href="{{ route('bien.edit', ['id' => $bien->id]) }}"
+                                <a href="{{ route('service.edit', ['id' => $service->id]) }}"
                                     class="btn btn-sm btn-secondary" data-bs-toggle="tooltip" title="Modifier">
                                     <i class="fa fa-pencil-alt"></i>
                                 </a>
                                 <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal"
-                                    data-bs-target="#confirmDelete{{ $bien->id }}" data-bs-toggle="tooltip"
+                                    data-bs-target="#confirmDelete{{ $service->id }}" data-bs-toggle="tooltip"
                                     title="Supprimer">
                                     <i class="fa fa-trash"></i>
                                 </button>
                             </td>
                         </tr>
                         <!-- Modal de confirmation de suppression -->
-                        <div class="modal fade" id="confirmDelete{{ $bien->id }}" tabindex="-1"
+                        <div class="modal fade" id="confirmDelete{{ $service->id }}" tabindex="-1"
                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content">
@@ -185,7 +185,7 @@
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
                                             data-bs-dismiss="modal">Annuler</button>
-                                        <form action="{{ route('bien.destroy', ['id' => $bien->id]) }}"
+                                        <form action="{{ route('service.destroy', ['id' => $service->id]) }}"
                                             method="POST">
                                             @csrf
                                             @method('DELETE')
