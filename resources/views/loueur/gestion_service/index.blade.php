@@ -1,3 +1,11 @@
+@php
+    $user = Auth::user();
+@endphp
+@php
+    if (Auth::user()->role === 'Client') {
+        abort(403);
+    }
+@endphp
 @extends('layouts.backend')
 @section('content')
 <style>
@@ -62,7 +70,7 @@
     }
 </style>
 <div class="content">
-    <div class="block block-rounded bg-gd-pulse">
+    <div class="block block-rounded bg-gd-leaf">
         <div class="block-content block-content-full">
             <div class="py-3 text-center">
                 <h1 class="h2 fw-bold text-white mb-2">

@@ -1,188 +1,71 @@
-<!-- Main Header / Header Style Two -->
-<header class="main-header header-style-two">
-
-    <!-- Header Lower -->
-    <div class="header-lower">
-
-        <div class="auto-container">
-            <div class="inner-container d-flex justify-content-between align-items-center">
-                <!-- Logo Box -->
-                <div class="logo-box d-flex align-items-center">
-                    <div class="nav-toggle-btn a-nav-toggle navSidebar-button">
-                        <span class="hamburger">
-                            <span class="top-bun"></span>
-                            <span class="meat"></span>
-                            <span class="bottom-bun"></span>
-                        </span>
-                    </div>
-                    <!-- Logo -->
-                    <div class="logo"><a href="{{route('home')}}"><img src="{{ asset('bloxic/images/logo.png') }}"
-                                alt="" title=""></a></div>
-                </div>
-                <div class="middle-box">
-                    <div class="upper-box d-flex justify-content-between align-items-center flex-wrap">
-
-                        <!-- Info List -->
-                        <ul class="info-list">
-                            <li><span class="icon"><img src="{{ asset('bloxic/images/icons/location.png') }}"
-                                        alt="" /></span>Store
-                                Location</li>
-                            <li><span class="icon"><img src="{{ asset('bloxic/images/icons/bus.png') }}"
-                                        alt="" /></span>Track Your
-                                Order</li>
-                            <li><span class="icon"><img src="{{ asset('bloxic/images/icons/telephone.png') }}"
-                                        alt="" /></span>Call
-                                Us For Enquiry</li>
-                        </ul>
-
-                        <!-- Upper Right -->
-                        <div class="upper-right">
-                            <!-- Info Box -->
-                            <div class="upper-column info-box">
-                                <div class="icon-box flaticon-gift-box"></div>
-                                <strong>Gratuit à 100%</strong>
-                                Gratuit à 100%
-                            </div>
-                            <!-- Info Box -->
-                            <!-- Info Box -->
-                            <div class="upper-column info-box">
-                                <div class="icon-box flaticon-padlock-1"></div>
-                                <strong>Paiement sécurisé</strong>
-                                Gratuit à 100%
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="nav-outer d-flex justify-content-between align-items-center flex-wrap">
-
-                        <!-- Main Menu -->
-                        <nav class="main-menu show navbar-expand-md">
-                            <div class="navbar-header">
-                                <button class="navbar-toggler" type="button" data-toggle="collapse"
-                                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                                    aria-expanded="false" aria-label="Toggle navigation">
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                </button>
-                            </div>
-
-                            <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent">
-                                <ul class="navigation clearfix">
-                                    <li><a href="{{route('home')}}">Home</a>
-                                    </li>
-                                    <li class="dropdown"><a href="#">Section</a>
-                                        <ul>
-                                            <li><a href="#">Voir des bien à louer</a></li>
-                                            <li><a href="#">Consulter des services</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">A propos</a></li>
-                                    <li><a href="#">Contactez nous</a></li>
-                                </ul>
-                            </div>
-
-                        </nav>
-                        <!-- Main Menu End-->
-
-                        <!-- Options Box -->
-                        <div class="options-box d-flex align-items-center">
-
-                            <!-- Search Box -->
-                            <div class="search-box-two">
-                                <form method="post" action="contact.html">
-                                    <div class="form-group">
-                                        <input type="search" name="search-field" value="" placeholder="rechercher"
-                                            required>
-                                        <button type="submit"><span class="icon flaticon-search"></span></button>
-                                    </div>
-                                </form>
-                            </div>
-
-                            <!-- Like Box -->
-                            <div class="like-box">
-                                <a class="user-box flaticon-heart" href="contact.html"></a>
-                                <span class="total-like">0</span>
-                            </div>
-
-                            <!-- Mobile Navigation Toggler -->
-                            <div class="mobile-nav-toggler"><span class="icon flaticon-menu"></span></div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-                <!-- Button Box -->
-                @if (auth()->check())
-                    <form method="POST" action="{{ route('logout') }}">
-                        @csrf
-                        <div class="button-box text-center">
-                            <button class="theme-btn btn-style-one">
-                                {{ auth()->user()->name }}<span class="icon flaticon-right-arrow"></span>
-                            </button>
-                        </div>
-                    </form>
-                @else
-                    <div class="button-box text-center">
-                        <a href="{{ route('login') }}" class="theme-btn btn-style-one">
-                            Se connecter <span class="icon flaticon-right-arrow"></span>
+    <header class="site_header site_header_1">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col col-lg-3 col-5">
+                    <div class="site_logo">
+                        <a class="site_link" href="{{route('home')}}">
+                            <img src="{{asset('Template/assets/images/logo/site_logo.svg')}}" alt="Collab - Online Learning Platform">
                         </a>
                     </div>
-                @endif
-            </div>
-        </div>
-    </div>
-    <!-- End Header Lower -->
-
-    <!-- Sticky Header  -->
-    <div class="sticky-header">
-        <div class="auto-container">
-            <div class="d-flex justify-content-between align-items-center">
-                <!-- Logo -->
-                <div class="logo">
-                    <a href="index.html" title=""><img src="{{ asset('bloxic/images/logo-small.png') }}"
-                            alt="" title=""></a>
                 </div>
-
-                <!-- Right Col -->
-                <div class="right-box">
-                    <!-- Main Menu -->
-                    <nav class="main-menu">
-                        <!--Keep This Empty / Menu will come through Javascript-->
+                <div class="col col-lg-6 col-2">
+                    <nav class="main_menu navbar navbar-expand-lg">
+                        <div class="main_menu_inner collapse navbar-collapse justify-content-center"
+                            id="main_menu_dropdown">
+                            <ul class="main_menu_list unordered_list_center">
+                                <li><a class="nav-link" href="{{route('home')}}">Acceuil</a></li>
+                                <li class="dropdown">
+                                    <a class="nav-link" href="#" id="home_submenu" role="button"
+                                        data-bs-toggle="dropdown" aria-expanded="false">Option</a>
+                                    <ul class="dropdown-menu" aria-labelledby="home_submenu">
+                                        <li><a href="{{route('bien.catalogue')}}">Catalogue bien disponible à louer </a></li>
+                                        <li><a href="{{route('service.catalogue')}}">Catalogue service disponible</a></li>
+                                    </ul>
+                                </li>
+                                <li><a class="nav-link" href="#">Contact</a></li>
+                            </ul>
+                        </div>
                     </nav>
-                    <!-- Main Menu End-->
-
-                    <!-- Mobile Navigation Toggler -->
-                    <div class="mobile-nav-toggler"><span class="icon flaticon-menu"></span></div>
                 </div>
-
+                <div class="col col-lg-3 col-5">
+                    <ul class="header_btns_group unordered_list_end">
+                        <li>
+                            <button class="mobile_menu_btn" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#main_menu_dropdown" aria-controls="main_menu_dropdown"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                                <i class="far fa-bars"></i>
+                            </button>
+                        </li>
+                        @if(auth()->check())
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <button class="btn border_dark" type="submit">
+                                        <span>
+                                            <small>Utilisateur : {{ auth()->user()->name }}</small>
+                                            <small>Déconnexion</i></small>
+                                        </span>
+                                </button>
+                            </form>
+                        @else
+                            <li>
+                                <a class="btn border_dark" href="{{route('login')}}">
+                                    <span>
+                                        <small>Se connecter</small>
+                                        <small>Se connecter</small>
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="btn btn_dark" href="{{route('register')}}">
+                                    <span>
+                                        <small>S'inscrire</small>
+                                        <small>S'inscrire</small>
+                                    </span>
+                                </a>
+                            </li>
+                        @endif
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
-    <!-- End Sticky Menu -->
-
-    <!-- Mobile Menu  -->
-    <div class="mobile-menu">
-        <div class="menu-backdrop"></div>
-        <div class="close-btn"><span class="icon flaticon-multiply"></span></div>
-        <nav class="menu-box">
-            <div class="nav-logo"><a href="{{route('home')}}"><img src="{{ asset('bloxic/images/mobile-logo.png') }}"
-                        alt="" title=""></a></div>
-            <!-- Search -->
-            <div class="search-box">
-                <form method="post" action="#">
-                    <div class="form-group">
-                        <input type="search" name="search-field" value="" placeholder="SEARCH HERE" required>
-                        <button type="submit"><span class="icon flaticon-search-1"></span></button>
-                    </div>
-                </form>
-            </div>
-            <div class="menu-outer"><!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->
-            </div>
-        </nav>
-    </div>
-    <!-- End Mobile Menu -->
-
-</header>
-<!-- End Main Header -->
+    </header>

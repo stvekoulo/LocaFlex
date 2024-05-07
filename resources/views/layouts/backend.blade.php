@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-    <title>{{ config('app.name', 'LocaFlex') }}</title>
+    <title>{{ config('app.name', 'Collab') }}</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <meta name="description" content="Codebase - Bootstrap 5 Admin Template &amp; UI Framework created by pixelcave">
@@ -23,11 +23,8 @@
 
     <!-- Icons -->
     <!-- The following icons can be replaced with your own, they are used by desktop and mobile browsers -->
-    <link rel="shortcut icon" href="{{asset('assets/media/favicons/favicon.png')}}">
-    <link rel="icon" type="image/png" sizes="192x192"
-        href="{{ asset('assets/media/favicons/favicon-192x192.png') }}">
-    <link rel="apple-touch-icon" sizes="180x180"
-        href="{{ asset('assets/media/favicons/apple-touch-icon-180x180.png') }}">
+    <link rel="shortcut icon" href="{{ asset('Template/assets/images/logo/favourite_icon_1.svg') }}">
+    <link rel="icon" href="{{ asset('Template/assets/images/logo/favourite_icon_1.svg') }}" type="image/x-icon">
     <!-- END Icons -->
 
     <!-- Stylesheets -->
@@ -96,7 +93,7 @@
                         <a class="link-fx fw-bold tracking-wide mx-auto" href="#">
                             <span class="smini-hidden">
                                 <i class="fa fa-podcast text-danger"></i>
-                                <span class="fs-4 text-dual">Loca</span><span class="fs-4 text-danger">Flex</span>
+                                <span class="fs-4 text-dual">Col</span><span class="fs-4 text-danger">lab</span>
                             </span>
                         </a>
                     </div>
@@ -425,7 +422,7 @@
                             target="_blank">...</a>
                     </div>
                     <div class="col-sm-6 order-sm-1 py-1 text-center text-sm-start">
-                        <a class="fw-semibold" href="#" target="_blank">LocaFlex</a> &copy; <span
+                        <a class="fw-semibold" href="#" target="_blank">Collab</a> &copy; <span
                             data-toggle="year-copy"></span>
                     </div>
                 </div>

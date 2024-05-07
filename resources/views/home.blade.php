@@ -1,631 +1,363 @@
+@php
+    $user = Auth::user();
+@endphp
+@php
+    if (Auth::check() && Auth::user()->role === 'Loueur') {
+        abort(403);
+    }
+@endphp
 @extends('layouts.opus')
 @section('content')
-    <!-- Sidebar Cart Item -->
-    <div class="xs-sidebar-group info-group">
-        <div class="xs-overlay xs-bg-black"></div>
-        <div class="xs-sidebar-widget">
-            <div class="sidebar-widget-container">
-                <div class="widget-heading">
-                    <a href="#" class="close-side-widget">
-                        X
-                    </a>
-                </div>
-                <div class="sidebar-textwidget">
 
-                    <!-- Sidebar Info Content -->
-                    <div class="sidebar-info-contents">
-                        <div class="content-inner">
-                            <div class="logo">
-                                <a href="index.html"><img src="{{ asset('bloxic/images/logo.png') }}" alt=""
-                                        title=""></a>
-                            </div>
-                            <div class="content-box">
-
-                                <h6>Services</h6>
-                                <ul class="sidebar-services-list">
-                                    <li><a href="#">Laptops & Computers</a></li>
-                                    <li><a href="#">Cameras & Photography</a></li>
-                                    <li><a href="#">Smart Phones & Tablets</a></li>
-                                    <li><a href="#">Video Games & Consoles</a></li>
-                                    <li><a href="#">TV & Audio</a></li>
-                                    <li><a href="#">LED Table</a></li>
-                                </ul>
-
-                                <h6>Contact info</h6>
-                                <!-- List Style One -->
-                                <ul class="list-style-one">
-                                    <li>
-                                        <span class="icon flaticon-maps-and-flags"></span>
-                                        <strong>Our office</strong>
-                                        A-1, Envanto Headquarters, <br> Melbourne, Australia.
-                                    </li>
-                                    <li>
-                                        <span class="icon flaticon-call-1"></span>
-                                        <strong>Phone</strong>
-                                        <a href="tel:+00-999-999-9999">+(00) 999 999 9999</a><br>
-                                        <a href="tel:+000-000-0000">000 000 0000</a>
-                                    </li>
-                                    <li>
-                                        <span class="icon flaticon-mail"></span>
-                                        <strong>Email</strong>
-                                        <a href="mailto:contact@bloxic.com">contact@Bloxic.com</a>
-                                    </li>
-                                </ul>
-                            </div>
-
+<main class="page_content">
+    <!-- Banner Section - Start
+        ================================================== -->
+        <section class="hero_banner style_1">
+            <div class="container">
+                <div class="content_wrap">
+                    <div class="row">
+                        <div class="col col-lg-7">
+                            <h1 class="banner_small_title">Learning Excellence</h1>
+                            <h2 class="banner_big_title">The Best Free Online Courses of All Time</h2>
+                            <p class="banner_description">
+                                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+                                esse cillum fugiat nulla pariatur
+                            </p>
                         </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- END sidebar widget item -->
-
-    <!-- Main Section -->
-    <section class="main-slider-two">
-        <div class="main-slider-carousel owl-carousel owl-theme">
-            @if ($troisDerniersBiens->isNotEmpty())
-                @foreach ($troisDerniersBiens as $bien)
-                    <!-- Slide One -->
-                    <div class="slide">
-                        <div class="image-layer" style="background-image: url({{ asset('autres_images/locaflex.png') }})">
-                        </div>
-                        <div class="vector-icon"
-                            style="background-image: url({{ asset('bloxic/images/main-slider/vector-4.png') }})"></div>
-                        <div class="auto-container">
-                            <!-- Content Column -->
-                            <div class="content-box">
-                                <div class="pattern-layer"></div>
-                                <div class="box-inner">
-                                    <div class="title" style="font-size: 35px;">{{ $bien->categorie }}</div>
-                                    <h1>{{ $bien->titre }}</h1>
-                                    <div class="text">{{ $bien->description }}</div>
-                                    <div class="price">À partir de <span>{{ $bien->prix }} FCFA</span></div>
-
-                                    @if ($bien->photos->isNotEmpty())
-                                        <img src="{{ Storage::url($bien->photos->first()->chemin_fichier) }}"
-                                            alt="{{ $bien->photos->first()->description }}">
-                                    @else
-                                        <img src="{{ asset('placeholder.jpg') }}" alt="Placeholder">
-                                    @endif
-                                    </br>
-                                    <!-- Button Box -->
-                                    <div class="button-box">
-                                        <a href="#" class="theme-btn btn-style-one">
-                                            Voir Plus <span class="icon flaticon-right-arrow"></span>
-                                        </a>
-                                    </div>
+                        <div class="col col-lg-5">
+                            <div class="banner_image_1 decoration_wrap">
+                                <div class="image_wrap">
+                                    <img src="{{asset('Template/assets/images/banner/hero_banner_img_1.jpg')}}"
+                                        alt="Collab – Plateforme location polyvalentes">
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Slide One -->
-                @endforeach
-            @else
-                <p>Aucun bien trouvé.</p>
-            @endif
-        </div>
-        <!-- Side Title -->
-        <div class="social-box">
-			<a href="#">Tw.</a>
-			<a href="#">Fa.</a>
-			<a href="#">In.</a>
-		</div>
-        <!-- End Side Title -->
-    </section>
-    <!-- End Main Section -->
-
-    <!-- Products Section Four -->
-    <section class="products-section-four">
-        <div class="auto-container">
-			<div class="inner-container">
-				<div class="row clearfix">
-
-					<!-- Feature Block -->
-					<div class="feature-block col-xl-3 col-lg-6 col-md-6 col-sm-12">
-						<div class="inner-box">
-							<div class="content">
-								<div class="icon flaticon-fast"></div>
-								<strong>Free Shipping</strong>
-								<div class="text">Free shipping over $100</div>
-							</div>
-						</div>
-					</div>
-
-					<!-- Feature Block -->
-					<div class="feature-block col-xl-3 col-lg-6 col-md-6 col-sm-12">
-						<div class="inner-box">
-							<div class="content">
-								<div class="icon flaticon-padlock"></div>
-								<strong>Payment Secure</strong>
-								<div class="text">Got 100% Payment Safe</div>
-							</div>
-						</div>
-					</div>
-
-					<!-- Feature Block -->
-					<div class="feature-block col-xl-3 col-lg-6 col-md-6 col-sm-12">
-						<div class="inner-box">
-							<div class="content">
-								<div class="icon flaticon-headphones-1"></div>
-								<strong>Support 24/7</strong>
-								<div class="text">Top quialty 24/7 Support</div>
-							</div>
-						</div>
-					</div>
-
-					<!-- Feature Block -->
-					<div class="feature-block col-xl-3 col-lg-6 col-md-6 col-sm-12">
-						<div class="inner-box">
-							<div class="content">
-								<div class="icon flaticon-wallet"></div>
-								<strong>100% Money Back</strong>
-								<div class="text">Cutomers Money Backs</div>
-							</div>
-						</div>
-					</div>
-
-				</div>
-			</div>
-		</div>
-    </section>
-    <!-- End Products Section Four -->
-
-    <!-- Brand Section -->
-    <section class="brand-section">
-        <div class="outer-container">
-            <div class="animation_mode">
-                <h1>Design. <span>Brand</span>. <strong>Quality</strong></h1>
-                <img src="{{ asset('bloxic/images/icons/icon-1.png') }}" alt="" />
-                <img src="{{ asset('bloxic/images/icons/feature.png') }}" alt="" />
-                <img src="{{ asset('bloxic/images/icons/icon-2.png') }}" alt="" />
-                <h1>Design. <span>Brand</span>. <strong>Quality</strong></h1>
-                <img src="{{ asset('bloxic/images/icons/icon-1.png') }}" alt="" />
-                <img src="{{ asset('bloxic/images/icons/feature.png') }}" alt="" />
-                <img src="{{ asset('bloxic/images/icons/icon-2.png') }}" alt="" />
-                <h1>Design. <span>Brand</span>. <strong>Quality</strong></h1>
-                <img src="{{ asset('bloxic/images/icons/icon-1.png') }}" alt="" />
-                <img src="{{ asset('bloxic/images/icons/feature.png') }}" alt="" />
-                <img src="{{ asset('bloxic/images/icons/icon-2.png') }}" alt="" />
-                <h1>Design. <span>Brand</span>. <strong>Quality</strong></h1>
-                <img src="{{ asset('bloxic/images/icons/icon-1.png') }}" alt="" />
-                <img src="{{ asset('bloxic/images/icons/feature.png') }}" alt="" />
-                <img src="{{ asset('bloxic/images/icons/icon-2.png') }}" alt="" />
-            </div>
-        </div>
-    </section>
-    <!-- End Brand Section -->
-
-    <!-- Products Section Five -->
-    <section class="products-section-five">
-        <div class="auto-container">
-            <!-- Sec Title -->
-            <div class="sec-title">
-                <h4><span>Section Bien </span> Quelques produits disponibles pour vous !</h4>
-            </div>
-            <div class="four-item-carousel owl-carousel owl-theme">
-                <!-- Shop Item -->
-                @forelse ($biens as $bien)
-                    <div class="shop-item style-two">
-                        <div class="inner-box">
-                            <div class="image">
-                                @if ($bien->photos->isNotEmpty())
-                                    <a href="#"><img src="{{ Storage::url($bien->photos->first()->chemin_fichier) }}"
-                                            alt="{{ $bien->titre }}" /></a>
-                                @else
-                                    <a href="#"><img src="{{ asset('placeholder.jpg') }}" alt="Placeholder"></a>
-                                @endif
-                                <div class="options-box">
-                                    <span class="plus flaticon-plus"></span>
-                                    <ul class="option-list">
-                                        <li><a class="flaticon-resize" href="#"></a></li>
+                                <div class="satisfied_student">
+                                    <h3 class="wrap_title">220+ Utilisateur</h3>
+                                    <ul class="students_thumbnail unordered_list_center">
+                                        <li>
+                                            <span>
+                                                <img src="{{asset('Template/assets/images/meta/student_thumbnail_1.png')}}"
+                                                    alt="Collab – Plateforme location polyvalentes">
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span>
+                                                <img src="{{asset('Template/assets/images/meta/student_thumbnail_1.png')}}"
+                                                    alt="Collab – Plateforme location polyvalentes">
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span>
+                                                <img src="{{asset('Template/assets/images/meta/student_thumbnail_1.png')}}"
+                                                    alt="Collab – Plateforme location polyvalentes">
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span>
+                                                <img src="{{asset('Template/assets/images/meta/student_thumbnail_1.png')}}"
+                                                    alt="Collab – Plateforme location polyvalentes">
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span>
+                                                <img src="{{asset('Template/assets/images/meta/student_thumbnail_1.png')}}"
+                                                    alt="Collab – Plateforme location polyvalentes">
+                                            </span>
+                                        </li>
                                     </ul>
                                 </div>
-                            </div>
-                            <div class="lower-content">
-                                <!-- Ajoutez ici les détails du bien -->
-                                <div class="rating">
-                                    <!-- Ajoutez ici les étoiles de notation si vous en avez -->
+                                <div class="deco_item shape_img_1" data-parallax='{"y" : -130, "smoothness": 6}'>
+                                    <img src="{{asset('Template/assets/images/shape/shape_img_1.png')}}"
+                                        alt="Collab – Plateforme location polyvalentes">
                                 </div>
-                                <h6><a href="#">{{ $bien->titre }}</a></h6>
-                                <div class="price" style="color: red"><span></span>{{ $bien->prix }}</div>
-                            </div>
-                        </div>
-                    </div>
-                @empty
-                    <p>Aucun bien disponible trouvé.</p>
-                @endforelse
-            </div>
-
-            <!-- Purchase Box -->
-            @guest
-            <div class="purchase-box d-flex justify-content-between align-items-center flex-wrap">
-                <div class="text">Nous sommes heureux de vous accueillir sur notre site. Créez votre compte </div>
-                <!-- Boîte de boutons -->
-                <div class="button-box">
-                    <a href="{{route('register')}}" class="theme-btn btn-style-two">
-                    S'inscrire <span class="icon flaticon-right-arrow"></span>
-                    </a>
-                </div>
-            </div>
-            @endguest
-            <!-- End Purchase Box -->
-
-        </div>
-    </section>
-    <!-- End Products Section Five -->
-
-    <!-- Brand Section -->
-    <section class="brand-section">
-        <div class="outer-container">
-            <div class="animation_mode">
-                <h1>Design. <span>Brand</span>. <strong>Quality</strong></h1>
-                <img src="{{ asset('bloxic/images/icons/icon-1.png') }}" alt="" />
-                <img src="{{ asset('bloxic/images/icons/feature.png') }}" alt="" />
-                <img src="{{ asset('bloxic/images/icons/icon-2.png') }}" alt="" />
-                <h1>Design. <span>Brand</span>. <strong>Quality</strong></h1>
-                <img src="{{ asset('bloxic/images/icons/icon-1.png') }}" alt="" />
-                <img src="{{ asset('bloxic/images/icons/feature.png') }}" alt="" />
-                <img src="{{ asset('bloxic/images/icons/icon-2.png') }}" alt="" />
-                <h1>Design. <span>Brand</span>. <strong>Quality</strong></h1>
-                <img src="{{ asset('bloxic/images/icons/icon-1.png') }}" alt="" />
-                <img src="{{ asset('bloxic/images/icons/feature.png') }}" alt="" />
-                <img src="{{ asset('bloxic/images/icons/icon-2.png') }}" alt="" />
-                <h1>Design. <span>Brand</span>. <strong>Quality</strong></h1>
-                <img src="{{ asset('bloxic/images/icons/icon-1.png') }}" alt="" />
-                <img src="{{ asset('bloxic/images/icons/feature.png') }}" alt="" />
-                <img src="{{ asset('bloxic/images/icons/icon-2.png') }}" alt="" />
-            </div>
-        </div>
-    </section>
-    <!-- End Brand Section -->
-
-    <!-- Sale Section -->
-    <section class="sale-section">
-        <div class="auto-container">
-            <div class="row clearfix">
-
-                <!-- Sale Block -->
-                <div class="sale-block style-two col-lg-6 col-md-12 col-sm-12">
-                    <div class="inner-box">
-                        <div class="sale-box">
-                            SALE
-                            <span>30<i>% OFF</i></span>
-                        </div>
-                        <div class="image d-flex justify-content-between align-items-center">
-                            <img src="{{ asset('bloxic/images/resource/shop-3.jpg') }}" alt="" />
-                            <div class="overlay-box">
-                                <div class="overlay-inner">
-                                    <div class="off">Get 30% off</div>
-                                    <h5><a href="shop-detail.html">Be together in the moment <br> with Barnix calling</a>
-                                    </h5>
-                                    <a class="buy-now" href="shop-detail.html">buy now</a>
+                                <div class="deco_item shape_img_2" data-parallax='{"y" : 160, "smoothness": 6}'>
+                                    <img src="{{asset('Template/assets/images/shape/shape_img_2.png')}}"
+                                        alt="Collab – Plateforme location polyvalentes">
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
+        <!-- Banner Section - End
+    ================================================== -->
 
-                <!-- Sale Block -->
-                <div class="sale-block col-lg-6 col-md-12 col-sm-12">
-                    <div class="inner-box">
-                        <div class="sale-box">
-                            SALE
-                            <span>30<i>% OFF</i></span>
+    <!-- Expect From Course - Start
+        ================================================== -->
+        <section class="expect_from_course section_space_lg">
+            <div class="container">
+                <div class="row">
+                    <div class="col col-lg-6">
+                        <div class="section_heading">
+                            <h2 class="heading_text">
+                                Collab C'est quoi ?
+                            </h2>
+                            <p class="heading_description mb-0">
+                                Rutrum tellus pellentesque eu tincidunt. Venenatis cras sed felis eget velit aliquet
+                                sagittis id consectetur
+                            </p>
                         </div>
-                        <div class="image d-flex justify-content-between align-items-center">
-                            <img src="{{ asset('bloxic/images/resource/shop-2.jpg') }}" alt="" />
-                            <div class="overlay-box">
-                                <div class="overlay-inner">
-                                    <div class="off">Get 30% off</div>
-                                    <h5><a href="shop-detail.html">Be together in the moment <br> with Barnix calling</a>
-                                    </h5>
-                                    <a class="buy-now" href="shop-detail.html">buy now</a>
+
+                        <div class="image_widget">
+                            <img src="{{asset('Template/assets/images/about/about_image_1.jpg')}}"
+                                alt="Collab – Plateforme location polyvalentes">
+                        </div>
+                    </div>
+                    <div class="col col-lg-6">
+                        <div class="row">
+                            <div class="col col-md-6">
+                                <div class="service_item" data-magnetic>
+                                    <div class="item_icon">
+                                        <img src="{{asset('Template/assets/images/service/icon_academic_cap.svg')}}"
+                                            alt="Collab – Plateforme location polyvalentes">
+                                    </div>
+                                    <div class="item_content">
+                                        <h3 class="item_title">Knowledge</h3>
+                                        <p class="mb-0">
+                                            Duis aute irure dolor in repreh in voluptate velit esse cillum dolore eu
+                                            fugiat nulla pariatur
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col col-md-6">
+                                <div class="service_item" data-magnetic>
+                                    <div class="item_icon">
+                                        <img src="{{asset('Template/assets/images/service/icon_physics.svg')}}"
+                                            alt="Collab – Plateforme location polyvalentes">
+                                    </div>
+                                    <div class="item_content">
+                                        <h3 class="item_title">Unlimited access</h3>
+                                        <p class="mb-0">
+                                            Libero nunc consequat interd varius sit amet mattis vulpute enim liquet
+                                            sagittis
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col col-md-6">
+                                <div class="service_item" data-magnetic>
+                                    <div class="item_icon">
+                                        <img src="{{asset('Template/assets/images/service/icon_communication.svg')}}"
+                                            alt="Collab – Plateforme location polyvalentes">
+                                    </div>
+                                    <div class="item_content">
+                                        <h3 class="item_title">Practical Skills</h3>
+                                        <p class="mb-0">
+                                            Vulputate enim nulla aliquet porttitor lacus luctus accums. Cras sed
+                                            felis eget velit
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col col-md-6">
+                                <div class="service_item" data-magnetic>
+                                    <div class="item_icon">
+                                        <img src="{{asset('Template/assets/images/service/icon_diploma.svg')}}"
+                                            alt="Collab – Plateforme location polyvalentes">
+                                    </div>
+                                    <div class="item_content">
+                                        <h3 class="item_title">A certificate</h3>
+                                        <p class="mb-0">
+                                            Excepteur sint occaecat cupid non proident, sunt in culpa qui officia
+                                            deserunt mollit
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
-        </div>
-    </section>
-    <!-- End Sale Section -->
+        </section>
+        <!-- Expect From Course - End
+    ================================================== -->
 
-    <!-- Products Section Three -->
-    <section class="products-section-three">
-
-        <div class="auto-container">
-			<!-- Sec Title -->
-			<div class="sec-title">
-				<h4><span>Products </span> Your Choice!</h4>
-			</div>
-			<div class="row clearfix">
-
-				<!-- News Block -->
-				<div class="news-block-two col-lg-4 col-md-6 col-sm-12">
-					<div class="inner-box wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
-						<div class="image">
-							<div class="tag">bedroom</div>
-							<a href="blog-detail.html"><img src="images/resource/news-3.jpg" alt="" /></a>
-						</div>
-						<div class="lower-content">
-							<div class="info">By: <span>Alextian</span> <i>January 23,2022</i></div>
-							<h5><a href="blog-detail.html">The City of London Wants To Have Brexit Cake available</a></h5>
-							<a class="read-more" href="#">Read More</a>
-						</div>
-					</div>
-				</div>
-
-				<!-- News Block -->
-				<div class="news-block-two col-lg-4 col-md-6 col-sm-12">
-					<div class="inner-box wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
-						<div class="image">
-							<div class="tag">bedroom</div>
-							<a href="blog-detail.html"><img src="images/resource/news-4.jpg" alt="" /></a>
-						</div>
-						<div class="lower-content">
-							<div class="info">By: <span>Alextian</span> <i>January 23,2022</i></div>
-							<h5><a href="blog-detail.html">The City of London Wants To Have Brexit Cake available</a></h5>
-							<a class="read-more" href="#">Read More</a>
-						</div>
-					</div>
-				</div>
-
-				<!-- News Block -->
-				<div class="news-block-two col-lg-4 col-md-6 col-sm-12">
-					<div class="inner-box wow fadeInRight" data-wow-delay="0ms" data-wow-duration="1500ms">
-						<div class="image">
-							<div class="tag">bedroom</div>
-							<a href="blog-detail.html"><img src="images/resource/news-5.jpg" alt="" /></a>
-						</div>
-						<div class="lower-content">
-							<div class="info">By: <span>Alextian</span> <i>January 23,2022</i></div>
-							<h5><a href="blog-detail.html">The City of London Wants To Have Brexit Cake available</a></h5>
-							<a class="read-more" href="#">Read More</a>
-						</div>
-					</div>
-				</div>
-
-			</div>
-
-			<!-- Button Box -->
-			<div class="button-box text-center">
-				<a href="blog.html" class="theme-btn btn-style-one">
-					More Blog <span class="icon flaticon-right-arrow"></span>
-				</a>
-			</div>
-
-		</div>
-    </section>
-    <!-- End Products Section Three -->
-
-    <!-- Services Section -->
-    <section class="services-section">
-        <div class="auto-container">
-            <!-- Sec Title -->
-            <div class="sec-title">
-                <h4><span>essential </span> services</h4>
-            </div>
-
-            <!-- Services Info Tabs -->
-            <div class="services-info-tabs">
-                <!-- Services Tabs -->
-                <div class="services-tabs tabs-box">
-                    <!-- Feature Icon -->
-                    <div class="feature-icon">
-                        <img src="images/icons/feature-1.png" alt="" />
+    <!-- Courses Section - Start
+        ================================================== -->
+        <section class="courses_section section_space_lg">
+            <div class="container">
+                <div class="section_heading">
+                    <div class="row align-items-center justify-content-lg-between">
+                        <div class="col col-lg-6">
+                            <h2 class="heading_text mb-0">
+                                Découvrez notre catalogue
+                            </h2>
+                        </div>
+                        <div class="col col-lg-5">
+                            <p class="heading_description mb-0 text-lg-end">
+                                Parcourez puis trouvez
+                            </p>
+                        </div>
                     </div>
-                    <!-- Tab Btns -->
-                    <ul class="tab-btns tab-buttons clearfix">
-                        <li data-tab="#prod-furniture1" class="tab-btn active-btn">Furniture Collection</li>
-                        <li data-tab="#prod-room1" class="tab-btn">Living Room Collection</li>
-                        <li data-tab="#prod-interior1" class="tab-btn">Interior Desiging</li>
+                </div>
+
+                <div class="tabs_wrapper">
+                    <ul class="nav" role="tablist">
+                        <li role="presentation">
+                            <button class="active" data-bs-toggle="tab" data-bs-target="#teb_hr" type="button"
+                                role="tab" aria-selected="true">
+                                <i class="fas fa-users"></i>
+                                <span>Catégorie Biens à louer</span>
+                            </button>
+                        </li>
+                        <li role="presentation">
+                            <button data-bs-toggle="tab" data-bs-target="#teb_photography" type="button"
+                                role="tab" aria-selected="false">
+                                <i class="fas fa-camera"></i>
+                                <span>Catégorie Services disponibles</span>
+                            </button>
+                        </li>
                     </ul>
-
-                    <!-- Tabs Container -->
-                    <div class="tabs-content">
-
-                        <!-- Tab / Active Tab -->
-                        <div class="tab active-tab" id="prod-furniture1">
-                            <div class="row clearfix">
-
-                                <!-- Service Block -->
-                                <div class="service-block active col-lg-6 col-md-6 col-sm-12">
-                                    <div class="inner-box">
-                                        <div class="image">
-                                            <a href="shop-detail.html"><img
-                                                    src="{{ asset('bloxic/images/resource/service-1.png') }}"
-                                                    alt="" /></a>
-                                        </div>
-                                        <div class="lower-content">
-                                            <h5><a href="shop-detail.html">Business Card Design</a></h5>
-                                            <div class="text">We build and activate brands through cultural <br> str
-                                                vision, and the power of emotion <br> across every</div>
+                    <div class="tab-content">
+                        <div class="tab-pane fade show active" id="teb_hr" role="tabpanel">
+                            <div class="row">
+                                @if ($neufDerniersBiens->isNotEmpty())
+                                @foreach ($neufDerniersBiens as $bien)
+                                    <div class="col col-lg-4">
+                                        <div class="course_card">
+                                            <div class="item_image">
+                                                <a href="{{ route('detail.bien', ['id' => $bien->id]) }}" data-cursor-text="View">
+                                                    <img src="{{ Storage::url($bien->photos->first()->chemin_fichier) }}"
+                                                        alt="{{ $bien->photos->first()->description }}">
+                                                </a>
+                                            </div>
+                                            <div class="item_content">
+                                                <div class="d-flex align-items-center justify-content-between mb-3">
+                                                    <ul class="item_category_list unordered_list">
+                                                        <li><a href="#!">{{ $bien->categorie }}</a></li>
+                                                    </ul>
+                                                    <div class="item_price">
+                                                        <span class="sale_price">CFA {{ $bien->prix }}</span>
+                                                    </div>
+                                                </div>
+                                                <ul class="meta_info_list unordered_list">
+                                                    <li>
+                                                        <i class="fas fa-chart-bar"></i>
+                                                        <span>Proposé par: {{ $bien->user->name }}</span>
+                                                    </li>
+                                                </ul>
+                                                <h3 class="item_title">
+                                                    <a href="{{ route('detail.bien', ['id' => $bien->id]) }}">
+                                                        {{ $bien->titre }}
+                                                    </a>
+                                                </h3>
+                                                <a class="btn_unfill" href="{{ route('detail.bien', ['id' => $bien->id]) }}">
+                                                    <span class="btn_text">Voir plus</span>
+                                                    <span class="btn_icon">
+                                                        <i class="fas fa-long-arrow-right"></i>
+                                                        <i class="fas fa-long-arrow-right"></i>
+                                                    </span>
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-
-                                <!-- Service Block -->
-                                <div class="service-block col-lg-6 col-md-6 col-sm-12">
-                                    <div class="inner-box">
-                                        <div class="image">
-                                            <a href="shop-detail.html"><img
-                                                    src="{{ asset('bloxic/images/resource/service-2.png') }}"
-                                                    alt="" /></a>
-                                        </div>
-                                        <div class="lower-content">
-                                            <h5><a href="shop-detail.html">Banner Desgin</a></h5>
-                                            <div class="text">We build and activate brands through cultural <br> str
-                                                vision, and the power of emotion <br> across every</div>
-                                        </div>
-                                    </div>
-                                </div>
-
+                                @endforeach
+                                <li>
+                                    <a href="{{route('bien.catalogue')}}" class="btn btn_dark">
+                                        <span>
+                                            <small>Parcourir le catalogue complet</small>
+                                            <small>Afficher plus</small>
+                                        </span>
+                                    </a>
+                                </li>
+                            @else
+                                <p>Aucun bien trouvé.</p>
+                            @endif
                             </div>
                         </div>
+                        <div class="tab-pane fade" id="teb_photography" role="tabpanel">
+                            <div class="row">
+                                @if ($neufDerniersServices->isNotEmpty())
+                                @foreach ($neufDerniersServices as $service)
+                                    <div class="col col-lg-4">
+                                        <div class="course_card">
+                                            <div class="item_image">
 
-                        <!-- Tab -->
-                        <div class="tab" id="prod-room1">
-                            <div class="row clearfix">
-
-                                <!-- Service Block -->
-                                <div class="service-block col-lg-6 col-md-6 col-sm-12">
-                                    <div class="inner-box">
-                                        <div class="image">
-                                            <a href="shop-detail.html"><img
-                                                    src="{{ asset('bloxic/images/resource/service-1.png') }}"
-                                                    alt="" /></a>
-                                        </div>
-                                        <div class="lower-content">
-                                            <h5><a href="shop-detail.html">Business Card Design</a></h5>
-                                            <div class="text">We build and activate brands through cultural <br> str
-                                                vision, and the power of emotion <br> across every</div>
+                                            </div>
+                                            <div class="item_content">
+                                                <div class="d-flex align-items-center justify-content-between mb-3">
+                                                    <ul class="item_category_list unordered_list">
+                                                        <li><a href="#!">{{ $service->categorie }}</a></li>
+                                                    </ul>
+                                                </div>
+                                                <ul class="meta_info_list unordered_list">
+                                                    <li>
+                                                        <i class="fas fa-chart-bar"></i>
+                                                        <span>Service proposé par: {{ $service->user->name }}</span>
+                                                    </li>
+                                                </ul>
+                                                <h3 class="item_title">
+                                                    <a href="{{ route('detail.service', ['id' => $service->id]) }}">
+                                                        {{ $service->titre }}
+                                                    </a>
+                                                </h3>
+                                                <a class="btn_unfill" href="{{ route('detail.service', ['id' => $service->id]) }}">
+                                                    <span class="btn_text">Voir plus</span>
+                                                    <span class="btn_icon">
+                                                        <i class="fas fa-long-arrow-right"></i>
+                                                        <i class="fas fa-long-arrow-right"></i>
+                                                    </span>
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-
-                                <!-- Service Block -->
-                                <div class="service-block active col-lg-6 col-md-6 col-sm-12">
-                                    <div class="inner-box">
-                                        <div class="image">
-                                            <a href="shop-detail.html"><img
-                                                    src="{{ asset('bloxic/images/resource/service-2.png') }}"
-                                                    alt="" /></a>
-                                        </div>
-                                        <div class="lower-content">
-                                            <h5><a href="shop-detail.html">Banner Desgin</a></h5>
-                                            <div class="text">We build and activate brands through cultural <br> str
-                                                vision, and the power of emotion <br> across every</div>
-                                        </div>
-                                    </div>
-                                </div>
-
+                                @endforeach
+                                <li>
+                                    <a href="{{route('service.catalogue')}}" class="btn btn_dark">
+                                        <span>
+                                            <small>Parcourir le catalogue complet</small>
+                                            <small>Afficher plus</small>
+                                        </span>
+                                    </a>
+                                </li>
+                                @else
+                                    <p>Aucun service trouvé.</p>
+                                @endif
                             </div>
                         </div>
-
-                        <!-- Tab -->
-                        <div class="tab" id="prod-interior1">
-                            <div class="row clearfix">
-
-                                <!-- Service Block -->
-                                <div class="service-block active col-lg-6 col-md-6 col-sm-12">
-                                    <div class="inner-box">
-                                        <div class="image">
-                                            <a href="shop-detail.html"><img
-                                                    src="{{ asset('bloxic/images/resource/service-1.png') }}"
-                                                    alt="" /></a>
-                                        </div>
-                                        <div class="lower-content">
-                                            <h5><a href="shop-detail.html">Business Card Design</a></h5>
-                                            <div class="text">We build and activate brands through cultural <br> str
-                                                vision, and the power of emotion <br> across every</div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Service Block -->
-                                <div class="service-block col-lg-6 col-md-6 col-sm-12">
-                                    <div class="inner-box">
-                                        <div class="image">
-                                            <a href="shop-detail.html"><img
-                                                    src="{{ asset('bloxic/images/resource/service-2.png') }}"
-                                                    alt="" /></a>
-                                        </div>
-                                        <div class="lower-content">
-                                            <h5><a href="shop-detail.html">Banner Desgin</a></h5>
-                                            <div class="text">We build and activate brands through cultural <br> str
-                                                vision, and the power of emotion <br> across every</div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <!-- End Services Section -->
+        </section>
+        <!-- Courses Section - End
+    ================================================== -->
 
-    <!-- Testimonial Section Two -->
-    <section class="testimonial-section-two">
-        <div class="pattern-layer" style="background-image: url({{ asset('bloxic/images/background/pattern-5.png') }})">
-        </div>
-        <div class="auto-container">
-            <div class="inner-container">
-                <span class="dott"></span>
-
-                <div class="single-item-carousel owl-carousel owl-theme">
-
-                    <!-- Testimonial Block Two -->
-                    <div class="testimonial-block-two">
-                        <div class="inner-box">
-                            <h3>testimonials</h3>
-                            <div class="text">The other hand we denounce with righteou indg ation and dislike men who
-                                are so beguiled and demorali ed by the of pleasure of the moment.Dislike men who are so
-                                beguiled demoraliz worlds ed by the charms of pleasure of the moment. Lorem ipsum dolor sit
+    <!-- Newslatter Section - Start
+        ================================================== -->
+        <section class="newslatter_section">
+            <div class="container">
+                <div class="newslatter_box" style="background-image: url('{{asset('Template/assets/images/shape/shape_img_6.svg')}}');">
+                    <div class="row justify-content-center">
+                        <div class="col col-lg-6">
+                            <div class="section_heading text-center">
+                                <h2 class="heading_text">
+                                    Subscribe Now Forget 20% Discount Every Courses
+                                </h2>
+                                <p class="heading_description mb-0">
+                                    Nam ipsum risus, rutrum vitae, vestibulum eu, molestie vel, lacus. Sed magna
+                                    purus, fermentum eu
+                                </p>
                             </div>
-                            <div class="designation"><span>Foqrul Saheb</span> Senior Artist Developer</div>
+                            <form action="#">
+                                <div class="form_item m-0">
+                                    <input type="email" name="email" placeholder="Your Email">
+                                    <button type="submit" class="btn btn_dark">
+                                        <span>
+                                            <small>Subsctibe</small>
+                                            <small>Subsctibe</small>
+                                        </span>
+                                    </button>
+                                </div>
+                            </form>
                         </div>
                     </div>
-
-                    <!-- Testimonial Block Two -->
-                    <div class="testimonial-block-two">
-                        <div class="inner-box">
-                            <h3>testimonials</h3>
-                            <div class="text">The other hand we denounce with righteou indg ation and dislike men who
-                                are so beguiled and demorali ed by the of pleasure of the moment.Dislike men who are so
-                                beguiled demoraliz worlds ed by the charms of pleasure of the moment. Lorem ipsum dolor sit
-                            </div>
-                            <div class="designation"><span>Foqrul Saheb</span> Senior Artist Developer</div>
-                        </div>
-                    </div>
-
-                    <!-- Testimonial Block Two -->
-                    <div class="testimonial-block-two">
-                        <div class="inner-box">
-                            <h3>testimonials</h3>
-                            <div class="text">The other hand we denounce with righteou indg ation and dislike men who
-                                are so beguiled and demorali ed by the of pleasure of the moment.Dislike men who are so
-                                beguiled demoraliz worlds ed by the charms of pleasure of the moment. Lorem ipsum dolor sit
-                            </div>
-                            <div class="designation"><span>Foqrul Saheb</span> Senior Artist Developer</div>
-                        </div>
-                    </div>
-
                 </div>
-
             </div>
-        </div>
-    </section>
-    <!-- End Testimonial Section Two -->
+        </section>
+        <!-- Newslatter Section - End
+    ================================================== -->
+</main>
 
-    <!-- Brand Section -->
-    <section class="brand-section">
-        <div class="outer-container">
-            <div class="animation_mode">
-                <h1>Design. <span>Brand</span>. <strong>Quality</strong></h1>
-                <img src="{{ asset('bloxic/images/icons/icon-1.png') }}" alt="" />
-                <img src="{{ asset('bloxic/images/icons/feature.png') }}" alt="" />
-                <img src="{{ asset('bloxic/images/icons/icon-2.png') }}" alt="" />
-                <h1>Design. <span>Brand</span>. <strong>Quality</strong></h1>
-                <img src="{{ asset('bloxic/images/icons/icon-1.png') }}" alt="" />
-                <img src="{{ asset('bloxic/images/icons/feature.png') }}" alt="" />
-                <img src="{{ asset('bloxic/images/icons/icon-2.png') }}" alt="" />
-                <h1>Design. <span>Brand</span>. <strong>Quality</strong></h1>
-                <img src="{{ asset('bloxic/images/icons/icon-1.png') }}" alt="" />
-                <img src="{{ asset('bloxic/images/icons/feature.png') }}" alt="" />
-                <img src="{{ asset('bloxic/images/icons/icon-2.png') }}" alt="" />
-                <h1>Design. <span>Brand</span>. <strong>Quality</strong></h1>
-                <img src="{{ asset('bloxic/images/icons/icon-1.png') }}" alt="" />
-                <img src="{{ asset('bloxic/images/icons/feature.png') }}" alt="" />
-                <img src="{{ asset('bloxic/images/icons/icon-2.png') }}" alt="" />
-            </div>
-        </div>
-    </section>
-    <!-- End Brand Section -->
 @endsection

@@ -1,108 +1,101 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Title -->
-    <title>{{ config('app.name', 'LocaFlex') }}</title>
-    <!-- Stylesheets -->
-    <link href="{{asset('bloxic/css/bootstrap.css')}}" rel="stylesheet">
-    <link href="{{asset('bloxic/css/style.css')}}" rel="stylesheet">
-    <link href="{{asset('bloxic/css/responsive.css')}}" rel="stylesheet">
+    <title>{{ config('app.name', 'Collab') }}</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="{{ asset('Template/assets/images/logo/favourite_icon_1.svg') }}">
 
-    <link rel="shortcut icon" href="{{asset('bloxic/images/favicon.png')}}" type="image/x-icon">
-    <link rel="icon" href="{{asset('bloxic/images/favicon.png')}}" type="image/x-icon">
+    <!-- Framework - CSS Include -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('Template/assets/css/bootstrap.min.css') }}">
 
-    <!-- Responsive -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <!-- Icon Font - CSS Include -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('Template/assets/css/fontawesome.css') }}">
+
+    <!-- Animation - CSS Include -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('Template/assets/css/animate.css') }}">
+
+    <!-- Cursor - CSS Include -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('Template/assets/css/cursor.css') }}">
+
+    <!-- Carousel - CSS Include -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('Template/assets/css/slick.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('Template/assets/css/slick-theme.css') }}">
+
+    <!-- Video & Image Popup - CSS Include -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('Template/assets/css/magnific-popup.css') }}">
+
+    <!-- Vanilla Calendar - CSS Include -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('Template/assets/css/vanilla-calendar.min.css') }}">
+
+    <!-- Custom - CSS Include -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('Template/assets/css/style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
 
+
 <body>
 
-    <div class="page-wrapper">
+    <!-- Body Wrap - Start -->
+    <div class="page_wrapper">
 
-        <!-- Preloader -->
-        <div class="loader-wrap">
-            <div class="preloader">
-                <div class="preloader-close">x</div>
-                <div id="handle-preloader" class="handle-preloader">
-                    <div class="animation-preloader">
-                        <div class="spinner"></div>
-                        <div class="txt-loading">
-                            <span data-text-preloader="L" class="letters-loading">
-                                L
-                            </span>
-                            <span data-text-preloader="O" class="letters-loading">
-                                O
-                            </span>
-                            <span data-text-preloader="C" class="letters-loading">
-                                C
-                            </span>
-                            <span data-text-preloader="A" class="letters-loading">
-                                A
-                            </span>
-                            <span data-text-preloader="F" class="letters-loading">
-                                F
-                            </span>
-                            <span data-text-preloader="L" class="letters-loading">
-                                L
-                            </span>
-                            <span data-text-preloader="E" class="letters-loading">
-                                E
-                            </span>
-                            <span data-text-preloader="X" class="letters-loading">
-                                X
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <!-- Back To Top - Start -->
+        <div class="backtotop">
+            <a href="#" class="scroll">
+                <i class="far fa-arrow-up"></i>
+            </a>
         </div>
-        <!-- Preloader End -->
+        <!-- Back To Top - End -->
+
         @include('layouts.partials.client.header')
 
         @yield('content')
 
         @include('layouts.partials.client.footer')
 
-        <script src="{{asset('bloxic/js/jquery.js')}}"></script>
-        <script src="{{asset('bloxic/js/popper.min.js')}}"></script>
-        <script src="{{asset('js/bootstrap.min.js')}}"></script>
-        <script src="{{asset('bloxic/js/magnific-popup.min.js')}}"></script>
-        <script src="{{asset('bloxic/js/jquery.mCustomScrollbar.concat.min.js')}}"></script>
-        <script src="{{asset('bloxic/js/appear.js')}}"></script>
-        <script src="{{asset('bloxic/js/parallax.min.js')}}"></script>
-        <script src="{{asset('bloxic/js/tilt.jquery.min.js')}}"></script>
-        <script src="{{asset('bloxic/js/jquery.paroller.min.js')}}"></script>
-        <script src="{{asset('bloxic/js/owl.js')}}"></script>
-        <script src="{{asset('bloxic/js/wow.js')}}"></script>
-        <script src="{{asset('bloxic/js/mixitup.js')}}"></script>
-        <script src="{{asset('bloxic/js/touchspin.js')}}"></script>
-        <script src="{{asset('bloxic/js/odometer.js')}}"></script>
-        <script src="{{asset('bloxic/js/backToTop.js')}}"></script>
-        <script src="{{asset('bloxic/js/jquery.countdown.js')}}"></script>
-        <script src="{{asset('bloxic/js/jquery.marquee.min.js')}}"></script>
-        <script src="{{asset('bloxic/js/nav-tool.js')}}"></script>
-        <script src="{{asset('bloxic/js/jquery-ui.js')}}"></script>
-        <script src="{{asset('bloxic/js/script.js')}}"></script>
+    </div>
+    <!-- Body Wrap - End -->
 
-        <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
-        <!--[if lt IE 9]><script src="js/respond.js"></script><![endif]-->
+    <!-- Framework - Jquery Include -->
+    <script src="{{asset('Template/assets/js/jquery.min.js')}}"></script>
+    <script src="{{asset('Template/assets/js/popper.min.js')}}"></script>
+    <script src="{{asset('Template/assets/js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('Template/assets/js/bootstrap-dropdown-ml-hack.js')}}"></script>
+
+    <!-- animation - jquery include -->
+    <script src="{{asset('Template/assets/js/cursor.js')}}"></script>
+    <script src="{{asset('Template/assets/js/wow.min.js')}}"></script>
+    <script src="{{asset('Template/assets/js/tilt.min.js')}}"></script>
+    <script src="{{asset('Template/assets/js/parallax.min.js')}}"></script>
+    <script src="{{asset('Template/assets/js/parallax-scroll.js')}}"></script>
+
+    <!-- Carousel - Jquery Include -->
+    <script src="{{asset('Template/assets/js/slick.min.js')}}"></script>
+
+    <!-- Video & Image Popup - Jquery Include -->
+    <script src="{{asset('Template/assets/js/magnific-popup.min.js')}}"></script>
+
+    <!-- Counter Up - Jquery Include -->
+    <script src="{{asset('Template/assets/js/waypoint.js')}}"></script>
+    <script src="{{asset('Template/assets/js/counterup.min.js')}}"></script>
+
+    <!-- Countdown Timer - jquery include -->
+    <script src="{{asset('Template/assets/js/countdown.js')}}"></script>
+
+    <!-- Vanilla Calendar - Jquery Include -->
+    <script src="{{asset('Template/assets/js/vanilla-calendar.min.js')}}"></script>
+
+    <!-- Custom - Jquery Include -->
+    <script src="{{asset('Template/assets/js/main.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 </body>
 

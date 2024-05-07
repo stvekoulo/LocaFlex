@@ -4,10 +4,14 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\BienDetailController;
 use App\Http\Controllers\GestionBienController;
+use App\Http\Controllers\BienCatalogueController;
 use App\Http\Controllers\LoueurProfileController;
 use App\Http\Controllers\LoueurServiceController;
+use App\Http\Controllers\ServiceDetailController;
 use App\Http\Controllers\GestionServiceController;
+use App\Http\Controllers\ServiceCatalogueController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -71,6 +75,19 @@ Route::get('/dashboard/gestion-services/edit/{id}', [GestionServiceController::c
 Route::post('/dashboard/gestion-services/update/{id}', [GestionServiceController::class, 'update'])
     ->name('service.update')
     ->middleware(['auth', 'verified']);
+
+Route::get('/infos/bien/{id}', [BienDetailController::class, 'index'])->name('detail.bien');
+Route::post('/bien-demande', [BienDetailController::class, 'envoyerDemande'])
+    ->name('bien.demande')
+    ->middleware(['auth', 'verified']);
+
+Route::get('/infos/service/{id}', [ServiceDetailController::class, 'index'])->name('detail.service');
+Route::post('/service-demande', [ServiceDetailController::class, 'envoyerDemande'])
+    ->name('service.demande')
+    ->middleware(['auth', 'verified']);
+
+Route::get('/catalogue/produits', [BienCatalogueController::class, 'index'])->name('bien.catalogue');
+Route::get('/catalogue/services', [ServiceCatalogueController::class, 'index'])->name('service.catalogue');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

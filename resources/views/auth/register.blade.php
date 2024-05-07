@@ -6,11 +6,11 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Title -->
-    <title>{{ config('app.name', 'LocaFlex') }}</title>
+    <title>{{ config('app.name', 'Collab') }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon -->
-    <link rel="shortcut icon" href="{{asset('bloxic/images/favicon.png')}}" type="image/x-icon">
-    <link rel="icon" href="{{asset('bloxic/images/favicon.png')}}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('Template/assets/images/logo/favourite_icon_1.svg') }}">
+    <link rel="icon" href="{{ asset('Template/assets/images/logo/favourite_icon_1.svg') }}" type="image/x-icon">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{asset('auth/css/bootstrap.min.css')}}">
     <!-- Fontawesome CSS -->
@@ -42,10 +42,10 @@
                         <div class="fxt-bg-img" data-bg-image="{{asset('auth/img/figure/bg4-r.jpg')}}">
                             <div class="fxt-header">
                                 <div class="fxt-transformY-50 fxt-transition-delay-1">
-                                    <a href="login-4.html" class="fxt-logo"><img src="{{asset('auth/img/logo-4.png')}}" alt="Logo"></a>
+                                    <a href="#" class="fxt-logo"><img src="{{asset('Template/assets/images/logo/site_logo.svg')}}" alt="Logo"></a>
                                 </div>
                                 <div class="fxt-transformY-50 fxt-transition-delay-2">
-                                    <h1>Bienvenue sur LocaFlex</h1>
+                                    <h1>Bienvenue sur Collab</h1>
                                 </div>
                                 <div class="fxt-transformY-50 fxt-transition-delay-3">
                                     <p>Inscrivez-vous.Cela ne vous prendra que 1 min .</p>

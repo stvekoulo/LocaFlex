@@ -1,124 +1,195 @@
-<!-- Main Footer / Style Two -->
-<footer class="main-footer style-two">
-    <div class="auto-container">
-
-        <!-- Widgets Section -->
-        <div class="widgets-section">
-            <div class="row clearfix">
-                <!-- Column -->
-                <div class="big-column col-lg-6 col-md-12 col-sm-12">
-                    <div class="row clearfix">
-
-                        <!-- Footer Column -->
-                        <div class="footer-column col-lg-7 col-md-6 col-sm-12">
-                            <div class="footer-widget links-widget">
-                                <!-- Logo -->
-                                <div class="logo"><a href="index.html"><img src="{{asset('bloxic/images/logo.png')}}" alt=""
-                                            title=""></a></div>
-                                <div class="text">A new way to make the payments easy,reliable <br> and 100% secure.
-                                    claritatem itamconse quat <br> Exerci tation ullamcorper.</div>
-                                <!-- Social Box -->
-                                <ul class="social-box">
-                                    <li><a href="https://www.facebook.com/" class="fa fa-facebook-f"></a></li>
-                                    <li><a href="https://www.twitter.com/" class="fa fa-twitter"></a></li>
-                                    <li><a href="https://dribbble.com/" class="fa fa-dribbble"></a></li>
-                                    <li><a href="https://www.linkedin.com/" class="fa fa-linkedin"></a></li>
-                                </ul>
-                            </div>
+<footer class="site_footer">
+    <div class="footer_widget_area">
+        <div class="container">
+            <div class="row">
+                <div class="col col-lg-3 col-md-6 col-sm-6">
+                    <div class="footer_widget">
+                        <div class="site_logo">
+                            <a class="site_link" href="index.html">
+                                <img src="{{asset('Template/assets/images/logo/site_logo_2.svg')}}" alt="Collab - Online Learning Platform">
+                            </a>
                         </div>
-
-                        <!-- Footer Column -->
-                        <div class="footer-column col-lg-5 col-md-6 col-sm-12">
-                            <div class="footer-widget links-widget">
-                                <h5>Usefull Links</h5>
-                                <ul class="page-list">
-                                    <li><a href="#">Contact us</a></li>
-                                    <li><a href="#">How it Works</a></li>
-                                    <li><a href="#">Create</a></li>
-                                    <li><a href="#">Explore</a></li>
-                                    <li><a href="#">Terms & Services</a></li>
-                                </ul>
-                            </div>
-                        </div>
-
+                        <p>
+                            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                            ex ea commodo consequat
+                        </p>
+                        <ul class="social_links unordered_list">
+                            <li>
+                                <a href="#!"><i class="fab fa-facebook-f"></i></a>
+                            </li>
+                            <li>
+                                <a href="#!"><i class="fab fa-youtube"></i></a>
+                            </li>
+                            <li>
+                                <a href="#!"><i class="fab fa-twitter"></i></a>
+                            </li>
+                            <li>
+                                <a href="#!"><i class="fab fa-linkedin-in"></i></a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
-
-                <!-- Column -->
-                <div class="big-column col-lg-6 col-md-12 col-sm-12">
-                    <div class="row clearfix">
-
-                        <!-- Footer Column -->
-                        <div class="footer-column col-lg-6 col-md-6 col-sm-12">
-                            <div class="footer-widget links-widget">
-                                <h5>Quick Links</h5>
-                                <ul class="page-list">
-                                    <li><a href="#">Your Account</a></li>
-                                    <li><a href="#">Returns & Exchanges</a></li>
-                                    <li><a href="#">Return Center</a></li>
-                                    <li><a href="#">Purchase Hisotry</a></li>
-                                    <li><a href="#">App Download</a></li>
+                <div class="col col-lg-6">
+                    <div class="row">
+                        <div class="col col-md-4 col-sm-4">
+                            <div class="footer_widget">
+                                <h3 class="footer_widget_title">Links</h3>
+                                <ul class="page_list unordered_list_block">
+                                    <li>
+                                        <a href="about.html">
+                                            <span class="item_icon"><i class="fas fa-caret-right"></i></span>
+                                            <span class="item_text">About</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="course.html">
+                                            <span class="item_icon"><i class="fas fa-caret-right"></i></span>
+                                            <span class="item_text">Courses</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="mentor.html">
+                                            <span class="item_icon"><i class="fas fa-caret-right"></i></span>
+                                            <span class="item_text">Mentors</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="pricing.html">
+                                            <span class="item_icon"><i class="fas fa-caret-right"></i></span>
+                                            <span class="item_text">Prices</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="event.html">
+                                            <span class="item_icon"><i class="fas fa-caret-right"></i></span>
+                                            <span class="item_text">Events</span>
+                                        </a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
-
-                        <!-- Footer Column -->
-                        <div class="footer-column col-lg-6 col-md-6 col-sm-12">
-                            <div class="footer-widget newslatter-widget">
-                                <h5>Subscribe Newslatter</h5>
-                                <div class="text">Exerci tation ullamcorper suscipit lobortis <br> nisl aliquip ex ea
-                                    commodo</div>
-                                <!-- Subscribe Box -->
-                                <div class="subscribe-box">
-                                    <form method="post" action="contact.html">
-                                        <div class="form-group">
-                                            <input type="email" name="search-field" value=""
-                                                placeholder="Enter Mail" required>
-                                            <button type="submit" class="theme-btn submit-btn flaticon-send"></button>
-                                        </div>
-                                    </form>
-                                </div>
+                        <div class="col col-md-4 col-sm-4">
+                            <div class="footer_widget">
+                                <h3 class="footer_widget_title">Class</h3>
+                                <ul class="page_list unordered_list_block">
+                                    <li>
+                                        <a href="#!">
+                                            <span class="item_icon"><i class="fas fa-caret-right"></i></span>
+                                            <span class="item_text">Programming</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#!">
+                                            <span class="item_icon"><i class="fas fa-caret-right"></i></span>
+                                            <span class="item_text">Art & Design</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#!">
+                                            <span class="item_icon"><i class="fas fa-caret-right"></i></span>
+                                            <span class="item_text">Business</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#!">
+                                            <span class="item_icon"><i class="fas fa-caret-right"></i></span>
+                                            <span class="item_text">Engineering</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#!">
+                                            <span class="item_icon"><i class="fas fa-caret-right"></i></span>
+                                            <span class="item_text">Photography</span>
+                                        </a>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
-
+                        <div class="col col-md-4 col-sm-4">
+                            <div class="footer_widget">
+                                <h3 class="footer_widget_title">Support</h3>
+                                <ul class="page_list unordered_list_block">
+                                    <li>
+                                        <a href="contact.html">
+                                            <span class="item_icon"><i class="fas fa-caret-right"></i></span>
+                                            <span class="item_text">Help Center</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="faq.html">
+                                            <span class="item_icon"><i class="fas fa-caret-right"></i></span>
+                                            <span class="item_text">FAQ</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="contact.html">
+                                            <span class="item_icon"><i class="fas fa-caret-right"></i></span>
+                                            <span class="item_text">Contacts</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#!">
+                                            <span class="item_icon"><i class="fas fa-caret-right"></i></span>
+                                            <span class="item_text">Security</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#!">
+                                            <span class="item_icon"><i class="fas fa-caret-right"></i></span>
+                                            <span class="item_text">Private Police</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
+                <div class="col col-lg-3 col-md-6 col-sm-6">
+                    <div class="footer_widget">
+                        <h3 class="footer_widget_title">Latest Posts</h3>
+                        <ul class="blog_small_group unordered_list_block">
+                            <li>
+                                <a class="blog_small" href="blog_details.html">
+                                    <span class="item_image">
+                                        <img src="{{asset('Template/assets/images/blog/blog_small_img_1.jpg')}}"
+                                            alt="Collab – Plateforme location polyvalentes">
+                                    </span>
+                                    <span class="item_content">
+                                        <span class="item_author"><i class="fas fa-user-alt"></i> by
+                                            Corabelle Durrad</span>
+                                        <strong class="item_title">See How Michaele Built a New Life and
+                                            Career</strong>
+                                        <small class="item_post_date">October 12, 2023</small>
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="blog_small" href="blog_details.html">
+                                    <span class="item_image">
+                                        <img src="{{asset('Template/assets/images/blog/blog_small_img_2.jpg')}}"
+                                            alt="Collab – Plateforme location polyvalentes">
+                                    </span>
+                                    <span class="item_content">
+                                        <span class="item_author"><i class="fas fa-user-alt"></i> by
+                                            Corabelle Durrad</span>
+                                        <strong class="item_title">See How Michaele Built a New Life and
+                                            Career</strong>
+                                        <small class="item_post_date">October 12, 2023</small>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
-
-        <!-- Footer Bottom -->
-        <div class="footer-bottom">
-            <div class="d-flex justify-content-between align-items-center flex-wrap">
-                <div class="copyright"><span>&copy; 2022</span> Powered by Theme. All Rights Reserved.</div>
-                <ul class="footer-bottom-nav">
-                    <li><a href="#">Terms and conditions</a></li>
-                    <li><a href="#">Privacy policy</a></li>
-                    <li><a href="#">Login / Signup</a></li>
-                </ul>
-            </div>
+    </div>
+    <div class="copyright_widget">
+        <div class="container">
+            <p class="copyright_text text-center mb-0">
+                <a href="https://themeforest.net/user/merkulove">Merkulove</a> © <b>Collab</b> Template All
+                rights reserved Copyrights 2023
+            </p>
         </div>
-
     </div>
 </footer>
-<!-- End Main Footer -->
-
-</div>
-<!-- End PageWrapper -->
-
-<!-- Search Popup -->
-<div class="search-popup">
-    <div class="color-layer"></div>
-    <button class="close-search"><span class="fa fa-arrow-up"></span></button>
-    <form method="post" action="blog.html">
-        <div class="form-group">
-            <input type="search" name="search-field" value="" placeholder="Search Here" required="">
-            <button type="submit"><i class="fa fa-search"></i></button>
-        </div>
-    </form>
-</div>
-<!-- End Search Popup -->
-
-<!-- Scroll To Top -->
-<div class="scroll-to-top scroll-to-target" data-target="html"><span class="fa fa-arrow-up"></span></div>
-<!-- End Scroll To Top -->

@@ -1,0 +1,140 @@
+@php
+    $user = Auth::user();
+@endphp
+@php
+    if (Auth::check() && Auth::user()->role === 'Loueur') {
+        abort(403);
+    }
+@endphp
+@extends('layouts.opus')
+@section('content')
+<main class="page_content">
+    <!-- Page Section - Start
+        ================================================== -->
+        <section class="page_banner">
+            <div class="container">
+                <div class="content_wrapper"
+                    style="background-image: url('{{asset('Template/assets/images/banner/page_banner_image.png')}}');">
+                    <div class="row align-items-center">
+                        <div class="col col-lg-6">
+                            <ul class="breadcrumb_nav unordered_list">
+                                <li><a href="{{route('home')}}">Accueil</a></li>
+                                <li>Catalogue</li>
+                            </ul>
+                            <h1 class="page_title">Catalogue des Produits</h1>
+                            <p class="page_description">
+                                Egestas sed tempus urna et pharetra. Leo integer malesuada nunc vel. Libero id
+                                faucibus nisl tincidunt eget nullam non nisi. Faucibus turpis in eu mi bibendum
+                                neque egestas
+                            </p>
+                            <form action="#">
+                                <div class="form_item mb-0">
+                                    <input type="search" name="search"
+                                        placeholder="What do you want to learn ?">
+                                    <button type="submit" class="btn btn_dark">
+                                        <span>
+                                            <small>Search</small>
+                                            <small>Search</small>
+                                        </span>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Page Section - End
+    ================================================== -->
+
+    <!-- Courses Archive Section - Start
+        ================================================== -->
+        <section class="courses_archive_section section_space_lg">
+            <div class="container">
+                <div class="row">
+                    @if ($biens->isNotEmpty())
+                    @foreach ($biens as $bien)
+                    <div class="col col-lg-4">
+                        <div class="course_card">
+                            <div class="item_image">
+                                <a href="{{ route('detail.bien', ['id' => $bien->id]) }}" data-cursor-text="View">
+                                    <img src="{{ Storage::url($bien->photos->first()->chemin_fichier) }}"
+                                        alt="{{ $bien->photos->first()->description }}">
+                                </a>
+                            </div>
+                            <div class="item_content">
+                                <div class="d-flex align-items-center justify-content-between mb-3">
+                                    <ul class="item_category_list unordered_list">
+                                        <li><a href="#!">{{ $bien->categorie }}</a></li>
+                                    </ul>
+                                    <div class="item_price">
+                                        <span class="sale_price">CFA {{ $bien->prix }}</span>
+                                    </div>
+                                </div>
+                                <ul class="meta_info_list unordered_list">
+                                    <li>
+                                        <i class="fas fa-chart-bar"></i>
+                                        <span>Proposé par : {{ $bien->user->name }}</span>
+                                    </li>
+                                </ul>
+                                <h3 class="item_title">
+                                    <a href="{{ route('detail.bien', ['id' => $bien->id]) }}">
+                                        {{ $bien->titre }}
+                                    </a>
+                                </h3>
+                                <a class="btn_unfill" href="{{ route('detail.bien', ['id' => $bien->id]) }}">
+                                    <span class="btn_text">Voir plus</span>
+                                    <span class="btn_icon">
+                                        <i class="fas fa-long-arrow-right"></i>
+                                        <i class="fas fa-long-arrow-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                    @else
+                        <p>Aucun service trouvé.</p>
+                    @endif
+                </div>
+            </div>
+        </section>
+        <!-- Courses Archive Section - End
+    ================================================== -->
+
+    <!-- Newslatter Section - Start
+        ================================================== -->
+        <section class="newslatter_section">
+            <div class="container">
+                <div class="newslatter_box" style="background-image: url('{{asset('Template/assets/images/shape/shape_img_6.svg')}}');">
+                    <div class="row justify-content-center">
+                        <div class="col col-lg-6">
+                            <div class="section_heading text-center">
+                                <h2 class="heading_text">
+                                    Subscribe Now Forget 20% Discount Every Courses
+                                </h2>
+                                <p class="heading_description mb-0">
+                                    Nam ipsum risus, rutrum vitae, vestibulum eu, molestie vel, lacus. Sed magna
+                                    purus, fermentum eu
+                                </p>
+                            </div>
+                            <form action="#">
+                                <div class="form_item m-0">
+                                    <input type="email" name="email" placeholder="Your Email">
+                                    <button type="submit" class="btn btn_dark">
+                                        <span>
+                                            <small>Subsctibe</small>
+                                            <small>Subsctibe</small>
+                                        </span>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Newslatter Section - End
+    ================================================== -->
+</main>
+@endsection

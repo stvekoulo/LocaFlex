@@ -1,2 +1,2 @@
-# LocaFlex
+# Collab
  Projet Mémoire 
