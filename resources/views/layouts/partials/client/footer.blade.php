@@ -5,13 +5,12 @@
                 <div class="col col-lg-3 col-md-6 col-sm-6">
                     <div class="footer_widget">
                         <div class="site_logo">
-                            <a class="site_link" href="index.html">
-                                <img src="{{asset('Template/assets/images/logo/site_logo_2.svg')}}" alt="Collab - Online Learning Platform">
+                            <a class="site_link" href="{{route('home')}}">
+                                <img src="{{asset('Template/assets/images/logo/site_logo.svg')}}" alt="Collab – Plateforme location polyvalentes">
                             </a>
                         </div>
                         <p>
-                            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                            ex ea commodo consequat
+                            Laissez-vous emporter par la flexibilité et la commodité de notre plateforme de location polyvalente. Que vous recherchiez un équipement, un espace ou un véhicule, nous avons ce qu'il vous faut pour rendre chaque expérience inoubliable.
                         </p>
                         <ul class="social_links unordered_list">
                             <li>
@@ -33,152 +32,28 @@
                     <div class="row">
                         <div class="col col-md-4 col-sm-4">
                             <div class="footer_widget">
-                                <h3 class="footer_widget_title">Links</h3>
+                                <h3 class="footer_widget_title">Lien Rapide</h3>
                                 <ul class="page_list unordered_list_block">
                                     <li>
-                                        <a href="about.html">
+                                        <a href="{{route('home')}}">
                                             <span class="item_icon"><i class="fas fa-caret-right"></i></span>
-                                            <span class="item_text">About</span>
+                                            <span class="item_text">Acceuil</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="course.html">
+                                        <a href="{{route('bien.catalogue')}}">
                                             <span class="item_icon"><i class="fas fa-caret-right"></i></span>
-                                            <span class="item_text">Courses</span>
+                                            <span class="item_text">Equipement à louer</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="mentor.html">
+                                        <a href="{{route('service.catalogue')}}">
                                             <span class="item_icon"><i class="fas fa-caret-right"></i></span>
-                                            <span class="item_text">Mentors</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="pricing.html">
-                                            <span class="item_icon"><i class="fas fa-caret-right"></i></span>
-                                            <span class="item_text">Prices</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="event.html">
-                                            <span class="item_icon"><i class="fas fa-caret-right"></i></span>
-                                            <span class="item_text">Events</span>
+                                            <span class="item_text">Services Disponible</span>
                                         </a>
                                     </li>
                                 </ul>
                             </div>
-                        </div>
-                        <div class="col col-md-4 col-sm-4">
-                            <div class="footer_widget">
-                                <h3 class="footer_widget_title">Class</h3>
-                                <ul class="page_list unordered_list_block">
-                                    <li>
-                                        <a href="#!">
-                                            <span class="item_icon"><i class="fas fa-caret-right"></i></span>
-                                            <span class="item_text">Programming</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#!">
-                                            <span class="item_icon"><i class="fas fa-caret-right"></i></span>
-                                            <span class="item_text">Art & Design</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#!">
-                                            <span class="item_icon"><i class="fas fa-caret-right"></i></span>
-                                            <span class="item_text">Business</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#!">
-                                            <span class="item_icon"><i class="fas fa-caret-right"></i></span>
-                                            <span class="item_text">Engineering</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#!">
-                                            <span class="item_icon"><i class="fas fa-caret-right"></i></span>
-                                            <span class="item_text">Photography</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col col-md-4 col-sm-4">
-                            <div class="footer_widget">
-                                <h3 class="footer_widget_title">Support</h3>
-                                <ul class="page_list unordered_list_block">
-                                    <li>
-                                        <a href="contact.html">
-                                            <span class="item_icon"><i class="fas fa-caret-right"></i></span>
-                                            <span class="item_text">Help Center</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="faq.html">
-                                            <span class="item_icon"><i class="fas fa-caret-right"></i></span>
-                                            <span class="item_text">FAQ</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="contact.html">
-                                            <span class="item_icon"><i class="fas fa-caret-right"></i></span>
-                                            <span class="item_text">Contacts</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#!">
-                                            <span class="item_icon"><i class="fas fa-caret-right"></i></span>
-                                            <span class="item_text">Security</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#!">
-                                            <span class="item_icon"><i class="fas fa-caret-right"></i></span>
-                                            <span class="item_text">Private Police</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col col-lg-3 col-md-6 col-sm-6">
-                    <div class="footer_widget">
-                        <h3 class="footer_widget_title">Latest Posts</h3>
-                        <ul class="blog_small_group unordered_list_block">
-                            <li>
-                                <a class="blog_small" href="blog_details.html">
-                                    <span class="item_image">
-                                        <img src="{{asset('Template/assets/images/blog/blog_small_img_1.jpg')}}"
-                                            alt="Collab – Plateforme location polyvalentes">
-                                    </span>
-                                    <span class="item_content">
-                                        <span class="item_author"><i class="fas fa-user-alt"></i> by
-                                            Corabelle Durrad</span>
-                                        <strong class="item_title">See How Michaele Built a New Life and
-                                            Career</strong>
-                                        <small class="item_post_date">October 12, 2023</small>
-                                    </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="blog_small" href="blog_details.html">
-                                    <span class="item_image">
-                                        <img src="{{asset('Template/assets/images/blog/blog_small_img_2.jpg')}}"
-                                            alt="Collab – Plateforme location polyvalentes">
-                                    </span>
-                                    <span class="item_content">
-                                        <span class="item_author"><i class="fas fa-user-alt"></i> by
-                                            Corabelle Durrad</span>
-                                        <strong class="item_title">See How Michaele Built a New Life and
-                                            Career</strong>
-                                        <small class="item_post_date">October 12, 2023</small>
-                                    </span>
-                                </a>
-                            </li>
-                        </ul>
                     </div>
                 </div>
             </div>

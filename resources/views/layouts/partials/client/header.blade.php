@@ -4,7 +4,7 @@
                 <div class="col col-lg-3 col-5">
                     <div class="site_logo">
                         <a class="site_link" href="{{route('home')}}">
-                            <img src="{{asset('Template/assets/images/logo/site_logo.svg')}}" alt="Collab - Online Learning Platform">
+                            <img src="{{asset('Template/assets/images/logo/site_logo.svg')}}" alt="Collab – Plateforme location polyvalentes">
                         </a>
                     </div>
                 </div>
