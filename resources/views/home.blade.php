@@ -17,12 +17,10 @@
                 <div class="content_wrap">
                     <div class="row">
                         <div class="col col-lg-7">
-                            <h1 class="banner_small_title">Learning Excellence</h1>
-                            <h2 class="banner_big_title">The Best Free Online Courses of All Time</h2>
+                            <h1 class="banner_small_title"></h1>
+                            <h2 class="banner_big_title">Meilleure Plateforme <br> de location <br> Polyvalente</h2>
                             <p class="banner_description">
-                                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
-                                esse cillum fugiat nulla pariatur
+                                À chaque besoin, sa solution de location. Avec notre plateforme polyvalente, vous pouvez trouver tout ce dont vous avez besoin, quand vous en avez besoin. Libérez-vous des contraintes et louez en toute liberté.
                             </p>
                         </div>
                         <div class="col col-lg-5">
@@ -32,7 +30,7 @@
                                         alt="Collab – Plateforme location polyvalentes">
                                 </div>
                                 <div class="satisfied_student">
-                                    <h3 class="wrap_title">220+ Utilisateur</h3>
+                                    <h3 class="wrap_title">{{ $nombreUtilisateursAffichage }}+ Utilisateur</h3>
                                     <ul class="students_thumbnail unordered_list_center">
                                         <li>
                                             <span>
@@ -94,8 +92,7 @@
                                 Collab C'est quoi ?
                             </h2>
                             <p class="heading_description mb-0">
-                                Rutrum tellus pellentesque eu tincidunt. Venenatis cras sed felis eget velit aliquet
-                                sagittis id consectetur
+                                Découvrez une approche révolutionnaire de la location. Avec Collab, louez ce dont vous avez besoin, quand vous en avez besoin.
                             </p>
                         </div>
 
@@ -110,13 +107,12 @@
                                 <div class="service_item" data-magnetic>
                                     <div class="item_icon">
                                         <img src="{{asset('Template/assets/images/service/icon_academic_cap.svg')}}"
-                                            alt="Collab – Plateforme location polyvalentes">
+                                            alt="Collab – Plateforme de location polyvalente">
                                     </div>
                                     <div class="item_content">
-                                        <h3 class="item_title">Knowledge</h3>
+                                        <h3 class="item_title">Large choix</h3>
                                         <p class="mb-0">
-                                            Duis aute irure dolor in repreh in voluptate velit esse cillum dolore eu
-                                            fugiat nulla pariatur
+                                            Découvrez une vaste sélection d'équipements et d'espaces pour répondre à tous vos besoins de location.
                                         </p>
                                     </div>
                                 </div>
@@ -125,13 +121,12 @@
                                 <div class="service_item" data-magnetic>
                                     <div class="item_icon">
                                         <img src="{{asset('Template/assets/images/service/icon_physics.svg')}}"
-                                            alt="Collab – Plateforme location polyvalentes">
+                                            alt="Collab – Plateforme de location polyvalente">
                                     </div>
                                     <div class="item_content">
-                                        <h3 class="item_title">Unlimited access</h3>
+                                        <h3 class="item_title">Accès illimité</h3>
                                         <p class="mb-0">
-                                            Libero nunc consequat interd varius sit amet mattis vulpute enim liquet
-                                            sagittis
+                                            Profitez d'un accès sans limite à tous les services de location dont vous avez besoin.
                                         </p>
                                     </div>
                                 </div>
@@ -140,13 +135,12 @@
                                 <div class="service_item" data-magnetic>
                                     <div class="item_icon">
                                         <img src="{{asset('Template/assets/images/service/icon_communication.svg')}}"
-                                            alt="Collab – Plateforme location polyvalentes">
+                                            alt="Collab – Plateforme de location polyvalente">
                                     </div>
                                     <div class="item_content">
-                                        <h3 class="item_title">Practical Skills</h3>
+                                        <h3 class="item_title">Facilité d'utilisation</h3>
                                         <p class="mb-0">
-                                            Vulputate enim nulla aliquet porttitor lacus luctus accums. Cras sed
-                                            felis eget velit
+                                            Accédez facilement à tous nos services de location et gérez vos réservations en toute simplicité.
                                         </p>
                                     </div>
                                 </div>
@@ -155,19 +149,19 @@
                                 <div class="service_item" data-magnetic>
                                     <div class="item_icon">
                                         <img src="{{asset('Template/assets/images/service/icon_diploma.svg')}}"
-                                            alt="Collab – Plateforme location polyvalentes">
+                                            alt="Collab – Plateforme de location polyvalente">
                                     </div>
                                     <div class="item_content">
-                                        <h3 class="item_title">A certificate</h3>
+                                        <h3 class="item_title">Satisfaction garantie</h3>
                                         <p class="mb-0">
-                                            Excepteur sint occaecat cupid non proident, sunt in culpa qui officia
-                                            deserunt mollit
+                                            Nous nous engageons à vous fournir une expérience de location exceptionnelle.
                                         </p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </section>
@@ -182,33 +176,33 @@
                     <div class="row align-items-center justify-content-lg-between">
                         <div class="col col-lg-6">
                             <h2 class="heading_text mb-0">
-                                Découvrez notre catalogue
+                                Explorez Notre Large Catalogue
                             </h2>
                         </div>
                         <div class="col col-lg-5">
                             <p class="heading_description mb-0 text-lg-end">
-                                Parcourez puis trouvez
+                                Parcourez et Trouvez ce Dont Vous Avez Besoin
                             </p>
                         </div>
+
                     </div>
                 </div>
 
                 <div class="tabs_wrapper">
                     <ul class="nav" role="tablist">
                         <li role="presentation">
-                            <button class="active" data-bs-toggle="tab" data-bs-target="#teb_hr" type="button"
-                                role="tab" aria-selected="true">
+                            <button class="active" data-bs-toggle="tab" data-bs-target="#teb_hr" type="button" role="tab" aria-selected="true">
                                 <i class="fas fa-users"></i>
-                                <span>Catégorie Biens à louer</span>
+                                <span>Équipements à Louer</span>
                             </button>
                         </li>
                         <li role="presentation">
-                            <button data-bs-toggle="tab" data-bs-target="#teb_photography" type="button"
-                                role="tab" aria-selected="false">
+                            <button data-bs-toggle="tab" data-bs-target="#teb_photography" type="button" role="tab" aria-selected="false">
                                 <i class="fas fa-camera"></i>
-                                <span>Catégorie Services disponibles</span>
+                                <span>Services Disponibles</span>
                             </button>
                         </li>
+
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane fade show active" id="teb_hr" role="tabpanel">
@@ -326,36 +320,7 @@
 
     <!-- Newslatter Section - Start
         ================================================== -->
-        <section class="newslatter_section">
-            <div class="container">
-                <div class="newslatter_box" style="background-image: url('{{asset('Template/assets/images/shape/shape_img_6.svg')}}');">
-                    <div class="row justify-content-center">
-                        <div class="col col-lg-6">
-                            <div class="section_heading text-center">
-                                <h2 class="heading_text">
-                                    Subscribe Now Forget 20% Discount Every Courses
-                                </h2>
-                                <p class="heading_description mb-0">
-                                    Nam ipsum risus, rutrum vitae, vestibulum eu, molestie vel, lacus. Sed magna
-                                    purus, fermentum eu
-                                </p>
-                            </div>
-                            <form action="#">
-                                <div class="form_item m-0">
-                                    <input type="email" name="email" placeholder="Your Email">
-                                    <button type="submit" class="btn btn_dark">
-                                        <span>
-                                            <small>Subsctibe</small>
-                                            <small>Subsctibe</small>
-                                        </span>
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        @include('layouts.partials.client.newslatter')
         <!-- Newslatter Section - End
     ================================================== -->
 </main>

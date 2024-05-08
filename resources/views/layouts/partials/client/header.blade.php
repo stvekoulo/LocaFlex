@@ -18,8 +18,8 @@
                                     <a class="nav-link" href="#" id="home_submenu" role="button"
                                         data-bs-toggle="dropdown" aria-expanded="false">Option</a>
                                     <ul class="dropdown-menu" aria-labelledby="home_submenu">
-                                        <li><a href="{{route('bien.catalogue')}}">Catalogue bien disponible à louer </a></li>
-                                        <li><a href="{{route('service.catalogue')}}">Catalogue service disponible</a></li>
+                                        <li><a href="{{route('bien.catalogue')}}">Catalogue Équipements à Louer </a></li>
+                                        <li><a href="{{route('service.catalogue')}}">Catalogue Services disponibles</a></li>
                                     </ul>
                                 </li>
                                 <li><a class="nav-link" href="#">Contact</a></li>

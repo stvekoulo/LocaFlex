@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Bien;
+use App\Models\User;
 use App\Models\Service;
 use Illuminate\Http\Request;
 
@@ -32,6 +33,13 @@ class HomeController extends Controller
             ->take(9)
             ->get();
 
-        return view('home', compact('neufDerniersBiens', 'neufDerniersServices', 'biens'));
+        $nombreUtilisateursTotal = User::count();
+        if ($nombreUtilisateursTotal > 0) {
+            $nombreUtilisateursAffichage = $nombreUtilisateursTotal - 1;
+        } else {
+            $nombreUtilisateursAffichage = 0;
+        }
+
+        return view('home', compact('neufDerniersBiens', 'neufDerniersServices', 'biens', 'nombreUtilisateursAffichage'));
     }
 }
