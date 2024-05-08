@@ -10,6 +10,7 @@ use App\Http\Controllers\BienCatalogueController;
 use App\Http\Controllers\LoueurProfileController;
 use App\Http\Controllers\LoueurServiceController;
 use App\Http\Controllers\ServiceDetailController;
+use App\Http\Controllers\GestionDemandeController;
 use App\Http\Controllers\GestionServiceController;
 use App\Http\Controllers\ServiceCatalogueController;
 
@@ -88,6 +89,10 @@ Route::post('/service-demande', [ServiceDetailController::class, 'envoyerDemande
 
 Route::get('/catalogue/produits', [BienCatalogueController::class, 'index'])->name('bien.catalogue');
 Route::get('/catalogue/services', [ServiceCatalogueController::class, 'index'])->name('service.catalogue');
+
+Route::get('dashboard/mes-demandes', [GestionDemandeController::class, 'index'])
+    ->name('demande.index')
+    ->middleware(['auth', 'verified']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

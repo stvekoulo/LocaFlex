@@ -194,6 +194,13 @@
                                         <span class="nav-main-link-name">Gestion Service</span>
                                     </a>
                                 </li>
+                            <li class="nav-main-item">
+                                <a class="nav-main-link{{ request()->is('dashboard/mes-demandes') ? ' active' : '' }}"
+                                    href="{{route('demande.index')}}">
+                                    <i class="nav-main-link-icon fa fa-tasks"></i>
+                                    <span class="nav-main-link-name">Mes Demandes</span>
+                                </a>
+                            </li>
                             </li>
                         </ul>
                     </div>
