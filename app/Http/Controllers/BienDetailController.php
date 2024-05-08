@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Bien;
 use Illuminate\Http\Request;
 use App\Models\DemandeReservation;
+use App\Mail\DemandeReservatioMail;
+use Mail;
 
 class BienDetailController extends Controller
 {
@@ -40,6 +42,8 @@ class BienDetailController extends Controller
             'owner_id' => $bien->user_id,
             'etat' => 'En attente',
         ]);
+
+        Mail::to($bien->user->email)->send(new DemandeReservatioMail($bien->user));
 
         return back()->with('success', 'Votre demande de réservation a été envoyée avec succès!');
     }

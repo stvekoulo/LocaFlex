@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Service;
 use Illuminate\Http\Request;
 use App\Models\DemandeService;
+use App\Mail\DemandeServiceMail;
+use Mail;
 
 class ServiceDetailController extends Controller
 {
@@ -36,6 +38,8 @@ class ServiceDetailController extends Controller
             'owner_id' => $service->user_id,
             'etat' => 'En attente',
         ]);
+
+        Mail::to($service->user->email)->send(new DemandeServiceMail($service->user));
 
         return back()->with('success', 'Votre demande pour ce service a été envoyée avec succès!');
     }
