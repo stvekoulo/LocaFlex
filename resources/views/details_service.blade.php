@@ -49,10 +49,8 @@
                                     </span>
                                 </li>
                                 <li>
-                                    <i class="fas fa-check"></i>
                                     <span>
-                                        At consectetur lorem donec massa sapien. Pulvinar sapien et ligula
-                                        ullamcorper malesuada proin
+
                                     </span>
                                 </li>
                             </ul>
@@ -74,44 +72,44 @@
                             <div class="pe-lg-5">
                                 <div class="course_info_card d-lg-none">
                                     <div class="details_image">
-                                        <img src="assets/images/course/course_details_image_1.jpg"
-                                            alt="Collab – Plateforme location polyvalentes">
                                     </div>
                                     <ul class="meta_info_list unordered_list">
                                         <li>
                                             <i class="fas fa-star"></i>
-                                            <span>3.5 (3k reviews)</span>
+                                            <span>Prix du service</span>
                                         </li>
                                     </ul>
                                     <div class="item_price">
-                                        <span class="sale_price">FREE</span>
+                                        <span class="sale_price">A partir de CFA {{ $service->prix }}</span>
                                     </div>
-                                    <a href="pricing.html" class="btn btn_dark">
+
+                                    <a href="#" class="btn btn_dark" data-bs-toggle="modal"
+                                        data-bs-target="#demandeModal">
                                         <span>
-                                            <small>Get Course</small>
-                                            <small>Get Course</small>
+                                            <small>Obtenir ce service</small>
+                                            <small>Faire une demande</small>
                                         </span>
                                     </a>
                                     <ul class="course_info_list unordered_list_block">
                                         <li>
-                                            <span><i class="fas fa-user"></i> Created</span>
-                                            <strong>Wendy Chandler</strong>
+                                            <span><i class="fas fa-user"></i>Service proposé par</span>
+                                            <strong>{{ $service->user->name }}</strong>
                                         </li>
                                         <li>
-                                            <span><i class="fas fa-chart-bar"></i> Level</span>
-                                            <strong>Beginner</strong>
+                                            <span><i class="fas fa-chart-bar"></i>Catégorie du service</span>
+                                            <strong>{{ $service->categorie }}</strong>
                                         </li>
                                         <li>
-                                            <span><i class="fas fa-clock"></i> Duration</span>
-                                            <strong>120 Hours</strong>
+                                            <span><i class="fas fa-clock"></i>Disponibilité</span>
+                                            <strong>Service {{ $service->disponibilite }}</strong>
                                         </li>
                                         <li>
-                                            <span><i class="fas fa-video"></i> Lessons</span>
-                                            <strong>3 Video</strong>
-                                        </li>
-                                        <li>
-                                            <span><i class="fas fa-users"></i> Webinar</span>
-                                            <strong>4 Hours</strong>
+                                            <span><i class="fas fa-users"></i>Informations importantes</span>
+                                            @if($service->tags == 'service_domicile')
+                                                <strong>Service à domicile</strong>
+                                            @elseif($service->tags == 'service_sur_place')
+                                                <strong>Service sur place</strong>
+                                            @endif
                                         </li>
                                     </ul>
                                 </div>

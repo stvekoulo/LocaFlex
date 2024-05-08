@@ -41,6 +41,6 @@ class ServiceDetailController extends Controller
 
         Mail::to($service->user->email)->send(new DemandeServiceMail($service->user));
 
-        return back()->with('success', 'Votre demande pour ce service a été envoyée avec succès!');
+        return back()->with('success', 'Votre demande pour ce service a été envoyée avec succès!  Vous serez informez par mail si la demande est accepté ou refusez');
     }
 }

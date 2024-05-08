@@ -42,6 +42,7 @@
                             <h1 class="page_title">
                                 {{ $bien->titre }}
                             </h1>
+                            <br>
                             <li>
                                 <a href="#" class="btn btn_dark" data-bs-toggle="modal"
                                     data-bs-target="#demandeModal">
@@ -93,8 +94,9 @@
                         </div>
                         <div class="col col-lg-5">
                             <div class="image_widget page_banner_image">
-                                <img src="{{ asset('Template/assets/images/banner/page_banner_image_1.jpg') }}"
-                                    alt="Collab – Online Learning Platform ">
+                                <h1 class="page_title">
+                                    CFA {{ $bien->prix }}
+                                </h1>
                             </div>
                         </div>
                     </div>

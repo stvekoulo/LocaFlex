@@ -45,6 +45,6 @@ class BienDetailController extends Controller
 
         Mail::to($bien->user->email)->send(new DemandeReservatioMail($bien->user));
 
-        return back()->with('success', 'Votre demande de réservation a été envoyée avec succès!');
+        return back()->with('success', 'Votre demande de réservation a été envoyée avec succès! Vous serez informez par mail si la demande est accepté ou refusez ');
     }
 }
