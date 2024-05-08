@@ -179,14 +179,14 @@
                             </div>
                             <div
                                 class="block-content block-content-full block-content-sm bg-body fs-sm d-flex justify-content-between align-items-center">
-                                <a href="javascript:void(0)">L'utilisateur {{ $demande->user->name }} a faire une demande pour un de vos service</a>
-                                <span class="text-muted">{{ $demande->created_at->diffForHumans() }}</span>
+                                <a href="javascript:void(0)">L'utilisateur {{ $demandeservice->user->name }} a faire une demande pour un de vos service</a>
+                                <span class="text-muted">{{ $demandeservice->created_at->diffForHumans() }}</span>
                             </div>
                             <div class="block-content">
                                 <h5>MOTIF DE LA DEMANDE</h5>
-                                <p>{{ $demande->motif }}</p>
+                                <p>{{ $demandeservice->motif }}</p>
                                 <h5>SUR UNE DURÉE DE </h5>
-                                <p>{{ $demande->duree }} Jours</p>
+                                <p>{{ $demandeservice->duree }} Jours</p>
                             </div>
                             <div class="block-content p-3 bg-body">
                                 <form action="#" method="POST">
