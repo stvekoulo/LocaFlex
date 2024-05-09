@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\BienDetailController;
@@ -101,6 +102,9 @@ Route::post('/mes-demandes/refuser-demande-service/{demandeId}', [GestionDemande
 
 Route::get('/paiement', [PaymentController::class, 'index'])
     ->name('payment.index')
+    ->middleware(['auth', 'verified']);
+Route::get('/paiement/{paiementId}', [PaymentController::class])
+    ->name('payment.store')
     ->middleware(['auth', 'verified']);
 
 Route::middleware('auth')->group(function () {

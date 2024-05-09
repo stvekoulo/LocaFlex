@@ -11,7 +11,7 @@
 
     <main class="page_content">
         <!-- Banner Section - Start
-            ================================================== -->
+                ================================================== -->
         <section class="hero_banner style_1">
             <div class="container">
                 <div class="content_wrap">
@@ -81,10 +81,10 @@
             </div>
         </section>
         <!-- Banner Section - End
-        ================================================== -->
+            ================================================== -->
 
         <!-- Expect From Course - Start
-            ================================================== -->
+                ================================================== -->
         <section class="expect_from_course section_space_lg">
             <div class="container">
                 <div class="row">
@@ -181,10 +181,10 @@
             </div>
         </section>
         <!-- Expect From Course - End
-        ================================================== -->
+            ================================================== -->
 
         <!-- Courses Section - Start
-            ================================================== -->
+                ================================================== -->
         <section class="courses_section section_space_lg">
             <div class="container">
                 <div class="section_heading">
@@ -336,13 +336,13 @@
             </div>
         </section>
         <!-- Courses Section - End
-        ================================================== -->
+            ================================================== -->
 
         <!-- Newslatter Section - Start
-            ================================================== -->
+                ================================================== -->
         @include('layouts.partials.client.newslatter')
         <!-- Newslatter Section - End
-        ================================================== -->
+            ================================================== -->
     </main>
 
 @endsection

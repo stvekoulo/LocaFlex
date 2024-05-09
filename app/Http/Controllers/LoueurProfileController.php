@@ -12,7 +12,7 @@ class LoueurProfileController extends Controller
     public function index()
     {
         $user = auth()->user();
-        return view('profile_loueur.index')->with('user', $user);;
+        return view('profile_loueur.index')->with('user', $user);
     }
 
     public function updatePassword(Request $request)

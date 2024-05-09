@@ -176,6 +176,8 @@
                                     <span class="text-muted">{{ $demande->created_at->diffForHumans() }}</span>
                                 </div>
                                 <div class="block-content">
+                                    <h5>Demande pour le bien suivant :</h5>
+                                    <p>{{ $demande->bien->titre }}</p>
                                     <h5>MOTIF DE LA DEMANDE</h5>
                                     <p>{{ $demande->motif }}</p>
                                     <h5>SUR UNE DURÉE DE </h5>
@@ -226,6 +228,8 @@
                                     <span class="text-muted">{{ $demandeservice->created_at->diffForHumans() }}</span>
                                 </div>
                                 <div class="block-content">
+                                    <h5>Demande pour le service suivant :</h5>
+                                    <p>{{ $demandeservice->services->titre }}</p>
                                     <h5>MOTIF DE LA DEMANDE</h5>
                                     <p>{{ $demandeservice->motif }}</p>
                                     <h5>SUR UNE DURÉE DE </h5>

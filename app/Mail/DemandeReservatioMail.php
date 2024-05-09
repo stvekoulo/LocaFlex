@@ -27,9 +27,7 @@ class DemandeReservatioMail extends Mailable
      */
     public function envelope(): Envelope
     {
-        return new Envelope(
-            subject: 'Demande de réservation pour l\'un de vos biens',
-        );
+        return new Envelope(subject: 'Demande de réservation pour l\'un de vos biens');
     }
 
     /**

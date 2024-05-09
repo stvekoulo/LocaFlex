@@ -65,36 +65,36 @@
     <!-- Body Wrap - End -->
 
     <!-- Framework - Jquery Include -->
-    <script src="{{asset('Template/assets/js/jquery.min.js')}}"></script>
-    <script src="{{asset('Template/assets/js/popper.min.js')}}"></script>
-    <script src="{{asset('Template/assets/js/bootstrap.min.js')}}"></script>
-    <script src="{{asset('Template/assets/js/bootstrap-dropdown-ml-hack.js')}}"></script>
+    <script src="{{ asset('Template/assets/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('Template/assets/js/popper.min.js') }}"></script>
+    <script src="{{ asset('Template/assets/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('Template/assets/js/bootstrap-dropdown-ml-hack.js') }}"></script>
 
     <!-- animation - jquery include -->
-    <script src="{{asset('Template/assets/js/cursor.js')}}"></script>
-    <script src="{{asset('Template/assets/js/wow.min.js')}}"></script>
-    <script src="{{asset('Template/assets/js/tilt.min.js')}}"></script>
-    <script src="{{asset('Template/assets/js/parallax.min.js')}}"></script>
-    <script src="{{asset('Template/assets/js/parallax-scroll.js')}}"></script>
+    <script src="{{ asset('Template/assets/js/cursor.js') }}"></script>
+    <script src="{{ asset('Template/assets/js/wow.min.js') }}"></script>
+    <script src="{{ asset('Template/assets/js/tilt.min.js') }}"></script>
+    <script src="{{ asset('Template/assets/js/parallax.min.js') }}"></script>
+    <script src="{{ asset('Template/assets/js/parallax-scroll.js') }}"></script>
 
     <!-- Carousel - Jquery Include -->
-    <script src="{{asset('Template/assets/js/slick.min.js')}}"></script>
+    <script src="{{ asset('Template/assets/js/slick.min.js') }}"></script>
 
     <!-- Video & Image Popup - Jquery Include -->
-    <script src="{{asset('Template/assets/js/magnific-popup.min.js')}}"></script>
+    <script src="{{ asset('Template/assets/js/magnific-popup.min.js') }}"></script>
 
     <!-- Counter Up - Jquery Include -->
-    <script src="{{asset('Template/assets/js/waypoint.js')}}"></script>
-    <script src="{{asset('Template/assets/js/counterup.min.js')}}"></script>
+    <script src="{{ asset('Template/assets/js/waypoint.js') }}"></script>
+    <script src="{{ asset('Template/assets/js/counterup.min.js') }}"></script>
 
     <!-- Countdown Timer - jquery include -->
-    <script src="{{asset('Template/assets/js/countdown.js')}}"></script>
+    <script src="{{ asset('Template/assets/js/countdown.js') }}"></script>
 
     <!-- Vanilla Calendar - Jquery Include -->
-    <script src="{{asset('Template/assets/js/vanilla-calendar.min.js')}}"></script>
+    <script src="{{ asset('Template/assets/js/vanilla-calendar.min.js') }}"></script>
 
     <!-- Custom - Jquery Include -->
-    <script src="{{asset('Template/assets/js/main.js')}}"></script>
+    <script src="{{ asset('Template/assets/js/main.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 </body>

@@ -27,9 +27,7 @@ class DemandeBienAccepterMail extends Mailable
      */
     public function envelope(): Envelope
     {
-        return new Envelope(
-            subject: 'Réponse suite a votre demande de reservation',
-        );
+        return new Envelope(subject: 'Réponse suite a votre demande de reservation');
     }
 
     /**

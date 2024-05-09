@@ -3,8 +3,9 @@
             <div class="row align-items-center">
                 <div class="col col-lg-3 col-5">
                     <div class="site_logo">
-                        <a class="site_link" href="{{route('home')}}">
-                            <img src="{{asset('Template/assets/images/logo/site_logo.svg')}}" alt="Collab – Plateforme location polyvalentes">
+                        <a class="site_link" href="{{ route('home') }}">
+                            <img src="{{ asset('Template/assets/images/logo/site_logo.svg') }}"
+                                alt="Collab – Plateforme location polyvalentes">
                         </a>
                     </div>
                 </div>
@@ -13,14 +14,19 @@
                         <div class="main_menu_inner collapse navbar-collapse justify-content-center"
                             id="main_menu_dropdown">
                             <ul class="main_menu_list unordered_list_center">
-                                <li><a class="nav-link" href="{{route('home')}}">Acceuil</a></li>
+                                <li><a class="nav-link" href="{{ route('home') }}">Acceuil</a></li>
                                 <li class="dropdown">
                                     <a class="nav-link" href="#" id="home_submenu" role="button"
                                         data-bs-toggle="dropdown" aria-expanded="false">Option</a>
                                     <ul class="dropdown-menu" aria-labelledby="home_submenu">
-                                        <li><a href="{{route('bien.catalogue')}}">Catalogue Équipements à Louer </a></li>
-                                        <li><a href="{{route('service.catalogue')}}">Catalogue Services disponibles</a></li>
+                                        <li><a href="{{ route('bien.catalogue') }}">Catalogue Équipements à Louer </a>
+                                        </li>
+                                        <li><a href="{{ route('service.catalogue') }}">Catalogue Services
+                                                disponibles</a></li>
                                     </ul>
+                                    @if (auth()->check())
+                                    <li><a class="nav-link" href="{{ route('payment.index') }}">Paiement</a></li>
+                                    @endif
                                 </li>
                                 <li><a class="nav-link" href="#">Contact</a></li>
                             </ul>
@@ -36,19 +42,19 @@
                                 <i class="far fa-bars"></i>
                             </button>
                         </li>
-                        @if(auth()->check())
+                        @if (auth()->check())
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
                                 <button class="btn border_dark" type="submit">
-                                        <span>
-                                            <small>Utilisateur : {{ auth()->user()->name }}</small>
-                                            <small>Déconnexion</i></small>
-                                        </span>
+                                    <span>
+                                        <small>Utilisateur : {{ auth()->user()->name }}</small>
+                                        <small>Déconnexion</i></small>
+                                    </span>
                                 </button>
                             </form>
                         @else
                             <li>
-                                <a class="btn border_dark" href="{{route('login')}}">
+                                <a class="btn border_dark" href="{{ route('login') }}">
                                     <span>
                                         <small>Se connecter</small>
                                         <small>Se connecter</small>
@@ -56,7 +62,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a class="btn btn_dark" href="{{route('register')}}">
+                                <a class="btn btn_dark" href="{{ route('register') }}">
                                     <span>
                                         <small>S'inscrire</small>
                                         <small>S'inscrire</small>

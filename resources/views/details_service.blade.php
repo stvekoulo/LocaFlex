@@ -27,7 +27,7 @@
             @endif
         </script>
         <!-- Page Section - Start
-                ================================================== -->
+                    ================================================== -->
         <section class="page_banner">
             <div class="container">
                 <div class="content_wrapper">
@@ -60,10 +60,10 @@
             </div>
         </section>
         <!-- Page Section - End
-            ================================================== -->
+                ================================================== -->
 
         <!-- Course Details Section - Start
-            ================================================== -->
+                ================================================== -->
         <section class="details_section course_details_section">
             <div class="container">
                 <div class="row">
@@ -105,7 +105,7 @@
                                         </li>
                                         <li>
                                             <span><i class="fas fa-users"></i>Informations importantes</span>
-                                            @if($service->tags == 'service_domicile')
+                                            @if ($service->tags == 'service_domicile')
                                                 <strong>Service à domicile</strong>
                                             @elseif($service->tags == 'service_sur_place')
                                                 <strong>Service sur place</strong>
@@ -154,7 +154,7 @@
                                     </li>
                                     <li>
                                         <span><i class="fas fa-users"></i>Informations importantes</span>
-                                        @if($service->tags == 'service_domicile')
+                                        @if ($service->tags == 'service_domicile')
                                             <strong>Service à domicile</strong>
                                         @elseif($service->tags == 'service_sur_place')
                                             <strong>Service sur place</strong>
@@ -168,7 +168,7 @@
             </div>
         </section>
         <!-- Course Details Section - End
-            ================================================== -->
+                ================================================== -->
 
         <!-- Modal -->
         <div class="modal fade" id="demandeModal" tabindex="-1" aria-labelledby="demandeModalLabel" aria-hidden="true">

@@ -27,9 +27,7 @@ class DemandeServiceAccepterMail extends Mailable
      */
     public function envelope(): Envelope
     {
-        return new Envelope(
-            subject: 'Réponse suite a votre demande de service',
-        );
+        return new Envelope(subject: 'Réponse suite a votre demande de service');
     }
 
     /**

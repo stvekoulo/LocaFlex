@@ -64,8 +64,8 @@
                                     <label class="form-label" for="titre">Titre</label>
                                 </div>
                                 <div class="form-floating mb-4">
-                                    <select class="form-select" id="categorie"
-                                        name="categorie" aria-label="Floating label select example">
+                                    <select class="form-select" id="categorie" name="categorie"
+                                        aria-label="Floating label select example">
                                         <option selected>Sélectionnez une catégorie</option>
                                         <option value="electromenager">Electroménager</option>
                                         <option value="transport">Transport</option>

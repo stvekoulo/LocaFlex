@@ -45,7 +45,7 @@
 
 <body>
 
-    {{--<div id="page-loader" class="show"></div>--}}
+    {{-- <div id="page-loader" class="show"></div> --}}
     <div id="page-container" class="sidebar-o enable-page-overlay side-scroll page-header-modern main-content-boxed">
         <!-- Side Overlay-->
         <aside id="side-overlay">
@@ -166,37 +166,37 @@
                     <div class="content-side content-side-full">
                         <ul class="nav-main">
                             <li class="nav-main-item">
-                                <li class="nav-main-item">
-                                    <a class="nav-main-link{{ request()->is('dashboard') ? ' active' : '' }}"
-                                        href="{{ route('dashboard') }}">
-                                        <i class="nav-main-link-icon fa fa-house-user"></i>
-                                        <span class="nav-main-link-name">Accueil</span>
-                                    </a>
-                                </li>
-                                <li class="nav-main-item">
-                                    <a class="nav-main-link{{ request()->is('dashboard/profile') ? ' active' : '' }}"
-                                        href="{{route('loueur.profile')}}">
-                                        <i class="nav-main-link-icon fa fa-user"></i>
-                                        <span class="nav-main-link-name">Profile</span>
-                                    </a>
-                                </li>
-                                <li class="nav-main-item">
-                                    <a class="nav-main-link{{ request()->is('dashboard/gestion-biens') ? ' active' : '' }}"
-                                        href="{{route('bien.index')}}">
-                                        <i class="nav-main-link-icon fa fa-layer-group"></i>
-                                        <span class="nav-main-link-name">Gestion Bien</span>
-                                    </a>
-                                </li>
-                                <li class="nav-main-item">
-                                    <a class="nav-main-link{{ request()->is('dashboard/gestion-services') ? ' active' : '' }}"
-                                        href="{{route('service.index')}}">
-                                        <i class="nav-main-link-icon fa fa-handshake"></i>
-                                        <span class="nav-main-link-name">Gestion Service</span>
-                                    </a>
-                                </li>
+                            <li class="nav-main-item">
+                                <a class="nav-main-link{{ request()->is('dashboard') ? ' active' : '' }}"
+                                    href="{{ route('dashboard') }}">
+                                    <i class="nav-main-link-icon fa fa-house-user"></i>
+                                    <span class="nav-main-link-name">Accueil</span>
+                                </a>
+                            </li>
+                            <li class="nav-main-item">
+                                <a class="nav-main-link{{ request()->is('dashboard/profile') ? ' active' : '' }}"
+                                    href="{{ route('loueur.profile') }}">
+                                    <i class="nav-main-link-icon fa fa-user"></i>
+                                    <span class="nav-main-link-name">Profile</span>
+                                </a>
+                            </li>
+                            <li class="nav-main-item">
+                                <a class="nav-main-link{{ request()->is('dashboard/gestion-biens') ? ' active' : '' }}"
+                                    href="{{ route('bien.index') }}">
+                                    <i class="nav-main-link-icon fa fa-layer-group"></i>
+                                    <span class="nav-main-link-name">Gestion Bien</span>
+                                </a>
+                            </li>
+                            <li class="nav-main-item">
+                                <a class="nav-main-link{{ request()->is('dashboard/gestion-services') ? ' active' : '' }}"
+                                    href="{{ route('service.index') }}">
+                                    <i class="nav-main-link-icon fa fa-handshake"></i>
+                                    <span class="nav-main-link-name">Gestion Service</span>
+                                </a>
+                            </li>
                             <li class="nav-main-item">
                                 <a class="nav-main-link{{ request()->is('dashboard/mes-demandes') ? ' active' : '' }}"
-                                    href="{{route('demande.index')}}">
+                                    href="{{ route('demande.index') }}">
                                     <i class="nav-main-link-icon fa fa-tasks"></i>
                                     <span class="nav-main-link-name">Mes Demandes</span>
                                 </a>
@@ -257,7 +257,7 @@
                             </div>
                             <div class="p-2">
                                 <a class="dropdown-item d-flex align-items-center justify-content-between space-x-1"
-                                    href="{{route('loueur.profile')}}">
+                                    href="{{ route('loueur.profile') }}">
                                     <span>Profile</span>
                                     <i class="fa fa-fw fa-user opacity-25"></i>
                                 </a>

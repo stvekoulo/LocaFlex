@@ -63,9 +63,7 @@ class GestionServiceController extends Controller
 
             $service->save();
 
-            return redirect()
-                ->back()
-                ->with('success', 'Vous avez autorise la publication de ce service');
+            return redirect()->back()->with('success', 'Vous avez autorise la publication de ce service');
         } catch (\Throwable $th) {
             return redirect()->back()->with('error', 'Une erreur s\'est produite');
         }
@@ -83,9 +81,7 @@ class GestionServiceController extends Controller
 
             $service->save();
 
-            return redirect()
-                ->back()
-                ->with('success', 'Vous avez retiré la publication de ce service');
+            return redirect()->back()->with('success', 'Vous avez retiré la publication de ce service');
         } catch (\Throwable $th) {
             return redirect()->back()->with('error', 'Une erreur s\'est produite');
         }

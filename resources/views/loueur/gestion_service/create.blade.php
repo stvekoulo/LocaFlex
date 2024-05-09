@@ -64,18 +64,24 @@
                                     <label class="form-label" for="titre">Titre</label>
                                 </div>
                                 <div class="form-floating mb-4">
-                                    <select class="form-select" id="categorie" name="categorie" aria-label="Floating label select example">
+                                    <select class="form-select" id="categorie" name="categorie"
+                                        aria-label="Floating label select example">
                                         <option selected>Sélectionnez une catégorie</option>
                                         <option value="entretien_reparation">Services d'entretien et de réparation</option>
                                         <option value="transports_terrestres">Services de transports terrestres</option>
                                         <option value="transports_aeriens">Services de transports aériens</option>
                                         <option value="telecommunications">Services de télécommunications</option>
                                         <option value="services_financiers">Services financiers</option>
-                                        <option value="services_informatiques">Services informatiques et services connexes</option>
-                                        <option value="services_comptables">Services comptables, d'audit et de tenue de livres</option>
-                                        <option value="etudes_marche_sondages">Services d'études de marché et de sondages</option>
-                                        <option value="conseil_gestion">Services de conseil en gestion et services connexes</option>
-                                        <option value="education_formation">Services d'éducation et de formation professionnelle</option>
+                                        <option value="services_informatiques">Services informatiques et services connexes
+                                        </option>
+                                        <option value="services_comptables">Services comptables, d'audit et de tenue de
+                                            livres</option>
+                                        <option value="etudes_marche_sondages">Services d'études de marché et de sondages
+                                        </option>
+                                        <option value="conseil_gestion">Services de conseil en gestion et services connexes
+                                        </option>
+                                        <option value="education_formation">Services d'éducation et de formation
+                                            professionnelle</option>
                                     </select>
                                     <label class="form-label" for="categorie">Catégorie</label>
                                 </div>

@@ -32,7 +32,7 @@ class GestionBienController extends Controller
             'description' => 'required|string',
             'disponibilite' => 'required|string|max:255',
             'caracteristiques' => 'required|string',
-            'photo.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
+            'photo.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         if ($validator->fails()) {
@@ -81,9 +81,7 @@ class GestionBienController extends Controller
 
             $bien->save();
 
-            return redirect()
-                ->back()
-                ->with('success', 'Vous avez autorise la publication de ce bien');
+            return redirect()->back()->with('success', 'Vous avez autorise la publication de ce bien');
         } catch (\Throwable $th) {
             return redirect()->back()->with('error', 'Une erreur s\'est produite');
         }
@@ -101,9 +99,7 @@ class GestionBienController extends Controller
 
             $bien->save();
 
-            return redirect()
-                ->back()
-                ->with('success', 'Vous avez retiré la publication de ce bien');
+            return redirect()->back()->with('success', 'Vous avez retiré la publication de ce bien');
         } catch (\Throwable $th) {
             return redirect()->back()->with('error', 'Une erreur s\'est produite');
         }
@@ -134,7 +130,7 @@ class GestionBienController extends Controller
             'description' => 'required|string',
             'disponibilite' => 'required|string|max:255',
             'caracteristiques' => 'required|string',
-            'photo.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
+            'photo.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         if ($validator->fails()) {

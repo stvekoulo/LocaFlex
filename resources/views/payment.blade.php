@@ -1,4 +1,139 @@
 @extends('layouts.opus')
 @section('content')
+    <main class="page_content">
+        <!-- Page Section - Start
+            ================================================== -->
+        <section class="page_banner">
+            <div class="container">
+                <div class="content_wrapper" style="background-image: url('{{asset('Template/assets/images/banner/page_banner_image.png')}}');">
+                    <div class="row align-items-center">
+                        <div class="col col-lg-6">
+                            <ul class="breadcrumb_nav unordered_list">
+                                <li><a href="{{ route('home') }}">Accueil</a></li>
+                                <li>Gestion des Paiements</li>
+                            </ul>
+                            <h1 class="page_title">Gérer vos Paiements</h1>
+                            <p class="page_description">
+                                Gérez facilement le paiement de vos factures pour les biens réservés et les services utilisés.
+                            </p>
+                        </div>
 
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Page Section - End
+        ================================================== -->
+
+        <section class="pricing_section section_space_lg pb-0">
+            <div class="container decoration_wrap">
+                <div class="section_heading text-center">
+                    <h2 class="heading_text mb-0">Section Réservation de Biens</h2>
+                </div>
+                <div class="pricing_cards_wrapper row align-items-center">
+                    @foreach ($paymentsForBiens as $index => $payment)
+                        <div class="col col-lg-4">
+                            <div class="pricing_card text-center tilt @if($index == intval(count($paymentsForBiens)/2)) bg_dark @endif">
+                                <h3 class="card_heading">Facture</h3>
+                                <div class="pricing_wrap">
+                                    <span class="price_value"><sup></sup>CFA {{ $payment->montant }}</span>
+                                    <small class="d-block">En attente de paiement</small>
+                                </div>
+                                <hr>
+                                <ul class="info_list unordered_list_block text-start">
+                                    <li>
+                                        <i class="fas fa-caret-right"></i>
+                                        <span>Equipement louer : {{ $payment->bien->titre }}</span>
+                                    </li>
+                                </ul>
+                                <div class="btn_wrap pb-0">
+                                    <a class="btn btn_primary" href="#!">
+                                        <div class="btn_wrap pb-0">
+                                            <a class="btn btn_primary" href="#!">
+                                                <span>
+                                                    <small>Confirmer le paiement</small>
+                                                    <small>Confirmer le paiement</small>
+                                                </span>
+                                            </a>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+                <div class="deco_item shape_img_1" data-parallax='{"y" : 130, "smoothness": 6}'>
+                    <img src="{{ asset('Template/assets/images/shape/shape_img_4.png') }}" alt="Collab – Plateforme location polyvalentes">
+                </div>
+                <div class="deco_item shape_img_2" data-parallax='{"y" : -130, "smoothness": 6}'>
+                    <img src="{{ asset('Template/assets/images/shape/shape_img_5.png') }}" alt="Collab – Plateforme location polyvalentes">
+                </div>
+            </div>
+        </section>
+
+        <section class="pricing_section section_space_lg pb-0">
+            <div class="container decoration_wrap">
+                <div class="section_heading text-center">
+                    <h2 class="heading_text mb-0">Section Réservation des Biens</h2>
+                </div>
+                <div class="pricing_cards_wrapper row align-items-center">
+                    @foreach ($paymentsForServices as $index => $payment)
+                        <div class="col col-lg-4">
+                            <div class="pricing_card text-center tilt @if($index == intval(count($paymentsForServices)/2)) bg_dark @endif">
+                                <h3 class="card_heading">Facture</h3>
+                                <div class="pricing_wrap">
+                                    <span class="price_value"><sup></sup>CFA {{ $payment->montant }}</span>
+                                    <small class="d-block">En attente de paiement</small>
+                                </div>
+                                <hr>
+                                <ul class="info_list unordered_list_block text-start">
+                                    <li>
+                                        <i class="fas fa-caret-right"></i>
+                                        <span>Service: {{ $payment->services->titre }}</span>
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-caret-right"></i>
+                                        <span>Categorie du Service: {{ $payment->services->categorie }}</span>
+                                    </li>
+                                    <!-- Ajoutez d'autres détails du paiement ici -->
+                                </ul>
+                                <div class="btn_wrap pb-0">
+                                    <a class="btn btn_primary" href="#!">
+                                        <span>
+                                            <small>Confirmer le paiement</small>
+                                            <small>Confirmer le paiement</small>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+                <div class="deco_item shape_img_1" data-parallax='{"y" : 130, "smoothness": 6}'>
+                    <img src="{{ asset('Template/assets/images/shape/shape_img_4.png') }}" alt="Collab – Plateforme location polyvalentes">
+                </div>
+                <div class="deco_item shape_img_2" data-parallax='{"y" : -130, "smoothness": 6}'>
+                    <img src="{{ asset('Template/assets/images/shape/shape_img_5.png') }}" alt="Collab – Plateforme location polyvalentes">
+                </div>
+            </div>
+        </section>
+
+        <section class="faq_section section_space_lg">
+            <div class="container">
+                <div class="section_heading text-center mb-3">
+                    <div class="row justify-content-center">
+                        <div class="col col-lg-7">
+                            <h2 class="heading_text">
+                                INFORMATIONS
+                            </h2>
+                            <p class="heading_description mb-0">
+                                Avant de procéder à tout paiement, assurez-vous d'avoir bien reçu l'équipement à louer s'il s'agit d'une réservation de bien, ou d'être sûr d'avoir utilisé le service réservé.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        @include('layouts.partials.client.newslatter')
+    </main>
 @endsection

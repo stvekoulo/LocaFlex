@@ -49,7 +49,8 @@
                     </div>
                 @endif
                 <div class="block-content">
-                    <form  action="{{ route('service.update', $services->id) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('service.update', $services->id) }}" method="POST"
+                        enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col-lg-4">
@@ -60,34 +61,58 @@
                             </div>
                             <div class="col-lg-8 col-xl-5">
                                 <div class="form-floating mb-4">
-                                    <input type="text" class="form-control" value="{{ $services->titre }}" id="titre" name="titre">
+                                    <input type="text" class="form-control" value="{{ $services->titre }}" id="titre"
+                                        name="titre">
                                     <label class="form-label" for="titre">Titre</label>
                                 </div>
                                 <div class="form-floating mb-4">
-                                    <select class="form-select" id="categorie" name="categorie" aria-label="Floating label select example">
+                                    <select class="form-select" id="categorie" name="categorie"
+                                        aria-label="Floating label select example">
                                         <option selected>Sélectionnez une catégorie</option>
-                                        <option value="entretien_reparation"@if ($services->categorie == 'entretien_reparation') selected @endif>Services d'entretien et de réparation</option>
-                                        <option value="transports_terrestres"@if ($services->categorie == 'transports_terrestres') selected @endif>Services de transports terrestres</option>
-                                        <option value="transports_aeriens"@if ($services->categorie == 'transports_aeriens') selected @endif>Services de transports aériens</option>
-                                        <option value="telecommunications"@if ($services->categorie == 'telecommunications') selected @endif>Services de télécommunications</option>
-                                        <option value="services_financiers"@if ($services->categorie == 'services_financiers') selected @endif>Services financiers</option>
-                                        <option value="services_informatiques"@if ($services->categorie == 'services_informatiques') selected @endif>Services informatiques et services connexes</option>
-                                        <option value="services_comptables"@if ($services->categorie == 'services_comptables') selected @endif>Services comptables, d'audit et de tenue de livres</option>
-                                        <option value="etudes_marche_sondages"@if ($services->categorie == 'etudes_marche_sondages') selected @endif>Services d'études de marché et de sondages</option>
-                                        <option value="conseil_gestion"@if ($services->categorie == 'conseil_gestion') selected @endif>Services de conseil en gestion et services connexes</option>
-                                        <option value="education_formation"@if ($services->categorie == 'education_formation') selected @endif>Services d'éducation et de formation professionnelle</option>
+                                        <option
+                                            value="entretien_reparation"@if ($services->categorie == 'entretien_reparation') selected @endif>
+                                            Services d'entretien et de réparation</option>
+                                        <option
+                                            value="transports_terrestres"@if ($services->categorie == 'transports_terrestres') selected @endif>
+                                            Services de transports terrestres</option>
+                                        <option value="transports_aeriens"@if ($services->categorie == 'transports_aeriens') selected @endif>
+                                            Services de transports aériens</option>
+                                        <option value="telecommunications"@if ($services->categorie == 'telecommunications') selected @endif>
+                                            Services de télécommunications</option>
+                                        <option
+                                            value="services_financiers"@if ($services->categorie == 'services_financiers') selected @endif>
+                                            Services financiers</option>
+                                        <option
+                                            value="services_informatiques"@if ($services->categorie == 'services_informatiques') selected @endif>
+                                            Services informatiques et services connexes</option>
+                                        <option
+                                            value="services_comptables"@if ($services->categorie == 'services_comptables') selected @endif>
+                                            Services comptables, d'audit et de tenue de livres</option>
+                                        <option
+                                            value="etudes_marche_sondages"@if ($services->categorie == 'etudes_marche_sondages') selected @endif>
+                                            Services d'études de marché et de sondages</option>
+                                        <option value="conseil_gestion"@if ($services->categorie == 'conseil_gestion') selected @endif>
+                                            Services de conseil en gestion et services connexes</option>
+                                        <option
+                                            value="education_formation"@if ($services->categorie == 'education_formation') selected @endif>
+                                            Services d'éducation et de formation professionnelle</option>
                                     </select>
                                     <label class="form-label" for="categorie">Catégorie</label>
                                 </div>
                                 <div class="form-floating mb-4">
-                                    <input type="number" class="form-control" value="{{ $services->prix }}" id="prix" name="prix">
+                                    <input type="number" class="form-control" value="{{ $services->prix }}" id="prix"
+                                        name="prix">
                                     <label class="form-label" for="prix">Prix</label>
                                 </div>
                                 <div class="form-floating mb-4">
                                     <select class="form-select" id="tags" name="tags"
                                         aria-label="Floating label select example">
-                                        <option selected value="service_domicile"@if ($services->tags == 'service_domicile') selected @endif>Service à domicile</option>
-                                        <option value="service_sur_place"@if ($services->tags == 'service_sur_place') selected @endif>Service sur place</option>
+                                        <option selected
+                                            value="service_domicile"@if ($services->tags == 'service_domicile') selected @endif>
+                                            Service à domicile</option>
+                                        <option
+                                            value="service_sur_place"@if ($services->tags == 'service_sur_place') selected @endif>
+                                            Service sur place</option>
                                     </select>
                                     <label class="form-label" for="tags">Tags</label>
                                 </div>
@@ -98,8 +123,11 @@
                                 <div class="form-floating mb-4">
                                     <select class="form-select" id="disponibilite" name="disponibilite"
                                         aria-label="Floating label select example">
-                                        <option selected value="Disponible"@if ($services->disponibilite == 'Disponible') selected @endif>Disponible</option>
-                                        <option value="Occupé"@if ($services->disponibilite == 'Occupé') selected @endif>Occupé</option>
+                                        <option selected
+                                            value="Disponible"@if ($services->disponibilite == 'Disponible') selected @endif>Disponible
+                                        </option>
+                                        <option value="Occupé"@if ($services->disponibilite == 'Occupé') selected @endif>Occupé
+                                        </option>
                                     </select>
                                     <label class="form-label" for="disponibilite">Disponibilité</label>
                                 </div>

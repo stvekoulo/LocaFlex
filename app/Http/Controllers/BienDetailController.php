@@ -14,9 +14,11 @@ class BienDetailController extends Controller
     {
         $bien = Bien::with('photos')->findOrFail($id);
 
-        $biens = Bien::with(['photos' => function ($query) {
-            $query->take(1);
-        }])->findOrFail($id);
+        $biens = Bien::with([
+            'photos' => function ($query) {
+                $query->take(1);
+            },
+        ])->findOrFail($id);
 
         return view('details_bien', compact('bien', 'biens'));
     }

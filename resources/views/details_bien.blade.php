@@ -28,7 +28,7 @@
         </script>
 
         <!-- Page Section - Start
-                ================================================== -->
+                    ================================================== -->
         <section class="page_banner">
             <div class="container">
                 <div class="content_wrapper">
@@ -104,11 +104,11 @@
             </div>
         </section>
         <!-- Page Section - End
-            ================================================== -->
+                ================================================== -->
 
 
         <!-- Mentor Details Section - Start
-                ================================================== -->
+                    ================================================== -->
         <section class="details_section mentor_details_section section_space_lg">
             <div class="container">
                 <div class="section_space_md pt-0">
@@ -180,6 +180,6 @@
             </div>
         </section>
         <!-- Mentor Details Section - End
-            ================================================== -->
+                ================================================== -->
     </main>
 @endsection
