@@ -1,6 +1,6 @@
 @component('mail::message')
 
-Bonjour {{$user->name}},
+Cher {{$user->name}},
 
 Nous avons le plaisir de vous informer qu'une nouvelle demande de réservation pour l'un de vos biens a été effectuée.
 

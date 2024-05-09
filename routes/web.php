@@ -93,6 +93,15 @@ Route::get('/catalogue/services', [ServiceCatalogueController::class, 'index'])-
 Route::get('dashboard/mes-demandes', [GestionDemandeController::class, 'index'])
     ->name('demande.index')
     ->middleware(['auth', 'verified']);
+Route::post('/mes-demandes/accepter-demande-bein/{demandeId}', [GestionDemandeController::class, 'accepterdemandebien'])->name('accepterdemande.bien');
+Route::post('/mes-demandes/refuser-demande-bein/{demandeId}', [GestionDemandeController::class, 'refuserdemandebien'])->name('refuserdemande.bien');
+
+Route::post('/mes-demandes/accepter-demande-service/{demandeId}', [GestionDemandeController::class, 'accepterdemandeservice'])->name('accepterdemande.service');
+Route::post('/mes-demandes/refuser-demande-service/{demandeId}', [GestionDemandeController::class, 'refuserdemandeservice'])->name('refuserdemande.service');
+
+Route::get('/paiement', [PaymentController::class, 'index'])
+    ->name('payment.index')
+    ->middleware(['auth', 'verified']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

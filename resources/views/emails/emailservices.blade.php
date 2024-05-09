@@ -1,7 +1,7 @@
 
 @component('mail::message')
 
-Bonjour {{$user->name}},
+Cher {{$user->name}},
 
 Nous tenons à vous informer qu'une nouvelle demande de réservation a été effectuée pour l'un de vos services sur la plateforme {{ config('app.name') }}.
 
