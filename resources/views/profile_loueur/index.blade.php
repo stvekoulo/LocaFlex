@@ -71,6 +71,12 @@
                                     name="profile-settings-email" placeholder="Enter your email.."
                                     value="{{ auth()->user()->email }}" readonly>
                             </div>
+                            <div class="mb-4">
+                                <label class="form-label" for="profile-settings-email">Numéro de teléphone</label>
+                                <input type="tel" class="form-control form-control-lg" id="profile-settings-email"
+                                    name="profile-settings-email" placeholder="Enter your phone number"
+                                    value="{{ auth()->user()->phone }}" readonly>
+                            </div>
                         </div>
                     </div>
                 </form>

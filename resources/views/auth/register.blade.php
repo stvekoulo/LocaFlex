@@ -66,6 +66,13 @@
                                             <x-input-error :messages="$errors->get('name')" class="mt-2" />
                                     </div>
                                     <div class="form-group">
+                                        <label for="phone" class="input-label">Numéro de télephone</label>
+                                            <input type="tel" class="form-control" placeholder="votre numéro de téléphone"
+                                                id="phone" name="phone" :value="old('phone')" required autofocus
+                                                autocomplete="phone">
+                                            <x-input-error :messages="$errors->get('phone')" class="mt-2" />
+                                    </div>
+                                    <div class="form-group">
                                         <label for="Email" class="input-label">Email</label>
                                         <input type="email" class="form-control" placeholder="Email" id="email"
                                             name="email" :value="old('email')" required autocomplete="username">

@@ -62,7 +62,7 @@ class GestionDemandeController extends Controller
             'etat' => 'En attente de paiement',
         ]);
 
-        Mail::to($demande->user->email)->send(new DemandeServicenAccepterMail($demande->user));
+        Mail::to($demande->user->email)->send(new DemandeServiceAccepterMail($demande->user));
 
         return back()->with('success', 'Le service a été acceptée avec succès.');
     }

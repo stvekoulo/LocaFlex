@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->decimal('montant', 10, 2);
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->foreignId('bien_id')->constrained()->onDelete('cascade');
+            $table->foreignId('bien_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('owner_id')->constrained('users')->onDelete('cascade');
             $table->string('etat')->default('En attente de paiement');
             $table->timestamps();
