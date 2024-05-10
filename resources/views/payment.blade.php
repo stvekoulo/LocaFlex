@@ -28,7 +28,7 @@
         <section class="pricing_section section_space_lg pb-0">
             <div class="container decoration_wrap">
                 <div class="section_heading text-center">
-                    <h2 class="heading_text mb-0">Section Réservation de Biens</h2>
+                    <h2 class="heading_text mb-0">Section Réservation des Biens</h2>
                 </div>
                 <div class="pricing_cards_wrapper row align-items-center">
                     @foreach ($paymentsForBiens as $index => $payment)
@@ -49,7 +49,7 @@
                                 <div class="btn_wrap pb-0">
                                     <a class="btn btn_primary" href="#!">
                                         <div class="btn_wrap pb-0">
-                                            <a class="btn btn_primary" href="#!">
+                                            <a class="btn btn_primary" href="{{ route('payment.store', ['paiementId' => $payment->id]) }}">
                                                 <span>
                                                     <small>Confirmer le paiement</small>
                                                     <small>Confirmer le paiement</small>
@@ -74,7 +74,7 @@
         <section class="pricing_section section_space_lg pb-0">
             <div class="container decoration_wrap">
                 <div class="section_heading text-center">
-                    <h2 class="heading_text mb-0">Section Réservation des Biens</h2>
+                    <h2 class="heading_text mb-0">Section Réservation des Services</h2>
                 </div>
                 <div class="pricing_cards_wrapper row align-items-center">
                     @foreach ($paymentsForServices as $index => $payment)
@@ -98,7 +98,7 @@
                                     <!-- Ajoutez d'autres détails du paiement ici -->
                                 </ul>
                                 <div class="btn_wrap pb-0">
-                                    <a class="btn btn_primary" href="#!">
+                                    <a class="btn btn_primary" href="{{ route('payment.store', ['paiementId' => $payment->id]) }}">
                                         <span>
                                             <small>Confirmer le paiement</small>
                                             <small>Confirmer le paiement</small>

@@ -4,15 +4,18 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PaiementController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\BienDetailController;
 use App\Http\Controllers\GestionBienController;
+use App\Http\Controllers\PaymentStoreController;
 use App\Http\Controllers\BienCatalogueController;
 use App\Http\Controllers\LoueurProfileController;
 use App\Http\Controllers\LoueurServiceController;
 use App\Http\Controllers\ServiceDetailController;
 use App\Http\Controllers\GestionDemandeController;
 use App\Http\Controllers\GestionServiceController;
+use App\Http\Controllers\NotchPayCallBackController;
 use App\Http\Controllers\ServiceCatalogueController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -100,12 +103,13 @@ Route::post('/mes-demandes/refuser-demande-bein/{demandeId}', [GestionDemandeCon
 Route::post('/mes-demandes/accepter-demande-service/{demandeId}', [GestionDemandeController::class, 'accepterdemandeservice'])->name('accepterdemande.service');
 Route::post('/mes-demandes/refuser-demande-service/{demandeId}', [GestionDemandeController::class, 'refuserdemandeservice'])->name('refuserdemande.service');
 
-Route::get('/paiement', [PaymentController::class, 'index'])
+Route::get('/paiement', [PaiementController::class, 'index'])
     ->name('payment.index')
     ->middleware(['auth', 'verified']);
-Route::get('/paiement/{paiementId}', [PaymentController::class])
+Route::get('/paiement/{paiementId}', [PaymentController::class, '__invoke'])
     ->name('payment.store')
     ->middleware(['auth', 'verified']);
+Route::get('callback-payment', NotchPayCallBackController::class)->name('notchpay-callback')-> middleware(['auth', 'verified']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
