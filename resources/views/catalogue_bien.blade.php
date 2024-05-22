@@ -23,21 +23,8 @@
                             </ul>
                             <h1 class="page_title">Catalogue des Produits</h1>
                             <p class="page_description">
-                                Egestas sed tempus urna et pharetra. Leo integer malesuada nunc vel. Libero id
-                                faucibus nisl tincidunt eget nullam non nisi. Faucibus turpis in eu mi bibendum
-                                neque egestas
+
                             </p>
-                            <form action="#">
-                                <div class="form_item mb-0">
-                                    <input type="search" name="search" placeholder="What do you want to learn ?">
-                                    <button type="submit" class="btn btn_dark">
-                                        <span>
-                                            <small>Search</small>
-                                            <small>Search</small>
-                                        </span>
-                                    </button>
-                                </div>
-                            </form>
                         </div>
                     </div>
                 </div>
