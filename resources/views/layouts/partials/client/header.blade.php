@@ -17,16 +17,16 @@
                                 <li><a class="nav-link" href="{{ route('home') }}">Acceuil</a></li>
                                 <li class="dropdown">
                                     <a class="nav-link" href="#" id="home_submenu" role="button"
-                                        data-bs-toggle="dropdown" aria-expanded="false">Option</a>
+                                        data-bs-toggle="dropdown" aria-expanded="false">Option
+                                        <i class="fa-solid fa-turn-down"></i>
+                                    </a>
                                     <ul class="dropdown-menu" aria-labelledby="home_submenu">
-                                        <li><a href="{{ route('bien.catalogue') }}">Catalogue Équipements à Louer </a>
-                                        </li>
-                                        <li><a href="{{ route('service.catalogue') }}">Catalogue Services
-                                                disponibles</a></li>
+                                        <li><a href="{{ route('bien.catalogue') }}">Catalogue Équipements à Louer </a></li>
+                                        <li><a href="{{ route('service.catalogue') }}">Catalogue Services disponibles</a></li>
+                                        @if (auth()->check())
+                                        <li><a class="nav-link" href="{{ route('payment.index') }}">Paiement</a></li>
+                                        @endif
                                     </ul>
-                                    @if (auth()->check())
-                                    <li><a class="nav-link" href="{{ route('payment.index') }}">Paiement</a></li>
-                                    @endif
                                 </li>
                                 <li><a class="nav-link" href="#">Contact</a></li>
                             </ul>
@@ -39,7 +39,7 @@
                             <button class="mobile_menu_btn" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#main_menu_dropdown" aria-controls="main_menu_dropdown"
                                 aria-expanded="false" aria-label="Toggle navigation">
-                                <i class="far fa-bars"></i>
+                                <i class="fa-solid fa-arrow-down"></i>
                             </button>
                         </li>
                         @if (auth()->check())
