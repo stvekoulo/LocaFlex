@@ -36,31 +36,31 @@
                                     <ul class="students_thumbnail unordered_list_center">
                                         <li>
                                             <span>
-                                                <img src="{{ asset('Template/assets/images/meta/student_thumbnail_1.png') }}"
+                                                <img src="{{ asset('autres_images/11.jpg') }}"
                                                     alt="Collab – Plateforme location polyvalentes">
                                             </span>
                                         </li>
                                         <li>
                                             <span>
-                                                <img src="{{ asset('Template/assets/images/meta/student_thumbnail_1.png') }}"
+                                                <img src="{{ asset('autres_images/12.jpg') }}"
                                                     alt="Collab – Plateforme location polyvalentes">
                                             </span>
                                         </li>
                                         <li>
                                             <span>
-                                                <img src="{{ asset('Template/assets/images/meta/student_thumbnail_1.png') }}"
+                                                <img src="{{ asset('autres_images/13.jpg') }}"
                                                     alt="Collab – Plateforme location polyvalentes">
                                             </span>
                                         </li>
                                         <li>
                                             <span>
-                                                <img src="{{ asset('Template/assets/images/meta/student_thumbnail_1.png') }}"
+                                                <img src="{{ asset('autres_images/12.jpg') }}"
                                                     alt="Collab – Plateforme location polyvalentes">
                                             </span>
                                         </li>
                                         <li>
                                             <span>
-                                                <img src="{{ asset('Template/assets/images/meta/student_thumbnail_1.png') }}"
+                                                <img src="{{ asset('autres_images/11.jpg') }}"
                                                     alt="Collab – Plateforme location polyvalentes">
                                             </span>
                                         </li>
