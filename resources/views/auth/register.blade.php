@@ -39,7 +39,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-6 col-12 fxt-bg-wrap">
-                        <div class="fxt-bg-img" data-bg-image="{{asset('auth/img/figure/bg4-r.jpg')}}">
+                        <div class="fxt-bg-img" data-bg-image="{{asset('autres_images/9.jpg')}}">
                             <div class="fxt-header">
                                 <div class="fxt-transformY-50 fxt-transition-delay-1">
                                     <a href="#" class="fxt-logo"><img src="{{asset('Template/assets/images/logo/site_logo.svg')}}" alt="Logo"></a>

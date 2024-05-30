@@ -28,7 +28,7 @@
                         <div class="col col-lg-5">
                             <div class="banner_image_1 decoration_wrap">
                                 <div class="image_wrap">
-                                    <img src="{{ asset('Template/assets/images/banner/hero_banner_img_1.jpg') }}"
+                                    <img src="{{ asset('autres_images/1.jpg') }}"
                                         alt="Collab – Plateforme location polyvalentes">
                                 </div>
                                 <div class="satisfied_student">
@@ -109,7 +109,7 @@
                         </div>
 
                         <div class="image_widget">
-                            <img src="{{ asset('Template/assets/images/about/about_image_1.jpg') }}"
+                            <img src="{{ asset('autres_images/2.jpg') }}"
                                 alt="Collab – Plateforme location polyvalentes">
                         </div>
                     </div>

@@ -3402,10 +3402,11 @@ blockquote p {
       -ms-flex-align: center;
           align-items: center;
   padding: 70px 115px;
-  background-size: 571px;
+  background-size: cover;
   background-repeat: no-repeat;
   background-color: #F6F6F6;
   background-position: right bottom;
+  border-radius: 25px;
 }
 .page_banner .container {
   border-radius: 45px;
@@ -3488,9 +3489,10 @@ blockquote p {
   font-family: "Font Awesome 5 Pro";
 }
 .breadcrumb_nav > li > a {
-  opacity: 0.7;
+  opacity: 1;
   display: block;
-  color: #1F1D0D;
+  color: #000000;
+  font-weight: bold;
 }
 .breadcrumb_nav > li > a:hover {
   opacity: 1;
@@ -4178,7 +4180,7 @@ Responsive For Mobile & Tablet Devices
     margin-top: 10px;
   }
   .page_banner .content_wrapper {
-    background-size: 470px;
+    background-size: cover;
   }
   .brands_logo_list.style_2 li {
     width: auto;
@@ -4396,8 +4398,10 @@ Responsive For Mobile & Tablet Devices
   .page_banner .content_wrapper {
     padding: 70px;
     text-align: center;
-    background-size: 300px;
+    background-size: cover;
+    background-position: center;
   }
+
   .breadcrumb_nav {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
