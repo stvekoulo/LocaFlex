@@ -4780,7 +4780,7 @@ Responsive For Mobile & Tablet Devices
   }
   .page_banner .content_wrapper {
     padding: 70px 25px;
-    background-size: 230px;
+    background-size: cover;
   }
   .iconbox_item .title_wrap {
     display: block;
