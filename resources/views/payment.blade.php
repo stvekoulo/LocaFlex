@@ -5,7 +5,7 @@
             ================================================== -->
         <section class="page_banner">
             <div class="container">
-                <div class="content_wrapper" style="background-image: url('{{asset('Template/assets/images/banner/page_banner_image.png')}}');">
+                <div class="content_wrapper" style="background-image: url('{{ asset('autres_images/8.jpg') }}');">
                     <div class="row align-items-center">
                         <div class="col col-lg-6">
                             <ul class="breadcrumb_nav unordered_list">
