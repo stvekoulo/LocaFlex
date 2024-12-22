@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Mail;
 use App\Models\Paiement;
 use Illuminate\Http\Request;
 use App\Models\DemandeService;
 use App\Models\DemandeReservation;
 use App\Mail\DemandeBienRefuserMail;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use App\Mail\DemandeBienAccepterMail;
-use App\Mail\DemandeServiceAccepterMail;
 use App\Mail\DemandeServiceRefuserMail;
+use App\Mail\DemandeServiceAccepterMail;
 
 class GestionDemandeController extends Controller
 {
