@@ -8,10 +8,7 @@
 @endphp
 @extends('layouts.opus')
 @section('content')
-
     <main class="page_content">
-        <!-- Banner Section - Start
-                ================================================== -->
         <section class="hero_banner style_1">
             <div class="container">
                 <div class="content_wrap">
@@ -80,11 +77,6 @@
                 </div>
             </div>
         </section>
-        <!-- Banner Section - End
-            ================================================== -->
-
-        <!-- Expect From Course - Start
-                ================================================== -->
         <section class="expect_from_course section_space_lg">
             <div class="container">
                 <div class="row">
@@ -109,8 +101,7 @@
                         </div>
 
                         <div class="image_widget">
-                            <img src="{{ asset('autres_images/2.jpg') }}"
-                                alt="Collab – Plateforme location polyvalentes">
+                            <img src="{{ asset('autres_images/2.jpg') }}" alt="Collab – Plateforme location polyvalentes">
                         </div>
                     </div>
                     <div class="col col-lg-6">
@@ -180,11 +171,6 @@
                 </div>
             </div>
         </section>
-        <!-- Expect From Course - End
-            ================================================== -->
-
-        <!-- Courses Section - Start
-                ================================================== -->
         <section class="courses_section section_space_lg">
             <div class="container">
                 <div class="section_heading">
@@ -199,7 +185,6 @@
                                 Parcourez et Trouvez ce Dont Vous Avez Besoin
                             </p>
                         </div>
-
                     </div>
                 </div>
 
@@ -335,14 +320,5 @@
                 </div>
             </div>
         </section>
-        <!-- Courses Section - End
-            ================================================== -->
-
-        <!-- Newslatter Section - Start
-                ================================================== -->
-        @include('layouts.partials.client.newslatter')
-        <!-- Newslatter Section - End
-            ================================================== -->
     </main>
-
 @endsection

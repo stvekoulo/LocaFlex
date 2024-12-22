@@ -17,6 +17,7 @@ class HomeController extends Controller
             },
         ])
             ->where('publie', true)
+            ->where('disponibilite', 'Disponible')
             ->latest()
             ->take(9)
             ->get();

@@ -9,32 +9,19 @@
 @extends('layouts.opus')
 @section('content')
     <main class="page_content">
-        <!-- Page Section - Start
-            ================================================== -->
-            <section class="page_banner">
-                <div class="container">
-                    <div class="content_wrapper" style="background-image: url('{{ asset('autres_images/8.jpg') }}');">
-                        <div class="row align-items-center">
-                            <div class="col col-lg-6">
-                                <ul class="breadcrumb_nav unordered_list">
-                                    <li><a href="{{ route('home') }}">Accueil</a></li>
-                                    <li>Catalogue</li>
-                                </ul>
-                                <h1 class="page_title">Catalogue des Produits</h1>
-                                <p class="page_description">
-            
-                                </p>
-                            </div>
+        <section class="page_banner">
+            <div class="container">
+                <div class="content_wrapper" style="background-image: url('{{ asset('autres_images/8.jpg') }}');">
+                    <div class="row align-items-center">
+                        <div class="col col-lg-6">
+                            <h1 class="page_title">Catalogue des Produits</h1>
+                            <p class="page_description">
+                            </p>
                         </div>
                     </div>
                 </div>
-            </section>
-            
-        <!-- Page Section - End
-        ================================================== -->
-
-        <!-- Courses Archive Section - Start
-            ================================================== -->
+            </div>
+        </section>
         <section class="courses_archive_section section_space_lg">
             <div class="container">
                 <div class="row">
@@ -54,7 +41,7 @@
                                                 <li><a href="#!">{{ $bien->categorie }}</a></li>
                                             </ul>
                                             <div class="item_price">
-                                                <span class="sale_price">CFA {{ $bien->prix }}</span>
+                                                <span class="sale_price">CFA {{ number_format($bien->prix, 0) }}</span>
                                             </div>
                                         </div>
                                         <ul class="meta_info_list unordered_list">
@@ -86,12 +73,6 @@
             </div>
         </section>
         <!-- Courses Archive Section - End
-        ================================================== -->
-
-        <!-- Newslatter Section - Start
             ================================================== -->
-        @include('layouts.partials.client.newslatter')
-        <!-- Newslatter Section - End
-        ================================================== -->
     </main>
 @endsection

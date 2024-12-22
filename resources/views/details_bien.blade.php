@@ -26,34 +26,23 @@
                 });
             @endif
         </script>
-
-        <!-- Page Section - Start
-                    ================================================== -->
         <section class="page_banner">
             <div class="container">
                 <div class="content_wrapper">
                     <div class="row align-items-center">
                         <div class="col col-lg-7">
-                            <ul class="breadcrumb_nav unordered_list">
-                                <li><a href="{{ route('home') }}">Accueil</a></li>
-                                <li><a href="#">Bien</a></li>
-                                <li>Détail du produit</li>
-                            </ul>
                             <h1 class="page_title">
                                 {{ $bien->titre }}
                             </h1>
                             <br>
                             <li>
-                                <a href="#" class="btn btn_dark" data-bs-toggle="modal"
-                                    data-bs-target="#demandeModal">
+                                <a href="#" class="btn btn_dark" data-bs-toggle="modal" data-bs-target="#demandeModal">
                                     <span>
                                         <small>Faire une demande de réservation</small>
                                         <small>Envoyer la demande</small>
                                     </span>
                                 </a>
                             </li>
-
-                            <!-- Modal -->
                             <div class="modal fade" id="demandeModal" tabindex="-1" aria-labelledby="demandeModalLabel"
                                 aria-hidden="true">
                                 <div class="modal-dialog">
@@ -78,24 +67,21 @@
                                                 </div>
                                                 <input type="hidden" name="bien_id" value="{{ $bien->id }}">
                                                 <button type="submit" class="btn btn_dark">
-                                                    <a href="#" class="btn btn_dark">
-                                                        <span>
-                                                            <small>Envoyer la demande</small>
-                                                            <small>soumettre</small>
-                                                        </span>
-                                                    </a>
+                                                    <span>
+                                                        <small>Envoyer la demande</small>
+                                                        <small>soumettre</small>
+                                                    </span>
                                                 </button>
                                             </form>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                         <div class="col col-lg-5">
                             <div class="image_widget page_banner_image">
                                 <h1 class="page_title">
-                                    CFA {{ $bien->prix }}
+                                    CFA {{ number_format($bien->prix, 0) }}
                                 </h1>
                             </div>
                         </div>
@@ -103,12 +89,6 @@
                 </div>
             </div>
         </section>
-        <!-- Page Section - End
-                ================================================== -->
-
-
-        <!-- Mentor Details Section - Start
-                    ================================================== -->
         <section class="details_section mentor_details_section section_space_lg">
             <div class="container">
                 <div class="section_space_md pt-0">
@@ -180,6 +160,6 @@
             </div>
         </section>
         <!-- Mentor Details Section - End
-                ================================================== -->
+                        ================================================== -->
     </main>
 @endsection
