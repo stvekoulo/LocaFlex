@@ -3,11 +3,11 @@
     <main class="page_content">
         <section class="page_banner">
             <div class="container">
-                <div class="content_wrapper" style="background-image: url('{{ asset('autres_images/8.jpg') }}');">
+                <div class="content_wrapper" style="background-image: url('{{ asset('autres_images/person-paying-using-nfc-technology.jpg') }}');">
                     <div class="row align-items-center">
                         <div class="col col-lg-6">
-                            <h1 class="page_title">Gérer vos Paiements</h1>
-                            <p class="page_description">
+                            <h1 class="page_title" style="color: white">Gérer vos Paiements</h1>
+                            <p class="page_description" style="color: white">
                                 Gérez facilement le paiement de vos factures pour les biens réservés et les services
                                 utilisés.
                             </p>
