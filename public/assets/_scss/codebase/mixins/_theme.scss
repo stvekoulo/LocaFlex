@@ -33,7 +33,7 @@
   // Scaffolding
   body {
     color: $body-color;
-    background-color: $light;
+    background-color: $body-bg;
   }
 
   // Links
@@ -65,7 +65,7 @@
   @include text-emphasis-variant(".text-primary-light", $primary-light);
   @include text-emphasis-variant(".text-primary-lighter", $primary-lighter);
 
-  @include text-emphasis-variant(".text-body-bg", $light);
+  @include text-emphasis-variant(".text-body-bg", $body-bg);
   @include text-emphasis-variant(".text-body-bg-light", $body-bg-light);
   @include text-emphasis-variant(".text-body-bg-dark", $body-bg-dark);
 
@@ -77,7 +77,9 @@
   @include text-emphasis-variant(".text-dual", $primary-dark);
 
   .page-header-dark #page-header,
-  .sidebar-dark #sidebar {
+  .sidebar-dark #sidebar,
+  html.dark #page-header,
+  html.dark #sidebar {
     @include text-emphasis-variant(".text-dual", $body-color-light);
   }
 
@@ -89,7 +91,7 @@
   @include bg-variant(".bg-primary-darker", $primary-darker);
   @include bg-variant(".bg-primary-light", $primary-light);
   @include bg-variant(".bg-primary-lighter", $primary-lighter);
-  @include bg-variant(".bg-body", $light);
+  @include bg-variant(".bg-body", $body-bg);
   @include bg-variant(".bg-body-light", $body-bg-light);
   @include bg-variant(".bg-body-dark", $body-bg-dark);
   @include bg-gradient-variant('.bg-gd-primary', 135deg, darken($primary, 15%), lighten($primary, 5%));
@@ -134,7 +136,11 @@
   .page-header-dark #page-header .btn-alt-secondary,
   .sidebar-dark #sidebar .btn-alt-secondary,
   #sidebar .bg-header-dark .content-header .btn-alt-secondary,
-  .page-header-dark.page-header-glass:not(.page-header-scroll) #page-header .btn-alt-secondary {
+  .page-header-dark.page-header-glass:not(.page-header-scroll) #page-header .btn-alt-secondary,
+  html.dark #page-header .btn-alt-secondary,
+  html.dark #sidebar .btn-alt-secondary,
+  html.dark #sidebar .content-header .btn-alt-secondary,
+  html.dark .page-header-glass:not(.page-header-scroll) #page-header .btn-alt-secondary {
     @include button-variant($header-dark-bg, $header-dark-bg, $white, tint-color($header-dark-bg, 15%), tint-color($header-dark-bg, 15%), $white);
   }
 
@@ -165,7 +171,7 @@
 
       &:hover,
       &:focus {
-        background-color: $light;
+        background-color: $body-bg;
       }
     }
 
@@ -279,8 +285,8 @@
 
   .page-link {
     color: $body-color;
-    background-color: $light;
-    border-color: $light;
+    background-color: $body-bg;
+    border-color: $body-bg;
 
 
     &:hover {
@@ -395,7 +401,7 @@
   }
 
   .dropdown-divider {
-    border-top-color: $light;
+    border-top-color: $body-bg;
   }
 
   .dropdown-item {
@@ -404,7 +410,7 @@
     &:hover,
     &:focus {
       color: $body-color;
-      background-color: $light;
+      background-color: $body-bg;
     }
 
     &.active,
@@ -448,6 +454,10 @@
     }
   }
 
+  .form-control::placeholder {
+    color: tint-color($body-color, 50%);
+  }
+
   .form-select {
     &:focus::-ms-value {
       color: $input-color;
@@ -457,8 +467,8 @@
 
   .form-control.form-control-alt,
   .form-select.form-control-alt {
-    border-color: $light;
-    background-color: $light;
+    border-color: $body-bg;
+    background-color: $body-bg;
 
     &:focus {
       border-color: $body-bg-dark;
@@ -472,7 +482,7 @@
 
   .input-group-text {
     color: $input-color;
-    background-color: $light;
+    background-color: $body-bg;
     border-color: $input-border-color;
   }
 
@@ -533,6 +543,17 @@
     .form-check-input[readonly]:not([checked]) + .form-check-label:hover { 
       border-color: $body-bg-dark;
     }
+  }
+
+  .form-floating > .form-control::placeholder {
+    color: transparent;
+  }
+
+  .form-floating > .form-control:focus ~ label::after,
+  .form-floating > .form-control:not(:placeholder-shown) ~ label::after,
+  .form-floating > .form-control-plaintext ~ label::after,
+  .form-floating > .form-select ~ label::after {
+    background-color: $input-bg;
   }
 
   // Borders
@@ -610,11 +631,12 @@
     // Page header
     @include media-breakpoint-up(lg) {
       &.page-header-modern #page-header {
-        background-color: $light;
+        background-color: $body-bg;
       }
     }
 
-    &.page-header-dark #page-header {
+    &.page-header-dark #page-header,
+    html.dark & #page-header {
       color: darken($body-color-light, 8%);
       background-color: $header-dark-bg;
     }
@@ -629,7 +651,8 @@
           background-color: $header-bg;
         }
 
-        &.page-header-scroll.page-header-dark #page-header {
+        &.page-header-scroll.page-header-dark #page-header,
+        html.dark &.page-header-scroll #page-header {
           background-color: $header-dark-bg;
         }
       }
@@ -637,17 +660,18 @@
 
     // Sidebar and side overlay related
     @include media-breakpoint-up(lg) {
-      &.page-header-modern:not(.sidebar-dark) #sidebar {
+      html:not(.dark) &.page-header-modern:not(.sidebar-dark) #sidebar {
         box-shadow: 5px 0 10px $body-bg-dark;
       }
 
-      &.page-header-modern.sidebar-r:not(.sidebar-dark) #sidebar {
+      html:not(.dark) &.page-header-modern.sidebar-r:not(.sidebar-dark) #sidebar {
         box-shadow: -5px 0 10px $body-bg-dark;
       }
     }
 
     // Sidebar and Side Overlay  
-    &.sidebar-dark #sidebar {
+    &.sidebar-dark #sidebar,
+    html.dark & #sidebar {
       color: $body-color-light;
       background-color: $sidebar-dark-bg;
   
@@ -753,7 +777,7 @@
   // Main Navigation   
   // Headings
   .nav-main-heading {
-    color: lighten($body-color, 25%);
+    color: tint-color($body-color, 35%);
   }
   
   // Default links
@@ -806,7 +830,7 @@
     .nav-main-horizontal {
       // Sub menus
       .nav-main-submenu {
-        background-color: $light;
+        background-color: $body-bg;
       }
   
       &.nav-main-hover {
@@ -827,8 +851,10 @@
   .nav-main-dark,
   .sidebar-dark #sidebar,
   .page-header-dark #page-header,
-  .dark-mode #side-overlay,
-  .dark-mode #main-container {
+  html.dark #sidebar,
+  html.dark #page-header,
+  html.dark #side-overlay,
+  html.dark #main-container {
     // Default links
     .nav-main-link {
       color: rgba($body-color-light, .75);
@@ -885,7 +911,9 @@
     .nav-main-dark.nav-main-horizontal,
     .sidebar-dark #sidebar .nav-main-horizontal,
     .page-header-dark #page-header .nav-main-horizontal,
-    .dark-mode #main-container .nav-main-horizontal {
+    html.dark #sidebar .nav-main-horizontal,
+    html.dark #page-header .nav-main-horizontal,
+    html.dark #main-container .nav-main-horizontal {
       .nav-main-submenu {
         background-color: darken($sidebar-dark-bg, 3%) !important;
       }
@@ -911,7 +939,7 @@
   // Users Navigation
   .nav-users {
     a {
-      border-bottom-color: $light;
+      border-bottom-color: $body-bg;
 
       &:hover {
         background-color: $body-bg-light;
@@ -927,12 +955,12 @@
       }
 
       &:active {
-        background-color: $light;
+        background-color: $body-bg;
       }
     }    
 
     > li:not(:last-child) > a {
-      border-bottom-color: $light;
+      border-bottom-color: $body-bg;
     }
   }
 
@@ -958,7 +986,7 @@
   // Activity
   .list-activity {
     > li {
-      border-bottom-color: $light;
+      border-bottom-color: $body-bg;
     }
   }
 
@@ -1085,8 +1113,8 @@
 
       &:not(:disabled):hover {
         color: $body-color;
-        background-color: $light;
-        border-color: $light;
+        background-color: $body-bg;
+        border-color: $body-bg;
       }
 
       &:not(:disabled).fc-button-active,
@@ -1127,7 +1155,7 @@
     .irs-max,
     .irs-line,
     .irs-grid-pol {
-      background: $light;
+      background: $body-bg;
     }
 
     .irs-handle {

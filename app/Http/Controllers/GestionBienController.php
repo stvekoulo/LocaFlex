@@ -39,7 +39,7 @@ class GestionBienController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        $publication = false;
+        $publication = true;
 
         $bien = Bien::create([
             'titre' => $request->titre,

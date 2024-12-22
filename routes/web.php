@@ -109,7 +109,9 @@ Route::get('/paiement', [PaiementController::class, 'index'])
 Route::get('/paiement/{paiementId}', [PaymentController::class, '__invoke'])
     ->name('payment.store')
     ->middleware(['auth', 'verified']);
-Route::get('callback-payment', NotchPayCallBackController::class)->name('notchpay-callback')-> middleware(['auth', 'verified']);
+Route::get('callback-payment', NotchPayCallBackController::class)
+    ->name('notchpay-callback')
+    ->middleware(['auth', 'verified']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

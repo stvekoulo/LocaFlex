@@ -17,13 +17,10 @@
   $link-color,
   $link-hover-color
 ) {
-  #page-container.dark-mode {
-    background-color: darken($primary-darker, 3%);
-  }
-
-  .dark-mode {
+  html.dark {
     // Main Structure
     &,
+    #page-container,
     #side-overlay,
     #page-loader {
       background-color: darken($primary-darker, 3%);
@@ -32,7 +29,8 @@
 
     // Page header
     @include media-breakpoint-up(lg) {
-      &.page-header-modern.page-header-dark #page-header {
+      & .page-header-modern.page-header-dark #page-header,
+      & .page-header-modern #page-header {
         background-color: darken($primary-darker, 3%) !important;
       }
     }
@@ -257,6 +255,11 @@
         border-color: transparent;
       }
     }
+
+    .page-item:not(.active) > .page-link:focus {
+      background-color: darken($primary-darker, 6%);
+      border-color: darken($primary-darker, 6%);
+    }
     
     .page-link {
       color: darken($body-bg-dark, 30%);
@@ -452,11 +455,7 @@
     }
 
     .form-control::placeholder {
-      color: lighten($primary-dark, 30%);
-    }
-
-    .form-floating > .form-control::placeholder {
-      color: transparent;
+      color: tint-color($body-color, 30%);
     }
     
     .form-control,
@@ -594,6 +593,24 @@
       .form-check-input[readonly]:not([checked]) + .form-check-label:hover { 
         border-color: darken($primary-darker, 4.5%);
       }
+    }
+
+    .form-floating > .form-control::placeholder {
+      color: transparent;
+    }
+  
+    .form-floating > .form-control:focus ~ label,
+    .form-floating > .form-control:not(:placeholder-shown) ~ label,
+    .form-floating > .form-control-plaintext ~ label,
+    .form-floating > .form-select ~ label {
+      color: tint-color($body-color, 50%);
+    }
+  
+    .form-floating > .form-control:focus ~ label::after,
+    .form-floating > .form-control:not(:placeholder-shown) ~ label::after,
+    .form-floating > .form-control-plaintext ~ label::after,
+    .form-floating > .form-select ~ label::after {
+      background-color: darken($primary-darker, 4.5%);
     }
 
     // Breadcrumb

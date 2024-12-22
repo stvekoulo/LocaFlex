@@ -1,4 +1,4 @@
-/*! Responsive 3.0.0
+/*! Responsive 3.0.3
  * © SpryMedia Ltd - datatables.net/license
  */
 
@@ -52,7 +52,7 @@ var DataTable = $.fn.dataTable;
 /**
  * @summary     Responsive
  * @description Responsive tables plug-in for DataTables
- * @version     3.0.0
+ * @version     3.0.3
  * @author      SpryMedia Ltd
  * @copyright   SpryMedia Ltd.
  *
@@ -193,7 +193,9 @@ $.extend(Responsive.prototype, {
 					var idx = dt.column.index('toData', i);
 
 					if (that.s.current[idx] === false) {
-						$(this).css('display', 'none');
+						$(this)
+							.css('display', 'none')
+							.addClass('dtr-hidden');
 					}
 				});
 			}
@@ -222,7 +224,6 @@ $.extend(Responsive.prototype, {
 		});
 
 		this._classLogic();
-		this._resizeAuto();
 
 		// Details handler
 		var details = this.c.details;
@@ -259,18 +260,6 @@ $.extend(Responsive.prototype, {
 			$(dt.table().node()).addClass('dtr-' + details.type);
 		}
 
-		dt.on('column-reorder.dtr', function (e, settings, details) {
-			that._classLogic();
-			that._resizeAuto();
-			that._resize(true);
-		});
-
-		// Change in column sizes means we need to calc
-		dt.on('column-sizing.dtr', function () {
-			that._resizeAuto();
-			that._resize();
-		});
-
 		// DT2 let's us tell it if we are hiding columns
 		dt.on('column-calc.dt', function (e, d) {
 			var curr = that.s.current;
@@ -304,30 +293,65 @@ $.extend(Responsive.prototype, {
 			});
 		});
 
-		dt.on('draw.dtr', function () {
-			that._controlClass();
-		}).on('init.dtr', function (e, settings, details) {
-			if (e.namespace !== 'dt') {
-				return;
-			}
+		// First pass when the table is ready
+		dt
+			.on('draw.dtr', function () {
+				that._controlClass();
+			})
+			.ready(function () {
+				that._resizeAuto();
+				that._resize();
 
-			that._resizeAuto();
-			that._resize();
+				// Attach listeners after first pass
+				dt.on('column-reorder.dtr', function (e, settings, details) {
+					that._classLogic();
+					that._resizeAuto();
+					that._resize(true);
+				});
 
-			// If columns were hidden, then DataTables needs to adjust the
-			// column sizing
-			if ($.inArray(false, that.s.current)) {
-				dt.columns.adjust();
-			}
-		});
-
-		// First pass - draw the table for the current viewport size
-		this._resize();
+				// Change in column sizes means we need to calc
+				dt.on('column-sizing.dtr', function () {
+					that._resizeAuto();
+					that._resize();
+				});
+			});
 	},
 
 	/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 	 * Private methods
 	 */
+
+	/**
+	 * Insert a `col` tag into the correct location in a `colgroup`.
+	 *
+	 * @param {jQuery} colGroup The `colgroup` tag
+	 * @param {jQuery} colEl The `col` tag
+	 */
+	_colGroupAttach: function (colGroup, colEls, idx) {
+		var found = null;
+
+		// No need to do anything if already attached
+		if (colEls[idx].get(0).parentNode === colGroup[0]) {
+			return;
+		}
+
+		// Find the first `col` after our own which is already attached
+		for (var i = idx+1; i < colEls.length; i++) {
+			if (colGroup[0] === colEls[i].get(0).parentNode) {
+				found = i;
+				break;
+			}
+		}
+
+		if (found !== null) {
+			// Insert before
+			colEls[idx].insertBefore(colEls[found][0]);
+		}
+		else {
+			// If wasn't found, insert at the end
+			colGroup.append(colEls[idx]);
+		}
+	},
 
 	/**
 	 * Get and store nodes from a cell - use for node moving renderers
@@ -976,6 +1000,10 @@ $.extend(Responsive.prototype, {
 		var changed = false;
 		var visible = 0;
 		var dtSettings = dt.settings()[0];
+		var colGroup = $(dt.table().node()).children('colgroup');
+		var colEls = dtSettings.aoColumns.map(function (col) {
+			return col.colEl;
+		});
 
 		dt.columns()
 			.eq(0)
@@ -997,13 +1025,19 @@ $.extend(Responsive.prototype, {
 
 				// DataTables 2 uses `col` to define the width for a column
 				// and this needs to run each time, as DataTables will change
-				// the column width
+				// the column width. We may need to reattach if we've removed
+				// an element previously.
 				if (! columnsVis[i]) {
-					$(dtSettings.aoColumns[colIdx].colEl).detach();
+					colEls[i].detach();
+				}
+				else {
+					that._colGroupAttach(colGroup, colEls, i);
 				}
 			});
 
 		if (changed) {
+			dt.columns.adjust();
+
 			this._redrawChildren();
 
 			// Inform listeners of the change
@@ -1099,36 +1133,46 @@ $.extend(Responsive.prototype, {
 			emptyRow.append('<td/>');
 		}
 
-		// Body rows - we don't need to take account of DataTables' column
-		// visibility since we implement our own here (hence the `display` set)
-		dt.rows({ page: 'current' }).every(function (rowIdx) {
-			var node = this.node();
+		// Body rows
+		if (this.c.details.renderer._responsiveMovesNodes) {
+			// Slow but it allows for moving elements around the document
+			dt.rows({ page: 'current' }).every(function (rowIdx) {
+				var node = this.node();
 
-			if (! node) {
-				return;
-			}
-
-			// We clone the table's rows and cells to create the sizing table
-			var tr = node.cloneNode(false);
-
-			dt.cells(rowIdx, '*').every(function (rowIdx2, colIdx) {
-				// If nodes have been moved out (listHiddenNodes), we need to
-				// clone from the store
-				var store = that.s.childNodeStore[rowIdx + '-' + colIdx];
-
-				if (store) {
-					$(this.node().cloneNode(false))
-						.append($(store).clone())
-						.appendTo(tr);
+				if (! node) {
+					return;
 				}
-				else {
-					$(this.node()).clone(false).appendTo(tr);
-				}
+
+				// We clone the table's rows and cells to create the sizing table
+				var tr = node.cloneNode(false);
+
+				dt.cells(rowIdx, visibleColumns).every(function (rowIdx2, colIdx) {
+					// If nodes have been moved out (listHiddenNodes), we need to
+					// clone from the store
+					var store = that.s.childNodeStore[rowIdx + '-' + colIdx];
+
+					if (store) {
+						$(this.node().cloneNode(false))
+							.append($(store).clone())
+							.appendTo(tr);
+					}
+					else {
+						$(this.node()).clone(false).appendTo(tr);
+					}
+				});
+
+				clonedBody.append(tr);
 			});
+		}
+		else {
+			// This is much faster, but it doesn't account for moving nodes around
+			$(clonedBody)
+				.append( $(dt.rows( { page: 'current' } ).nodes()).clone( false ) )
+				.find( 'th, td' ).css( 'display', '' );
+		}
 
-			clonedBody.append(tr);
-		});
-
+		// Any cells which were hidden by Responsive in the host table, need to
+		// be visible here for the calculations
 		clonedBody.find('th, td').css('display', '');
 
 		// Footer
@@ -1505,7 +1549,7 @@ Responsive.display = {
  */
 Responsive.renderer = {
 	listHiddenNodes: function () {
-		return function (api, rowIdx, columns) {
+		var fn = function (api, rowIdx, columns) {
 			var that = this;
 			var ul = $(
 				'<ul data-dtr-index="' + rowIdx + '" class="dtr-details"/>'
@@ -1550,6 +1594,10 @@ Responsive.renderer = {
 
 			return found ? ul : false;
 		};
+
+		fn._responsiveMovesNodes = true;
+
+		return fn;
 	},
 
 	listHidden: function () {
@@ -1761,7 +1809,7 @@ Api.registerPlural(
  * @name Responsive.version
  * @static
  */
-Responsive.version = '3.0.0';
+Responsive.version = '3.0.3';
 
 $.fn.dataTable.Responsive = Responsive;
 $.fn.DataTable.Responsive = Responsive;

@@ -90,6 +90,7 @@
   }
 }
 
-.sidebar-dark .content-side.content-side-user {
+.sidebar-dark .content-side.content-side-user,
+html.dark .content-side.content-side-user {
   background-color: darken($sidebar-dark-bg, 2.5%);
 }
