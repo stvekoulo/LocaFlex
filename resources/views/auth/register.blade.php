@@ -5,28 +5,18 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <!-- Title -->
     <title>{{ config('app.name', 'Collab') }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Favicon -->
     <link rel="shortcut icon" href="{{ asset('Template/assets/images/logo/favourite_icon_1.svg') }}">
     <link rel="icon" href="{{ asset('Template/assets/images/logo/favourite_icon_1.svg') }}" type="image/x-icon">
-    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{asset('auth/css/bootstrap.min.css')}}">
-    <!-- Fontawesome CSS -->
     <link rel="stylesheet" href="{{asset('auth/css/fontawesome-all.min.css')}}">
-    <!-- Flaticon CSS -->
     <link rel="stylesheet" href="{{asset('auth/font/flaticon.css')}}">
-    <!-- Google Web Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
-    <!-- Custom CSS -->
     <link rel="stylesheet" href="{{asset('auth/style.css')}}">
 </head>
 
 <body>
-    <!--[if lt IE 8]>
-        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
     <div id="preloader" class="preloader">
         <div class='inner'>
             <div class='line1'></div>
@@ -112,17 +102,10 @@
             </div>
         </div>
     </div>
-    <!-- jquery-->
     <script src="{{asset('auth/js/jquery-3.5.0.min.js')}}"></script>
-    <!-- Bootstrap js -->
     <script src="{{asset('auth/js/bootstrap.min.js')}}"></script>
-    <!-- Imagesloaded js -->
     <script src="{{asset('auth/js/imagesloaded.pkgd.min.js')}}"></script>
-    <!-- Validator js -->
     <script src="{{asset('auth/js/validator.min.js')}}"></script>
-    <!-- Custom Js -->
     <script src="{{asset('auth/js/main.js')}}"></script>
-
 </body>
-
 </html>

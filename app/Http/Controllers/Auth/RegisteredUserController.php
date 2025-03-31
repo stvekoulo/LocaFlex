@@ -32,10 +32,23 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'email' => ['required', 'string', 'lowercase', 'email', 'unique:'.User::class],
             'phone' => 'required|regex:/^\+229\d{8}$/',
             'role' => ['required', Rule::in(['Client', 'Loueur'])],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        ], [
+            'name.required' => 'Le nom est obligatoire.',
+            'name.max' => 'Le nom ne doit pas dépasser 255 caractères.',
+            'email.required' => 'L\'adresse e-mail est obligatoire.',
+            'email.lowercase' => 'L\'adresse e-mail doit être en minuscules.',
+            'email.email' => 'L\'adresse e-mail doit être valide.',
+            'email.unique' => 'Cette adresse e-mail est déjà utilisée.',
+            'phone.required' => 'Le numéro de téléphone est obligatoire.',
+            'phone.regex' => 'Le numéro de téléphone doit commencer par +229 01 suivi de 8 chiffres.',
+            'role.required' => 'Le rôle est obligatoire.',
+            'role.in' => 'Le rôle doit être soit Client, soit Loueur.',
+            'password.required' => 'Le mot de passe est obligatoire.',
+            'password.confirmed' => 'La confirmation du mot de passe ne correspond pas.',
         ]);
 
         $user = User::create([
