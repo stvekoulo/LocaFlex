@@ -33,7 +33,7 @@ class RegisteredUserController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'unique:'.User::class],
-            'phone' => 'required|regex:/^\+229\d{8}$/',
+            'phone' => 'required|regex:/^\+22901\d{8}$/',
             'role' => ['required', Rule::in(['Client', 'Loueur'])],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ], [
