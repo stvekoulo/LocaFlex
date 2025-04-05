@@ -62,9 +62,8 @@ class ServiceResource extends Resource
                         Forms\Components\Select::make('disponibilite')
                             ->required()
                             ->options([
-                                'disponible' => 'Disponible',
-                                'limite' => 'Disponibilité limitée',
-                                'indisponible' => 'Indisponible temporairement',
+                                'Disponible' => 'Disponible',
+                                'Occupé' => 'Occupé',
                             ])
                             ->label('Disponibilité'),
                     ])->columns(2),
@@ -103,9 +102,8 @@ class ServiceResource extends Resource
                     ->label('Prix'),
                 Tables\Columns\BadgeColumn::make('disponibilite')
                     ->colors([
-                        'success' => 'disponible',
-                        'warning' => 'limite',
-                        'danger' => 'indisponible',
+                        'success' => 'Disponible',
+                        'warning' => 'Occupé',
                     ])
                     ->label('Disponibilité'),
                 Tables\Columns\IconColumn::make('publie')
@@ -133,9 +131,8 @@ class ServiceResource extends Resource
                     ]),
                 Tables\Filters\SelectFilter::make('disponibilite')
                     ->options([
-                        'disponible' => 'Disponible',
-                        'limite' => 'Disponibilité limitée',
-                        'indisponible' => 'Indisponible temporairement',
+                        'Disponible' => 'Disponible',
+                        'Occupé' => 'Occupé',
                     ]),
                 Tables\Filters\TernaryFilter::make('publie')
                     ->label('Publié'),

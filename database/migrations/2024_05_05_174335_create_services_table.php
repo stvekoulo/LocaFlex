@@ -17,7 +17,7 @@ return new class extends Migration {
             $table->string('categorie');
             $table->decimal('prix', 10, 2);
             $table->enum('disponibilite', ['Disponible', 'Occupé']);
-            $table->string('tags');
+            $table->text('tags')->nullable();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });

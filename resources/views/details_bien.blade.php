@@ -112,7 +112,15 @@
                                     </li>
                                     <li>
                                         <i class="fas fa-star"></i>
-                                        <span>{{ $bien->tags }}</span>
+                                        <span>
+                                            @if(is_array($bien->tags))
+                                                @foreach($bien->tags as $tag)
+                                                    <span class="badge badge-primary">{{ $tag }}</span>
+                                                @endforeach
+                                            @else
+                                                {{ $bien->tags }}
+                                            @endif
+                                        </span>
                                     </li>
                                 </ul>
                                 <p>
@@ -149,7 +157,15 @@
                                         </li>
                                         <li>
                                             <i class="fas fa-star"></i>
-                                            <span>{{ $bien->tags }}</span>
+                                            <span>
+                                                @if(is_array($bien->tags))
+                                                    @foreach($bien->tags as $tag)
+                                                        <span class="badge badge-primary">{{ $tag }}</span>
+                                                    @endforeach
+                                                @else
+                                                    {{ $bien->tags }}
+                                                @endif
+                                            </span>
                                         </li>
                                     </ul>
                                 </div>
