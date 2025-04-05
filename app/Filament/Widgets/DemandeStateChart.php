@@ -11,8 +11,8 @@ class DemandeStateChart extends ChartWidget
     protected static ?string $heading = 'État des demandes';
     protected static ?string $subheading = 'Répartition des demandes de biens et services par état';
     protected static ?int $sort = 3;
-    protected static ?string $maxHeight = '400px';
-    protected int | string | array $columnSpan = 'full';
+    protected static ?string $maxHeight = '300px';
+    protected int | string | array $columnSpan = 'half';
 
     protected function getData(): array
     {

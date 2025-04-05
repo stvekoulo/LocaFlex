@@ -6,6 +6,8 @@ use App\Filament\Widgets\DemandeChart;
 use App\Filament\Widgets\DemandeStateChart;
 use App\Filament\Widgets\DemandeStatsOverview;
 use App\Filament\Widgets\LatestDemandes;
+use App\Filament\Widgets\RevenueChart;
+use App\Filament\Widgets\RevenuePieChart;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -50,8 +52,9 @@ class AdminPanelProvider extends PanelProvider
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
             ->widgets([
                 DemandeStatsOverview::class,
-                DemandeChart::class,
+                RevenueChart::class,
                 DemandeStateChart::class,
+                RevenuePieChart::class,
                 LatestDemandes::class,
             ])
             ->middleware([
@@ -73,7 +76,8 @@ class AdminPanelProvider extends PanelProvider
                 'Gestion des biens',
                 'Gestion des services',
                 'Demandes',
-                'Profil',
+                'Finance',
+                'Paramètres',
             ])
             ->sidebarCollapsibleOnDesktop()
             ->maxContentWidth('full');

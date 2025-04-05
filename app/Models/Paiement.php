@@ -11,9 +11,14 @@ class Paiement extends Model
     protected $table = 'paiements';
     protected $fillable = ['montant', 'user_id', 'bien_id', 'service_id', 'owner_id', 'etat'];
 
-    public function user()
+    public function client()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function proprietaire()
+    {
+        return $this->belongsTo(User::class, 'owner_id');
     }
 
     public function bien()
@@ -21,8 +26,8 @@ class Paiement extends Model
         return $this->belongsTo(Bien::class);
     }
 
-    public function services()
+    public function service()
     {
-        return $this->belongsTo(Service::class, 'service_id');
+        return $this->belongsTo(Service::class);
     }
 }
