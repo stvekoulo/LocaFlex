@@ -12,7 +12,7 @@ class DemandeStateChart extends ChartWidget
     protected static ?string $subheading = 'Répartition des demandes de biens et services par état';
     protected static ?int $sort = 3;
     protected static ?string $maxHeight = '300px';
-    protected int | string | array $columnSpan = 'half';
+    protected int | string | array $columnSpan = 'full';
 
     protected function getData(): array
     {
