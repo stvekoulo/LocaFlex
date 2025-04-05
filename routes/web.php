@@ -20,9 +20,13 @@ use App\Http\Controllers\ServiceCatalogueController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('/dashboard', [DashboardController::class, 'index'])
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
+Route::get('/dashboard', function() {
+    if (auth()->check() && auth()->user()->role === 'Loueur') {
+        return redirect('/loueur');
+    }
+
+    return app(DashboardController::class)->index();
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/dashboard/profile', [LoueurProfileController::class, 'index'])
     ->name('loueur.profile')

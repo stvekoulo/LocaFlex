@@ -6,8 +6,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Filament\Models\Contracts\FilamentUser;
 
-class User extends Authenticatable
+class User extends Authenticatable implements FilamentUser
 {
     use HasFactory, Notifiable;
 
@@ -36,5 +37,34 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    /**
+     * Détermine si l'utilisateur peut accéder à Filament.
+     */
+    public function canAccessFilament(): bool
+    {
+        return $this->role === 'Loueur';
+    }
+
+    // Relations
+    public function biens()
+    {
+        return $this->hasMany(Bien::class);
+    }
+
+    public function services()
+    {
+        return $this->hasMany(Service::class);
+    }
+
+    public function demandesRecues()
+    {
+        return $this->hasMany(DemandeReservation::class, 'owner_id');
+    }
+
+    public function demandesEnvoyees()
+    {
+        return $this->hasMany(DemandeReservation::class, 'user_id');
     }
 }

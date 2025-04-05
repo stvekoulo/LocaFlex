@@ -17,6 +17,8 @@ use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use Illuminate\Http\Request;
+use App\Models\User;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -24,8 +26,8 @@ class AdminPanelProvider extends PanelProvider
     {
         return $panel
             ->default()
-            ->id('admin')
-            ->path('admin')
+            ->id('loueur')
+            ->path('loueur')
             ->login()
             ->colors([
                 'primary' => Color::Amber,
@@ -38,7 +40,6 @@ class AdminPanelProvider extends PanelProvider
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
             ->widgets([
                 Widgets\AccountWidget::class,
-                Widgets\FilamentInfoWidget::class,
             ])
             ->middleware([
                 EncryptCookies::class,
@@ -53,6 +54,15 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
-            ]);
+                function (Request $request, $next) {
+                    if ($request->user() && $request->user()->role !== 'Loueur') {
+                        abort(403, 'Accès non autorisé. Seuls les loueurs peuvent accéder à cette interface.');
+                    }
+                    return $next($request);
+                },
+            ])
+            ->brandName('LocaFlex - Espace Loueur')
+            ->brandLogo(asset('images/logo.png'))
+            ->favicon(asset('images/favicon.ico'));
     }
 }
