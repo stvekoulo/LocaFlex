@@ -20,9 +20,14 @@ use App\Http\Controllers\ServiceCatalogueController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('/dashboard', [DashboardController::class, 'index'])
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
+// Redirection vers le dashboard Filament pour les loueurs
+Route::get('/dashboard', function() {
+    if (auth()->check() && auth()->user()->role === 'Loueur') {
+        return redirect('/loueur');
+    }
+
+    return app(\App\Http\Controllers\DashboardController::class)->index();
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/dashboard/profile', [LoueurProfileController::class, 'index'])
     ->name('loueur.profile')
@@ -81,37 +86,34 @@ Route::post('/dashboard/gestion-services/update/{id}', [GestionServiceController
     ->name('service.update')
     ->middleware(['auth', 'verified']);
 
-Route::get('/infos/bien/{id}', [BienDetailController::class, 'index'])->name('detail.bien');
-Route::post('/bien-demande', [BienDetailController::class, 'envoyerDemande'])
-    ->name('bien.demande')
-    ->middleware(['auth', 'verified']);
+Route::middleware(['auth', 'verified'])->group(function () {
+    // Garder les routes pour les utilisateurs non-loueurs
+    Route::get('/infos/bien/{id}', [BienDetailController::class, 'index'])->name('detail.bien');
+    Route::post('/bien-demande', [BienDetailController::class, 'envoyerDemande'])->name('bien.demande');
 
-Route::get('/infos/service/{id}', [ServiceDetailController::class, 'index'])->name('detail.service');
-Route::post('/service-demande', [ServiceDetailController::class, 'envoyerDemande'])
-    ->name('service.demande')
-    ->middleware(['auth', 'verified']);
+    Route::get('/infos/service/{id}', [ServiceDetailController::class, 'index'])->name('detail.service');
+    Route::post('/service-demande', [ServiceDetailController::class, 'envoyerDemande'])->name('service.demande');
 
-Route::get('/catalogue/produits', [BienCatalogueController::class, 'index'])->name('bien.catalogue');
-Route::get('/catalogue/services', [ServiceCatalogueController::class, 'index'])->name('service.catalogue');
+    Route::get('/catalogue/produits', [BienCatalogueController::class, 'index'])->name('bien.catalogue');
+    Route::get('/catalogue/services', [ServiceCatalogueController::class, 'index'])->name('service.catalogue');
 
-Route::get('dashboard/mes-demandes', [GestionDemandeController::class, 'index'])
-    ->name('demande.index')
-    ->middleware(['auth', 'verified']);
-Route::post('/mes-demandes/accepter-demande-bein/{demandeId}', [GestionDemandeController::class, 'accepterdemandebien'])->name('accepterdemande.bien');
-Route::post('/mes-demandes/refuser-demande-bein/{demandeId}', [GestionDemandeController::class, 'refuserdemandebien'])->name('refuserdemande.bien');
+    Route::get('/paiement', [PaiementController::class, 'index'])->name('payment.index');
+    Route::get('/paiement/{paiementId}', [PaymentController::class, '__invoke'])->name('payment.store');
+    Route::get('callback-payment', NotchPayCallBackController::class)->name('notchpay-callback');
+});
 
-Route::post('/mes-demandes/accepter-demande-service/{demandeId}', [GestionDemandeController::class, 'accepterdemandeservice'])->name('accepterdemande.service');
-Route::post('/mes-demandes/refuser-demande-service/{demandeId}', [GestionDemandeController::class, 'refuserdemandeservice'])->name('refuserdemande.service');
-
-Route::get('/paiement', [PaiementController::class, 'index'])
-    ->name('payment.index')
-    ->middleware(['auth', 'verified']);
-Route::get('/paiement/{paiementId}', [PaymentController::class, '__invoke'])
-    ->name('payment.store')
-    ->middleware(['auth', 'verified']);
-Route::get('callback-payment', NotchPayCallBackController::class)
-    ->name('notchpay-callback')
-    ->middleware(['auth', 'verified']);
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('dashboard/mes-demandes', [GestionDemandeController::class, 'index'])
+        ->name('demande.index');
+    Route::post('/mes-demandes/accepter-demande-bein/{demandeId}', [GestionDemandeController::class, 'accepterdemandebien'])
+        ->name('accepterdemande.bien');
+    Route::post('/mes-demandes/refuser-demande-bein/{demandeId}', [GestionDemandeController::class, 'refuserdemandebien'])
+        ->name('refuserdemande.bien');
+    Route::post('/mes-demandes/accepter-demande-service/{demandeId}', [GestionDemandeController::class, 'accepterdemandeservice'])
+        ->name('accepterdemande.service');
+    Route::post('/mes-demandes/refuser-demande-service/{demandeId}', [GestionDemandeController::class, 'refuserdemandeservice'])
+        ->name('refuserdemande.service');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

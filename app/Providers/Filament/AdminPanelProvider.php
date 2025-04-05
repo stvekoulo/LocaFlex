@@ -2,6 +2,10 @@
 
 namespace App\Providers\Filament;
 
+use App\Filament\Widgets\DemandeChart;
+use App\Filament\Widgets\DemandeStateChart;
+use App\Filament\Widgets\DemandeStatsOverview;
+use App\Filament\Widgets\LatestDemandes;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -24,8 +28,8 @@ class AdminPanelProvider extends PanelProvider
     {
         return $panel
             ->default()
-            ->id('admin')
-            ->path('admin')
+            ->id('loueur')
+            ->path('loueur')
             ->login()
             ->colors([
                 'primary' => Color::Amber,
@@ -37,8 +41,10 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
             ->widgets([
-                Widgets\AccountWidget::class,
-                Widgets\FilamentInfoWidget::class,
+                DemandeStatsOverview::class,
+                DemandeChart::class,
+                DemandeStateChart::class,
+                LatestDemandes::class,
             ])
             ->middleware([
                 EncryptCookies::class,
@@ -53,6 +59,7 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
-            ]);
+            ])
+            ->authGuard('web');
     }
 }
