@@ -31,9 +31,17 @@ class AdminPanelProvider extends PanelProvider
             ->id('loueur')
             ->path('loueur')
             ->login()
+            ->brandName('LocaFlex Loueur')
             ->colors([
                 'primary' => Color::Amber,
+                'danger' => Color::Rose,
+                'gray' => Color::Slate,
+                'info' => Color::Blue,
+                'success' => Color::Emerald,
+                'warning' => Color::Orange,
             ])
+            ->darkMode(true)
+            ->favicon(asset('favicon.ico'))
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
             ->pages([
@@ -60,6 +68,14 @@ class AdminPanelProvider extends PanelProvider
             ->authMiddleware([
                 Authenticate::class,
             ])
-            ->authGuard('web');
+            ->authGuard('web')
+            ->navigationGroups([
+                'Gestion des biens',
+                'Gestion des services',
+                'Demandes',
+                'Profil',
+            ])
+            ->sidebarCollapsibleOnDesktop()
+            ->maxContentWidth('full');
     }
 }

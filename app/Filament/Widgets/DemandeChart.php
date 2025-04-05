@@ -11,7 +11,11 @@ use Illuminate\Support\Facades\DB;
 class DemandeChart extends ChartWidget
 {
     protected static ?string $heading = 'Demandes par mois';
+    protected static ?string $subheading = 'Évolution des demandes de biens et services pour l\'année en cours';
     protected static ?int $sort = 2;
+    protected int | string | array $columnSpan = 'full';
+    protected static ?string $maxHeight = '300px';
+    protected static ?string $pollingInterval = '300s';
 
     protected function getData(): array
     {
@@ -85,12 +89,16 @@ class DemandeChart extends ChartWidget
                     'data' => $demandesBienCounts,
                     'backgroundColor' => '#F59E0B',
                     'borderColor' => '#D97706',
+                    'borderWidth' => 2,
+                    'tension' => 0.3,
                 ],
                 [
                     'label' => 'Demandes de services',
                     'data' => $demandesServiceCounts,
                     'backgroundColor' => '#10B981',
                     'borderColor' => '#059669',
+                    'borderWidth' => 2,
+                    'tension' => 0.3,
                 ],
             ],
             'labels' => $monthNames,
@@ -99,7 +107,41 @@ class DemandeChart extends ChartWidget
 
     protected function getType(): string
     {
-        return 'bar';
+        return 'line';
+    }
+
+    protected function getOptions(): array
+    {
+        return [
+            'plugins' => [
+                'legend' => [
+                    'display' => true,
+                    'position' => 'bottom',
+                ],
+                'tooltip' => [
+                    'mode' => 'index',
+                    'intersect' => false,
+                ],
+            ],
+            'scales' => [
+                'y' => [
+                    'beginAtZero' => true,
+                    'ticks' => [
+                        'precision' => 0,
+                    ],
+                ],
+            ],
+            'elements' => [
+                'line' => [
+                    'fill' => 'start',
+                ],
+                'point' => [
+                    'radius' => 4,
+                    'hitRadius' => 10,
+                    'hoverRadius' => 6,
+                ],
+            ],
+        ];
     }
 
     /**

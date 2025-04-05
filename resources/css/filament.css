@@ -1,0 +1,54 @@
+@import '../../vendor/filament/filament/resources/css/theme.css';
+
+:root {
+    --sidebar-width: 20rem;
+    --collapsed-sidebar-width: 5.4rem;
+}
+
+.filament-sidebar {
+    @apply bg-gradient-to-b from-amber-900 to-amber-700 dark:from-gray-900 dark:to-gray-800;
+}
+
+.filament-sidebar-item {
+    @apply text-white dark:text-gray-300;
+}
+
+.filament-sidebar-item-active {
+    @apply bg-white/10 text-white dark:bg-gray-700 dark:text-white;
+}
+
+.filament-sidebar-group {
+    @apply text-amber-100 dark:text-gray-400;
+}
+
+.filament-main {
+    @apply bg-gray-50 dark:bg-gray-900;
+}
+
+.filament-main-content {
+    @apply py-6;
+}
+
+.filament-stats-overview-widget-container {
+    @apply grid gap-4 lg:grid-cols-2 xl:grid-cols-4;
+}
+
+.filament-stats-card {
+    @apply transition-all duration-300 hover:shadow-md hover:scale-[1.01];
+}
+
+.dark .filament-stats-card {
+    @apply bg-gray-800/60 hover:bg-gray-800;
+}
+
+.filament-stats-card-content {
+    @apply relative overflow-hidden;
+}
+
+.filament-stats-card-chart {
+    @apply absolute inset-x-0 bottom-0 h-16 opacity-20;
+}
+
+.filament-widget {
+    @apply transition-all duration-300;
+}
