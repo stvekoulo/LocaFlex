@@ -24,7 +24,8 @@ class CreateBien extends CreateRecord
         // Sauvegarde des photos
         foreach ($photos as $photo) {
             Photo::create([
-                'chemin' => $photo,
+                'chemin_fichier' => $photo,
+                'description' => 'Photo du bien',
                 'bien_id' => $bien->id,
             ]);
         }

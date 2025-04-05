@@ -39,13 +39,25 @@ class BienResource extends Resource
                         Forms\Components\Select::make('categorie')
                             ->required()
                             ->options([
-                                'appartement' => 'Appartement',
-                                'maison' => 'Maison',
-                                'villa' => 'Villa',
-                                'studio' => 'Studio',
-                                'bureau' => 'Bureau',
-                                'terrain' => 'Terrain',
-                                'autre' => 'Autre',
+                                'electromenager' => 'Electroménager',
+                                'transport' => 'Transport',
+                                'meubles' => 'Meubles',
+                                'vetements' => 'Vêtements',
+                                'electronique' => 'Électronique',
+                                'jouets' => 'Jouets',
+                                'sport' => 'Sport',
+                                'outils' => 'Outils',
+                                'accessoires' => 'Accessoires',
+                                'livres' => 'Livres',
+                                'musique' => 'Musique',
+                                'jardinage' => 'Jardinage',
+                                'bricolage' => 'Bricolage',
+                                'artisanat' => 'Artisanat',
+                                'decoration' => 'Décoration',
+                                'cuisine' => 'Cuisine',
+                                'voyage' => 'Voyage',
+                                'animaux' => 'Animaux',
+                                'beaute' => 'Beauté',
                             ])
                             ->label('Catégorie'),
                     ])->columns(2),
@@ -67,9 +79,9 @@ class BienResource extends Resource
                         Forms\Components\Select::make('disponibilite')
                             ->required()
                             ->options([
-                                'disponible' => 'Disponible',
-                                'occupe' => 'Occupé',
-                                'en_renovation' => 'En rénovation',
+                                'Disponible' => 'Disponible',
+                                'Occupé' => 'Occupé',
+                                //'EN_RENOVATION' => 'En rénovation',
                             ])
                             ->label('Disponibilité'),
                     ])->columns(2),
@@ -128,9 +140,9 @@ class BienResource extends Resource
                     ->label('Emplacement'),
                 Tables\Columns\BadgeColumn::make('disponibilite')
                     ->colors([
-                        'success' => 'disponible',
-                        'danger' => 'occupe',
-                        'warning' => 'en_renovation',
+                        'success' => 'Disponible',
+                        'danger' => 'Occupé',
+                        //'warning' => 'EN_RENOVATION',
                     ])
                     ->label('Disponibilité'),
                 Tables\Columns\IconColumn::make('publie')
@@ -145,19 +157,31 @@ class BienResource extends Resource
             ->filters([
                 Tables\Filters\SelectFilter::make('categorie')
                     ->options([
-                        'appartement' => 'Appartement',
-                        'maison' => 'Maison',
-                        'villa' => 'Villa',
-                        'studio' => 'Studio',
-                        'bureau' => 'Bureau',
-                        'terrain' => 'Terrain',
-                        'autre' => 'Autre',
+                        'electromenager' => 'Electroménager',
+                        'transport' => 'Transport',
+                        'meubles' => 'Meubles',
+                        'vetements' => 'Vêtements',
+                        'electronique' => 'Électronique',
+                        'jouets' => 'Jouets',
+                        'sport' => 'Sport',
+                        'outils' => 'Outils',
+                        'accessoires' => 'Accessoires',
+                        'livres' => 'Livres',
+                        'musique' => 'Musique',
+                        'jardinage' => 'Jardinage',
+                        'bricolage' => 'Bricolage',
+                        'artisanat' => 'Artisanat',
+                        'decoration' => 'Décoration',
+                        'cuisine' => 'Cuisine',
+                        'voyage' => 'Voyage',
+                        'animaux' => 'Animaux',
+                        'beaute' => 'Beauté',
                     ]),
                 Tables\Filters\SelectFilter::make('disponibilite')
                     ->options([
-                        'disponible' => 'Disponible',
-                        'occupe' => 'Occupé',
-                        'en_renovation' => 'En rénovation',
+                        'Disponible' => 'Disponible',
+                        'Occupé' => 'Occupé',
+                        //'EN_RENOVATION' => 'En rénovation',
                     ]),
                 Tables\Filters\TernaryFilter::make('publie')
                     ->label('Publié'),

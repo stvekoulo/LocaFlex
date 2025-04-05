@@ -23,7 +23,7 @@ class EditBien extends EditRecord
     {
         // Récupérer les chemins des photos pour les afficher dans le formulaire
         $bien = $this->record;
-        $data['photos'] = $bien->photos()->pluck('chemin')->toArray();
+        $data['photos'] = $bien->photos()->pluck('chemin_fichier')->toArray();
 
         return $data;
     }
@@ -38,11 +38,11 @@ class EditBien extends EditRecord
         $record->update($data);
 
         // Supprimer les anciennes photos qui ne sont plus dans le tableau
-        $existingPhotos = $record->photos()->pluck('chemin')->toArray();
+        $existingPhotos = $record->photos()->pluck('chemin_fichier')->toArray();
         $photosToDelete = array_diff($existingPhotos, $photos);
 
         foreach ($photosToDelete as $photoPath) {
-            $photo = $record->photos()->where('chemin', $photoPath)->first();
+            $photo = $record->photos()->where('chemin_fichier', $photoPath)->first();
             if ($photo) {
                 $photo->delete();
             }
@@ -52,7 +52,8 @@ class EditBien extends EditRecord
         $newPhotos = array_diff($photos, $existingPhotos);
         foreach ($newPhotos as $photoPath) {
             Photo::create([
-                'chemin' => $photoPath,
+                'chemin_fichier' => $photoPath,
+                'description' => 'Photo du bien',
                 'bien_id' => $record->id,
             ]);
         }

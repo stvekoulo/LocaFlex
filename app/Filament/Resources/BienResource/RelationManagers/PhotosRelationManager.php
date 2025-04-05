@@ -14,7 +14,7 @@ class PhotosRelationManager extends RelationManager
 {
     protected static string $relationship = 'photos';
 
-    protected static ?string $recordTitleAttribute = 'chemin';
+    protected static ?string $recordTitleAttribute = 'chemin_fichier';
 
     protected static ?string $title = 'Photos du bien';
 
@@ -22,11 +22,15 @@ class PhotosRelationManager extends RelationManager
     {
         return $form
             ->schema([
-                Forms\Components\FileUpload::make('chemin')
+                Forms\Components\FileUpload::make('chemin_fichier')
                     ->label('Photo')
                     ->image()
                     ->directory('bien-photos')
                     ->required(),
+                Forms\Components\TextInput::make('description')
+                    ->label('Description')
+                    ->required()
+                    ->default('Photo du bien'),
             ]);
     }
 
@@ -34,8 +38,10 @@ class PhotosRelationManager extends RelationManager
     {
         return $table
             ->columns([
-                Tables\Columns\ImageColumn::make('chemin')
+                Tables\Columns\ImageColumn::make('chemin_fichier')
                     ->label('Photo'),
+                Tables\Columns\TextColumn::make('description')
+                    ->label('Description'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->label('Date d\'ajout'),

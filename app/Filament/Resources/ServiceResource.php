@@ -38,13 +38,16 @@ class ServiceResource extends Resource
                         Forms\Components\Select::make('categorie')
                             ->required()
                             ->options([
-                                'plomberie' => 'Plomberie',
-                                'electricite' => 'Électricité',
-                                'menage' => 'Ménage',
-                                'jardinage' => 'Jardinage',
-                                'securite' => 'Sécurité',
-                                'transport' => 'Transport',
-                                'autre' => 'Autre',
+                                'entretien_reparation' => 'Services d\'entretien et de réparation',
+                                'transports_terrestres' => 'Services de transports terrestres',
+                                'transports_aeriens' => 'Services de transports aériens',
+                                'telecommunications' => 'Services de télécommunications',
+                                'services_financiers' => 'Services financiers',
+                                'services_informatiques' => 'Services informatiques et services connexes',
+                                'services_comptables' => 'Services comptables, d\'audit et de tenue de livres',
+                                'etudes_marche_sondages' => 'Services d\'études de marché et de sondages',
+                                'conseil_gestion' => 'Services de conseil en gestion et services connexes',
+                                'education_formation' => 'Services d\'éducation et de formation professionnelle',
                             ])
                             ->label('Catégorie'),
                     ])->columns(2),
@@ -117,13 +120,16 @@ class ServiceResource extends Resource
             ->filters([
                 Tables\Filters\SelectFilter::make('categorie')
                     ->options([
-                        'plomberie' => 'Plomberie',
-                        'electricite' => 'Électricité',
-                        'menage' => 'Ménage',
-                        'jardinage' => 'Jardinage',
-                        'securite' => 'Sécurité',
-                        'transport' => 'Transport',
-                        'autre' => 'Autre',
+                        'entretien_reparation' => 'Services d\'entretien et de réparation',
+                        'transports_terrestres' => 'Services de transports terrestres',
+                        'transports_aeriens' => 'Services de transports aériens',
+                        'telecommunications' => 'Services de télécommunications',
+                        'services_financiers' => 'Services financiers',
+                        'services_informatiques' => 'Services informatiques et services connexes',
+                        'services_comptables' => 'Services comptables, d\'audit et de tenue de livres',
+                        'etudes_marche_sondages' => 'Services d\'études de marché et de sondages',
+                        'conseil_gestion' => 'Services de conseil en gestion et services connexes',
+                        'education_formation' => 'Services d\'éducation et de formation professionnelle',
                     ]),
                 Tables\Filters\SelectFilter::make('disponibilite')
                     ->options([

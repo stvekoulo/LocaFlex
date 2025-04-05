@@ -15,12 +15,12 @@ return new class extends Migration {
             $table->string('titre');
             $table->text('description');
             $table->string('categorie');
-            $table->string('caracteristiques');
+            $table->text('caracteristiques');
             $table->decimal('prix', 10, 2);
             $table->string('emplacement');
             $table->enum('disponibilite', ['Disponible', 'Occupé']);
-            $table->string('tags');
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->text('tags')->nullable();
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
