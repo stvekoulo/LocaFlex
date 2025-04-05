@@ -9,9 +9,9 @@ class Photo extends Model
 {
     use HasFactory;
     protected $table = 'photos';
-    protected $fillable = ['chemin_fichier', 'description', 'bien_id'];
+    protected $fillable = ['chemin', 'description', 'bien_id'];
 
-    public function biens()
+    public function bien()
     {
         return $this->belongsTo(Bien::class);
     }

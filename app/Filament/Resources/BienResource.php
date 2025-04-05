@@ -21,6 +21,7 @@ class BienResource extends Resource
     protected static ?string $navigationLabel = 'Mes Biens';
     protected static ?string $modelLabel = 'Bien';
     protected static ?string $pluralModelLabel = 'Biens';
+    protected static ?string $navigationGroup = 'Gestion des biens';
 
     public static function form(Form $form): Form
     {
@@ -72,6 +73,22 @@ class BienResource extends Resource
                             ])
                             ->label('Disponibilité'),
                     ])->columns(2),
+
+                Forms\Components\Section::make('Photos')
+                    ->schema([
+                        Forms\Components\FileUpload::make('photos')
+                            ->label('Photos du bien')
+                            ->multiple()
+                            ->image()
+                            ->imageResizeMode('cover')
+                            ->imageCropAspectRatio('16:9')
+                            ->imageResizeTargetWidth('1920')
+                            ->imageResizeTargetHeight('1080')
+                            ->directory('bien-photos')
+                            ->maxFiles(10)
+                            ->helperText('Vous pouvez télécharger jusqu\'à 10 photos (16:9)')
+                            ->columnSpanFull(),
+                    ]),
 
                 Forms\Components\Section::make('Tags et Publication')
                     ->schema([
@@ -155,6 +172,11 @@ class BienResource extends Resource
                     ->action(function (Bien $record): void {
                         $record->update(['publie' => !$record->publie]);
                     }),
+                Tables\Actions\Action::make('voirPhotos')
+                    ->label('Photos')
+                    ->icon('heroicon-o-photo')
+                    ->color('info')
+                    ->url(fn (Bien $record): string => static::getUrl('edit', ['record' => $record]) . '#relation-photos'),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
