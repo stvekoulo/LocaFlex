@@ -33,7 +33,9 @@ class AdminPanelProvider extends PanelProvider
             ->id('loueur')
             ->path('loueur')
             ->login()
-            ->brandName('LocaFlex Loueur')
+            ->brandName('Collab')
+            ->brandLogo(asset('Template/assets/images/logo/site_logo.svg'))
+            ->brandLogoHeight(60)
             ->colors([
                 'primary' => Color::Blue,
                 'danger' => Color::Red,
@@ -42,7 +44,6 @@ class AdminPanelProvider extends PanelProvider
                 'success' => Color::Green,
                 'warning' => Color::Orange,
             ])
-            ->darkMode(true)
             ->favicon(asset('favicon.ico'))
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
