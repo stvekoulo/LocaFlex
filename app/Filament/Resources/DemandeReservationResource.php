@@ -25,6 +25,7 @@ class DemandeReservationResource extends Resource
     protected static ?string $navigationLabel = 'Demandes de Biens';
     protected static ?string $modelLabel = 'Demande de Bien';
     protected static ?string $pluralModelLabel = 'Demandes de Biens';
+    protected static ?string $navigationGroup = 'Demandes';
 
     public static function form(Form $form): Form
     {

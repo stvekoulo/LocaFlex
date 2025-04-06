@@ -35,11 +35,11 @@ class AdminPanelProvider extends PanelProvider
             ->login()
             ->brandName('LocaFlex Loueur')
             ->colors([
-                'primary' => Color::Amber,
-                'danger' => Color::Rose,
-                'gray' => Color::Slate,
-                'info' => Color::Blue,
-                'success' => Color::Emerald,
+                'primary' => Color::Blue,
+                'danger' => Color::Red,
+                'gray' => Color::Zinc,
+                'info' => Color::Cyan,
+                'success' => Color::Green,
                 'warning' => Color::Orange,
             ])
             ->darkMode(true)
@@ -73,9 +73,9 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->authGuard('web')
             ->navigationGroups([
-                'Gestion des biens',
-                'Gestion des services',
+                'Tableau de bord',
                 'Demandes',
+                'Gestion',
                 'Finance',
                 'Paramètres',
             ])

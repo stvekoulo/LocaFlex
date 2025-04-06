@@ -21,7 +21,7 @@ class BienResource extends Resource
     protected static ?string $navigationLabel = 'Mes Biens';
     protected static ?string $modelLabel = 'Bien';
     protected static ?string $pluralModelLabel = 'Biens';
-    protected static ?string $navigationGroup = 'Gestion des biens';
+    protected static ?string $navigationGroup = 'Gestion';
 
     public static function form(Form $form): Form
     {
