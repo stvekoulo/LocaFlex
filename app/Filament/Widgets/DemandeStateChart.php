@@ -18,12 +18,10 @@ class DemandeStateChart extends ChartWidget
     {
         $userId = auth()->id();
 
-        // Comptage des demandes de biens par état
         $bienEnAttente = DemandeReservation::where('owner_id', $userId)->where('etat', 'En attente')->count();
         $bienAccepte = DemandeReservation::where('owner_id', $userId)->where('etat', 'Validé')->count();
         $bienRefuse = DemandeReservation::where('owner_id', $userId)->where('etat', 'Refusé')->count();
 
-        // Comptage des demandes de services par état
         $serviceEnAttente = DemandeService::where('owner_id', $userId)->where('etat', 'En attente')->count();
         $serviceAccepte = DemandeService::where('owner_id', $userId)->where('etat', 'Validé')->count();
         $serviceRefuse = DemandeService::where('owner_id', $userId)->where('etat', 'Refusé')->count();

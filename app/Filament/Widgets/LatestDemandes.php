@@ -17,7 +17,6 @@ class LatestDemandes extends Widget
     {
         $userId = auth()->id();
 
-        // Récupérer les demandes de biens en attente
         $bienDemandes = DemandeReservation::where('owner_id', $userId)
             ->where('etat', 'En attente')
             ->with(['user', 'bien'])
@@ -39,7 +38,6 @@ class LatestDemandes extends Widget
                 ];
             });
 
-        // Récupérer les demandes de services en attente
         $serviceDemandes = DemandeService::where('owner_id', $userId)
             ->where('etat', 'En attente')
             ->with(['user', 'services'])
@@ -61,7 +59,6 @@ class LatestDemandes extends Widget
                 ];
             });
 
-        // Combiner et trier les demandes
         return $bienDemandes->concat($serviceDemandes)
             ->sortByDesc('created_at')
             ->take(10)

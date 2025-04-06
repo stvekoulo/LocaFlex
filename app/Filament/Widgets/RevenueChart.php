@@ -20,10 +20,8 @@ class RevenueChart extends ChartWidget
         $userId = auth()->id();
         $year = Carbon::now()->year;
 
-        // Déterminer le type de base de données
         $databaseType = config('database.default') === 'pgsql' ? 'pgsql' : 'mysql';
 
-        // Requêtes adaptées selon le type de base de données
         if ($databaseType === 'pgsql') {
             // PostgreSQL
             $revenueData = DB::table('paiements')
@@ -84,7 +82,6 @@ class RevenueChart extends ChartWidget
                 ->toArray();
         }
 
-        // Préparation des tableaux pour le graphique
         $months = range(1, 12);
         $revenueValues = array_map(function ($month) use ($revenueData) {
             return $revenueData[$month] ?? 0;
@@ -94,7 +91,6 @@ class RevenueChart extends ChartWidget
             return $pendingData[$month] ?? 0;
         }, $months);
 
-        // Noms des mois en français
         $monthNames = [
             'Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin',
             'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'

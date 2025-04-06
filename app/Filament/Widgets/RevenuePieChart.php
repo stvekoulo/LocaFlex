@@ -17,7 +17,6 @@ class RevenuePieChart extends ChartWidget
     {
         $userId = auth()->id();
 
-        // Revenus par type de bien/service
         $revenueByBien = Paiement::where('owner_id', $userId)
             ->where('etat', 'Payé')
             ->whereNotNull('bien_id')
@@ -28,7 +27,6 @@ class RevenuePieChart extends ChartWidget
             ->whereNotNull('service_id')
             ->sum('montant');
 
-        // Revenus par état
         $revenuePaid = Paiement::where('owner_id', $userId)
             ->where('etat', 'Payé')
             ->sum('montant');

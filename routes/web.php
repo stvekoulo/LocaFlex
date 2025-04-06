@@ -20,7 +20,6 @@ use App\Http\Controllers\ServiceCatalogueController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-// Redirection vers le dashboard Filament pour les loueurs
 Route::get('/dashboard', function() {
     if (auth()->check() && auth()->user()->role === 'Loueur') {
         return redirect('/loueur');

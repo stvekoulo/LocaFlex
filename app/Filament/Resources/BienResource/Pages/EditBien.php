@@ -21,7 +21,6 @@ class EditBien extends EditRecord
 
     protected function mutateFormDataBeforeFill(array $data): array
     {
-        // Récupérer les chemins des photos pour les afficher dans le formulaire
         $bien = $this->record;
         $data['photos'] = $bien->photos()->pluck('chemin_fichier')->toArray();
 
@@ -30,14 +29,11 @@ class EditBien extends EditRecord
 
     protected function handleRecordUpdate(Model $record, array $data): Model
     {
-        // On retire les photos du tableau de données
         $photos = $data['photos'] ?? [];
         unset($data['photos']);
 
-        // Mise à jour du bien
         $record->update($data);
 
-        // Supprimer les anciennes photos qui ne sont plus dans le tableau
         $existingPhotos = $record->photos()->pluck('chemin_fichier')->toArray();
         $photosToDelete = array_diff($existingPhotos, $photos);
 
@@ -48,7 +44,6 @@ class EditBien extends EditRecord
             }
         }
 
-        // Ajouter les nouvelles photos
         $newPhotos = array_diff($photos, $existingPhotos);
         foreach ($newPhotos as $photoPath) {
             Photo::create([

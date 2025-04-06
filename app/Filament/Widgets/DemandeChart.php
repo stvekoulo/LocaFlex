@@ -22,10 +22,8 @@ class DemandeChart extends ChartWidget
         $userId = auth()->id();
         $year = Carbon::now()->year;
 
-        // Déterminer le type de base de données
         $databaseType = $this->getDatabaseType();
 
-        // Requêtes adaptées selon le type de base de données
         if ($databaseType === 'pgsql') {
             // PostgreSQL
             $demandesBienData = DB::table('demande_reservations')
@@ -66,7 +64,6 @@ class DemandeChart extends ChartWidget
                 ->toArray();
         }
 
-        // Préparation des tableaux pour le graphique
         $months = range(1, 12);
         $demandesBienCounts = array_map(function ($month) use ($demandesBienData) {
             return $demandesBienData[$month] ?? 0;
@@ -76,7 +73,6 @@ class DemandeChart extends ChartWidget
             return $demandesServiceData[$month] ?? 0;
         }, $months);
 
-        // Noms des mois en français
         $monthNames = [
             'Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin',
             'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'
