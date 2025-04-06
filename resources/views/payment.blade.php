@@ -35,7 +35,7 @@
                                 <ul class="info_list unordered_list_block text-start">
                                     <li>
                                         <i class="fas fa-caret-right"></i>
-                                        <span>Equipement louer : {{ $payment->bien->titre }}</span>
+                                        <span>Equipement louer : {{ $payment->bien ? $payment->bien->titre : 'Non spécifié' }}</span>
                                     </li>
                                 </ul>
                                 <div class="btn_wrap pb-0">
@@ -80,11 +80,11 @@
                                 <ul class="info_list unordered_list_block text-start">
                                     <li>
                                         <i class="fas fa-caret-right"></i>
-                                        <span>Service: {{ $payment->services->titre }}</span>
+                                        <span>Service: {{ $payment->service ? $payment->service->titre : 'Non spécifié' }}</span>
                                     </li>
                                     <li>
                                         <i class="fas fa-caret-right"></i>
-                                        <span>Categorie du Service: {{ $payment->services->categorie }}</span>
+                                        <span>Categorie du Service: {{ $payment->service ? $payment->service->categorie : 'Non spécifié' }}</span>
                                     </li>
                                 </ul>
                                 <div class="btn_wrap pb-0">

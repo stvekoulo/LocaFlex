@@ -104,9 +104,21 @@ class DemandeServiceResource extends Resource
                     ->icon('heroicon-o-check')
                     ->color('success')
                     ->visible(fn (DemandeService $record): bool => $record->etat === 'En attente')
-                    ->action(function (DemandeService $record): void {
+                    ->requiresConfirmation()
+                    ->modalHeading('Accepter la demande')
+                    ->modalDescription('Voulez-vous également marquer le service comme "Occupé"?')
+                    ->form([
+                        Forms\Components\Checkbox::make('marquer_occupe')
+                            ->label('Marquer le service comme "Occupé"')
+                            ->default(true),
+                    ])
+                    ->action(function (DemandeService $record, array $data): void {
                         $utilisateur = Auth::user();
                         $record->update(['etat' => 'Validé']);
+
+                        if ($data['marquer_occupe'] ?? false) {
+                            $record->services()->update(['disponibilite' => 'Occupé']);
+                        }
 
                         Paiement::create([
                             'montant' => $record->services->prix,
