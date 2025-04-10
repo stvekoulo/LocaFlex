@@ -27,7 +27,7 @@
                 </nav>
             </div>
             <div class="col col-lg-3 col-5">
-                <ul class="header_btns_group unordered_list_end">
+                <ul class="header_btns_group unordered_list_end d-flex align-items-center">
                     <li>
                         <button class="mobile_menu_btn" type="button" data-bs-toggle="collapse"
                             data-bs-target="#main_menu_dropdown" aria-controls="main_menu_dropdown"
@@ -46,15 +46,15 @@
                             </button>
                         </form>
                     @else
-                        <li>
+                        <button class="d-inline-block me-2">
                             <a class="btn border_dark" href="{{ route('login') }}">
                                 <span>
                                     <small>Se connecter</small>
                                     <small>Se connecter</small>
                                 </span>
                             </a>
-                        </li>
-                        <li>
+                        </button>
+                        <li class="d-inline-block">
                             <a class="btn btn_dark" href="{{ route('register') }}">
                                 <span>
                                     <small>S'inscrire</small>

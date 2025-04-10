@@ -111,16 +111,16 @@
                                         <span>{{ $bien->disponibilite }}</span>
                                     </li>
                                     <li>
-                                        <i class="fas fa-tag text-black"></i>
-                                        <span class="text-black">
+                                        <i class="fas fa-tag text-primary"></i>
+                                        <span>
                                             @if(isset($bien->tags) && is_array($bien->tags))
                                                 @foreach($bien->tags as $tag)
-                                                    <span class="badge badge-dark">{{ $tag }}</span>
+                                                    <span class="badge bg-success text-white rounded-pill me-1">{{ $tag }}</span>
                                                 @endforeach
                                             @elseif(isset($bien->tags))
-                                                {{ $bien->tags }}
+                                                <span class="badge bg-success text-white rounded-pill">{{ $bien->tags }}</span>
                                             @else
-                                                Aucun tag disponible
+                                                <span class="badge bg-secondary">Aucun tag disponible</span>
                                             @endif
                                         </span>
                                     </li>
@@ -158,14 +158,14 @@
                                             <span>{{ $bien->disponibilite }}</span>
                                         </li>
                                         <li>
-                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-tags text-warning"></i>
                                             <span>
                                                 @if(is_array($bien->tags))
                                                     @foreach($bien->tags as $tag)
-                                                        <span class="badge badge-primary">{{ $tag }}</span>
+                                                        <span class="badge bg-info text-dark rounded-pill me-1">{{ $tag }}</span>
                                                     @endforeach
                                                 @else
-                                                    {{ $bien->tags }}
+                                                    <span class="badge bg-info text-dark rounded-pill">{{ $bien->tags }}</span>
                                                 @endif
                                             </span>
                                         </li>

@@ -11,10 +11,10 @@
     <main class="page_content">
         <section class="page_banner">
             <div class="container">
-                <div class="content_wrapper" style="background-image: url('{{ asset('autres_images/8.jpg') }}');">
+                <div class="content_wrapper" style="background-image: url('{{ asset('autres_images/person-adding-clothes-cart-closeup-online-shopping-campaign.jpg') }}');">
                     <div class="row align-items-center">
                         <div class="col col-lg-6">
-                            <h1 class="page_title">Catalogue des Produits</h1>
+                            <h1 class="page_title">Catalogue des Equipements</h1>
                             <p class="page_description">
                             </p>
                         </div>

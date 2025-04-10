@@ -90,6 +90,7 @@
                     </div>
                 </form>
 
+                {{--
                 <div class="mt-10">
                     <div class="relative">
                         <div class="absolute inset-0 flex items-center">
@@ -116,6 +117,8 @@
                         </a>
                     </div>
                 </div>
+                --}}
+                
             </div>
 
             <p class="mt-10 text-center text-sm text-gray-500">
