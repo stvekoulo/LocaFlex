@@ -5,7 +5,7 @@ Cher {{$user->name}},
 
 Nous tenons à vous informer que votre compte a été crédité suite a un payement effectuée pour l'un de vos services ou biens.
 
-@component('mail::button', ['url' => url(route(('dashboard')))])
+@component('mail::button', ['url' => url('/loueur')])
 Cliquez ici pour consulter
 @endcomponent
 

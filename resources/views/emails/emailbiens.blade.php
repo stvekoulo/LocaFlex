@@ -4,7 +4,7 @@ Cher {{$user->name}},
 
 Nous avons le plaisir de vous informer qu'une nouvelle demande de réservation pour l'un de vos biens a été effectuée.
 
-@component('mail::button', ['url' => url(route(('demande.index')))])
+@component('mail::button', ['url' => url('/loueur')])
 Cliquez ici pour consulter la demande
 @endcomponent
 

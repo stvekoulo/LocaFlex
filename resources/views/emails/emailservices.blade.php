@@ -5,7 +5,7 @@ Cher {{$user->name}},
 
 Nous tenons à vous informer qu'une nouvelle demande de réservation a été effectuée pour l'un de vos services sur la plateforme {{ config('app.name') }}.
 
-@component('mail::button', ['url' => url(route(('demande.index')))])
+@component('mail::button', ['url' => url('/loueur')])
 Cliquez ici pour consulter la demande
 @endcomponent
 
