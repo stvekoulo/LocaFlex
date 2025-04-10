@@ -54,14 +54,6 @@
                                 </span>
                             </a>
                         </button>
-                        <li class="d-inline-block">
-                            <a class="btn btn_dark" href="{{ route('register') }}">
-                                <span>
-                                    <small>S'inscrire</small>
-                                    <small>S'inscrire</small>
-                                </span>
-                            </a>
-                        </li>
                     @endif
                 </ul>
             </div>
