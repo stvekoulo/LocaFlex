@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'Collab') }}</title>
+    <link rel="shortcut icon" href="{{ asset('favicon.png') }}">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -176,7 +177,7 @@
                     </div>
                 </div>
                 --}}
-                
+
             </div>
 
             <p class="mt-10 text-center text-sm text-gray-500">

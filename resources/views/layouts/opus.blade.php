@@ -6,7 +6,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'Collab') }}</title>
-    <link rel="shortcut icon" href="{{ asset('Template/assets/images/logo/favourite_icon_1.svg') }}">
+    <link rel="shortcut icon" href="{{ asset('favicon.png') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('Template/assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('Template/assets/css/fontawesome.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('Template/assets/css/animate.css') }}">
