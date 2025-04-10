@@ -9,7 +9,7 @@ class Paiement extends Model
 {
     use HasFactory;
     protected $table = 'paiements';
-    protected $fillable = ['montant', 'user_id', 'bien_id', 'service_id', 'owner_id', 'etat'];
+    protected $fillable = ['montant', 'user_id', 'bien_id', 'service_id', 'owner_id', 'etat', 'reference'];
 
     public function client()
     {

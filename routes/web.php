@@ -15,6 +15,7 @@ use App\Http\Controllers\LoueurServiceController;
 use App\Http\Controllers\ServiceDetailController;
 use App\Http\Controllers\GestionDemandeController;
 use App\Http\Controllers\GestionServiceController;
+use App\Http\Controllers\FedaPayCallBackController;
 use App\Http\Controllers\NotchPayCallBackController;
 use App\Http\Controllers\ServiceCatalogueController;
 
@@ -98,7 +99,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('/paiement', [PaiementController::class, 'index'])->name('payment.index');
     Route::get('/paiement/{paiementId}', [PaymentController::class, '__invoke'])->name('payment.store');
-    Route::get('callback-payment', NotchPayCallBackController::class)->name('notchpay-callback');
+    Route::get('callback-fedapay', FedaPayCallBackController::class)->name('fedapay-callback');
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
