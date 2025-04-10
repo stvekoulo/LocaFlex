@@ -11,13 +11,14 @@ class PaiementController extends Controller
     {
         $user = auth()->user();
 
-        $paymentsForBiens = Paiement::where('user_id', $user->id)
-            ->whereNotNull('bien_id') // Pour filtrer par les paiements liés à un bien
+        $paymentsForBiens = Paiement::with('bien')
+            ->where('user_id', $user->id)
+            ->whereNotNull('bien_id')
             ->get();
 
-        // Récupérer les paiements pour un service
-        $paymentsForServices = Paiement::where('user_id', $user->id)
-            ->whereNotNull('service_id') // Pour filtrer par les paiements liés à un service
+        $paymentsForServices = Paiement::with('service')
+            ->where('user_id', $user->id)
+            ->whereNotNull('service_id')
             ->get();
 
         return view('payment', compact('paymentsForBiens', 'paymentsForServices'));

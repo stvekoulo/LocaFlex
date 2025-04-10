@@ -103,9 +103,21 @@ class DemandeReservationResource extends Resource
                     ->icon('heroicon-o-check')
                     ->color('success')
                     ->visible(fn (DemandeReservation $record): bool => $record->etat === 'En attente')
-                    ->action(function (DemandeReservation $record): void {
+                    ->requiresConfirmation()
+                    ->modalHeading('Accepter la demande')
+                    ->modalDescription('Voulez-vous également marquer le bien comme "Occupé"?')
+                    ->form([
+                        Forms\Components\Checkbox::make('marquer_occupe')
+                            ->label('Marquer le bien comme "Occupé"')
+                            ->default(true),
+                    ])
+                    ->action(function (DemandeReservation $record, array $data): void {
                         $utilisateur = Auth::user();
                         $record->update(['etat' => 'Validé']);
+
+                        if ($data['marquer_occupe'] ?? false) {
+                            $record->bien()->update(['disponibilite' => 'Occupé']);
+                        }
 
                         Paiement::create([
                             'montant' => $record->bien->prix,
