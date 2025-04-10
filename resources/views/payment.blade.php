@@ -98,7 +98,7 @@
                             <div class="pricing_card text-center tilt @if ($index == intval(count($paymentsForServices) / 2)) bg_dark @endif">
                                 <h3 class="card_heading">Facture</h3>
                                 <div class="pricing_wrap">
-                                    <span class="price_value"><sup></sup>CFA {{ $payment->montant }}</span>
+                                    <span class="price_value"><sup></sup>CFA {{ number_format($payment->montant, 0) }}</span>
                                     <small class="d-block">{{ $payment->etat }}</small>
                                 </div>
                                 <hr>
