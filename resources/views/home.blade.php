@@ -226,7 +226,7 @@
                                                             <li><a href="#!">{{ $bien->categorie }}</a></li>
                                                         </ul>
                                                         <div class="item_price">
-                                                            <span class="sale_price">CFA {{ $bien->prix }}</span>
+                                                            <span class="sale_price">CFA {{ number_format($bien->prix , 0) }}</span>
                                                         </div>
                                                     </div>
                                                     <ul class="meta_info_list unordered_list">

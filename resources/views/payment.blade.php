@@ -17,6 +17,22 @@
                 </div>
             </div>
         </section>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+            @if (session('success'))
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Succès!',
+                    text: '{{ session('success') }}',
+                });
+            @elseif (session('error'))
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Erreur!',
+                    text: '{{ session('error') }}',
+                });
+            @endif
+        </script>
         <section class="pricing_section section_space_lg pb-0">
             <div class="container decoration_wrap">
                 <div class="section_heading text-center">
@@ -28,7 +44,7 @@
                             <div class="pricing_card text-center tilt @if ($index == intval(count($paymentsForBiens) / 2)) bg_dark @endif">
                                 <h3 class="card_heading">Facture</h3>
                                 <div class="pricing_wrap">
-                                    <span class="price_value"><sup></sup>CFA {{ $payment->montant }}</span>
+                                    <span class="price_value"><sup></sup>CFA {{  number_format($payment->montant, 0) }}</span>
                                     <small class="d-block">{{ $payment->etat }}</small>
                                 </div>
                                 <hr>
