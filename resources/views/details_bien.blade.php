@@ -111,14 +111,16 @@
                                         <span>{{ $bien->disponibilite }}</span>
                                     </li>
                                     <li>
-                                        <i class="fas fa-star"></i>
-                                        <span>
-                                            @if(is_array($bien->tags))
+                                        <i class="fas fa-tag text-black"></i>
+                                        <span class="text-black">
+                                            @if(isset($bien->tags) && is_array($bien->tags))
                                                 @foreach($bien->tags as $tag)
-                                                    <span class="badge badge-primary">{{ $tag }}</span>
+                                                    <span class="badge badge-dark">{{ $tag }}</span>
                                                 @endforeach
-                                            @else
+                                            @elseif(isset($bien->tags))
                                                 {{ $bien->tags }}
+                                            @else
+                                                Aucun tag disponible
                                             @endif
                                         </span>
                                     </li>
