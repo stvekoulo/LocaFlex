@@ -22,21 +22,17 @@ class FedaPayCallBackController extends Controller
                 return redirect()->route('payment.index')->with('success', __('Ce paiement a déjà été effectué.'));
             }
 
-            // Initialisation de FedaPay
             FedaPay::setApiKey(config('services.fedapay.secret_key'));
             FedaPay::setEnvironment(config('services.fedapay.environment'));
 
-            // Vérification de la transaction
             $transaction = Transaction::retrieve($paiement->reference);
 
             if ($transaction && $transaction->status === 'approved') {
-                // Mise à jour du paiement
                 $paiement->update([
                     'etat' => 'Payé',
                     'updated_at' => now()
                 ]);
 
-                // Envoi de l'email de confirmation
                 try {
                     Mail::to($paiement->client->email)
                         ->send(new PaymentMail($paiement->client));
