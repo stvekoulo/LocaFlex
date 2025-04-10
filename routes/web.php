@@ -99,7 +99,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('/paiement', [PaiementController::class, 'index'])->name('payment.index');
     Route::get('/paiement/{paiementId}', [PaymentController::class, '__invoke'])->name('payment.store');
-    Route::get('callback-fedapay', FedaPayCallBackController::class)->name('fedapay-callback');
+    Route::get('callback-fedapay/{id}', [FedaPayCallBackController::class, 'handleCallback'])->name('fedapay-callback');
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {

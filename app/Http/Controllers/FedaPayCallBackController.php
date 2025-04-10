@@ -9,47 +9,49 @@ use App\Mail\PaymentMail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Log;
 
 class FedaPayCallBackController extends Controller
 {
-    public function __invoke(Request $request): RedirectResponse
+    public function handleCallback(Request $request, $id)
     {
-        // Clé API FedaPay
-        $fedaPayApiKey = 'sk_sandbox_c2PnKt7VQHkT8yZf-dIoP9cG';
-        FedaPay::setApiKey($fedaPayApiKey);
-        FedaPay::setEnvironment('sandbox'); // 'sandbox' ou 'live'
-
-        $id = $request->input('id');
-
-        if (!$id) {
-            session()->flash('error', __('Identifiant de transaction manquant.'));
-            return redirect(route('payment.index'));
-        }
-
         try {
-            $transaction = Transaction::retrieve($id);
+            $paiement = Paiement::findOrFail($id);
 
-            $paiement = Paiement::where('reference', $id)->first();
-
-            if (!$paiement) {
-                session()->flash('error', __('Paiement non trouvé.'));
-                return redirect(route('payment.index'));
+            if ($paiement->etat === 'Payé') {
+                return redirect()->route('payment.index')->with('success', __('Ce paiement a déjà été effectué.'));
             }
 
-            if ($transaction->status === 'approved') {
-                $paiement->update(['etat' => 'Paiement effectué']);
+            // Initialisation de FedaPay
+            FedaPay::setApiKey(config('services.fedapay.secret_key'));
+            FedaPay::setEnvironment(config('services.fedapay.environment'));
 
-                Mail::to($paiement->client->email)->send(new PaymentMail($paiement->client));
+            // Vérification de la transaction
+            $transaction = Transaction::retrieve($paiement->reference);
 
-                session()->flash('status', __('Votre paiement a été effectué avec succès. Merci pour votre confiance.'));
-            } else {
-                session()->flash('error', __('Votre paiement a été annulé ou refusé. Veuillez relancer si vous souhaitez payer votre produit.'));
+            if ($transaction && $transaction->status === 'approved') {
+                // Mise à jour du paiement
+                $paiement->update([
+                    'etat' => 'Payé',
+                    'updated_at' => now()
+                ]);
+
+                // Envoi de l'email de confirmation
+                try {
+                    Mail::to($paiement->client->email)
+                        ->send(new PaymentMail($paiement->client));
+                    Log::info('Email de confirmation envoyé pour le paiement #' . $paiement->id);
+                } catch (\Exception $e) {
+                    Log::error('Erreur lors de l\'envoi de l\'email de confirmation: ' . $e->getMessage());
+                }
+
+                return redirect()->route('payment.index')->with('success', __('Votre paiement a été effectué avec succès.'));
             }
 
+            return redirect()->route('payment.index')->with('error', __('Le paiement n\'a pas pu être validé. Veuillez réessayer.'));
         } catch (\Exception $e) {
-            session()->flash('error', __('Une erreur est survenue lors de la vérification du paiement.'));
+            Log::error('Erreur lors du traitement du callback FedaPay: ' . $e->getMessage());
+            return redirect()->route('payment.index')->with('error', __('Une erreur est survenue lors du traitement de votre paiement.'));
         }
-
-        return redirect(route('payment.index'));
     }
 }

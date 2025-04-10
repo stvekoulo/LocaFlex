@@ -29,7 +29,7 @@
                                 <h3 class="card_heading">Facture</h3>
                                 <div class="pricing_wrap">
                                     <span class="price_value"><sup></sup>CFA {{ $payment->montant }}</span>
-                                    <small class="d-block">En attente de paiement</small>
+                                    <small class="d-block">{{ $payment->etat }}</small>
                                 </div>
                                 <hr>
                                 <ul class="info_list unordered_list_block text-start">
@@ -39,13 +39,22 @@
                                     </li>
                                 </ul>
                                 <div class="btn_wrap pb-0">
-                                    <a class="btn btn_primary"
-                                        href="{{ route('payment.store', ['paiementId' => $payment->id]) }}">
-                                        <span>
-                                            <small>Confirmer le paiement</small>
-                                            <small>Proceder au paiement</small>
-                                        </span>
-                                    </a>
+                                    @if($payment->etat === 'Payé')
+                                        <button class="btn btn_success" disabled>
+                                            <span>
+                                                <small>Paiement effectué</small>
+                                                <small>Déjà payé</small>
+                                            </span>
+                                        </button>
+                                    @else
+                                        <a class="btn btn_primary"
+                                            href="{{ route('payment.store', ['paiementId' => $payment->id]) }}">
+                                            <span>
+                                                <small>Confirmer le paiement</small>
+                                                <small>Proceder au paiement</small>
+                                            </span>
+                                        </a>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -74,7 +83,7 @@
                                 <h3 class="card_heading">Facture</h3>
                                 <div class="pricing_wrap">
                                     <span class="price_value"><sup></sup>CFA {{ $payment->montant }}</span>
-                                    <small class="d-block">En attente de paiement</small>
+                                    <small class="d-block">{{ $payment->etat }}</small>
                                 </div>
                                 <hr>
                                 <ul class="info_list unordered_list_block text-start">
@@ -88,13 +97,22 @@
                                     </li>
                                 </ul>
                                 <div class="btn_wrap pb-0">
-                                    <a class="btn btn_primary"
-                                        href="{{ route('payment.store', ['paiementId' => $payment->id]) }}">
-                                        <span>
-                                            <small>Confirmer le paiement</small>
-                                            <small>Proceder au paiement</small>
-                                        </span>
-                                    </a>
+                                    @if($payment->etat === 'Payé')
+                                        <button class="btn btn_success" disabled>
+                                            <span>
+                                                <small>Paiement effectué</small>
+                                                <small>Déjà payé</small>
+                                            </span>
+                                        </button>
+                                    @else
+                                        <a class="btn btn_primary"
+                                            href="{{ route('payment.store', ['paiementId' => $payment->id]) }}">
+                                            <span>
+                                                <small>Confirmer le paiement</small>
+                                                <small>Proceder au paiement</small>
+                                            </span>
+                                        </a>
+                                    @endif
                                 </div>
                             </div>
                         </div>
